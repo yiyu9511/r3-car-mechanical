@@ -6,7 +6,9 @@
 #   安装孔：2×Ø1.6 通孔 @ (±6.5, z7.5)
 #   光学凸起：中央 ~7.2×5、伸出 5.4mm 到 y=-130.91（唯一真正凸起的东西）
 #   z11/z16 的 4 个 Ø1.0 是 0.1mm 环带，不是孔（旧版据此画错）
-# v7：平板墙面无沉台，中央通窗罩光学凸起，2×Ø2.2 过孔拧 M2 自攻
+# 官方图纸（用户提供）交叉验证：2-M1.6 安装孔间距 13.0 / 光学块 7.2×5.0 /
+# 凸起 5.4 / 总厚 10.3 / 前脸板 0.8 / 耳片 R3.0 —— 与模型实测全部一致
+# v8：过孔 Ø2.2→Ø1.8，螺丝 M2→M1.6 机牙（拧进模块 M1.6 螺纹孔）
 # 本地坐标系：z0 = 底板上表面（世界 z1.5）
 # 用法: freecadcmd.exe build_tof_rear_bracket.py
 import sys
@@ -50,9 +52,9 @@ for sx in (-1, 1):
         c = Part.makeCylinder(WIN_R, 4, Base.Vector(sx*(WIN_X-WIN_R), -128.7, zz),
                               Base.Vector(0, 1, 0))
         cuts.append(c)
-# M2 自攻过孔 Ø2.2（轴Y，贯通墙）——前脸是平板，不需要任何沉台
+# M1.6 过孔 Ø1.8（轴Y，贯通墙）——前脸是平板，不需要任何沉台
 for px, pz in SCREWS:
-    cuts.append(Part.makeCylinder(1.1, 4, Base.Vector(px, -128.7, pz),
+    cuts.append(Part.makeCylinder(0.9, 4, Base.Vector(px, -128.7, pz),
                                   Base.Vector(0, 1, 0)))
 # 锚孔 Ø3.2（轴Z，贯通底座）
 for ax, ay in ANCHORS:
@@ -72,7 +74,7 @@ bb = body.BoundBox
 w("v4 支架 bbox: X[%.1f,%.1f] Y[%.1f,%.1f] Z[%.1f,%.1f]（本地）" % (
     bb.XMin, bb.XMax, bb.YMin, bb.YMax, bb.ZMin, bb.ZMax))
 w("大窗（世界）: x±%.1f, z %.1f..%.1f, r%.1f" % (WIN_X, WIN_Z0+ZW, WIN_Z1+ZW, WIN_R))
-w("M2 过孔 Ø2.2（世界 z）: %s" % [(px, pz+ZW) for px, pz in SCREWS])
+w("M1.6 过孔 Ø1.8（世界 z）: %s" % [(px, pz+ZW) for px, pz in SCREWS])
 
 # ---------- 同步更新装配体里的网格 ----------
 for asm in [r"E:/car_projects/freecad/test1_B_相机二层.FCStd"]:
