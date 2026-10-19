@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 # TOF后支架 v4 参数化重建（前脸特征全部按 TOFSense_F2 STEP 实测）
-# 实测数据（世界系，前脸 y=-125.51）：
-#   镜头凸环 Ø6.0 @ (±6.5, z7.5)（中心锥台伸至 y-130.91，±2.05/3.05宽x5高）
-#   安装孔 Ø1.0 只有下方 2 个 @ (±5.5, z11.0)——实物确认，模型里 z16 两个是画的
-# 旧版错误：所有孔 Z 高 1.5mm，且未给中央锥台留窗
-# v4：单一大圆角窗覆盖整个光学区 x±9.7 × z4.1..10.8(世界)，导孔只留下方 2×Ø1.1 @ z11
+# 实测数据（世界系，前脸 y=-125.51；STEP 曲线全是 BSpline，靠圆柱面+正视图确认）：
+#   安装孔：2×Ø1.6 @ (±6.5, z7.5)，位于 Ø6 圆凸台中心（Ø1.6 = M2 自攻标准底孔）
+#   光学凸起：中央方块 ~8.5×5，内含两个镜头圆 ±2.05，整体伸出前脸 5.4mm（到 y-130.91）
+#   模型里 z11 / z16 的 4 个 Ø1.0 只是 0.1mm 高的环带，不是孔（旧版据此画错）
+# v6：中央通窗只罩光学凸起；两个 Ø6 安装凸台走"内面沉台 Ø7.2×2.0"让位，
+#     螺丝从墙后 Ø2.2 过孔拧进模块 Ø1.6 底孔（M2×8 自攻），墙保留 1mm 承压面
 # 本地坐标系：z0 = 底板上表面（世界 z1.5）
 # 用法: freecadcmd.exe build_tof_rear_bracket.py
 import sys
@@ -26,8 +27,9 @@ ZW = 1.5  # 本地→世界 z 偏移
 BASE = (-30, -128.5, 0, 60, 18.5, 3)          # x,y,z, dx,dy,dz
 WALL = (-12, -128.5, 0, 24, 3, 17)            # 墙 24 宽（窗两侧各留 2.3）
 ANCHORS = [(-26, -118.4), (26, -118.4)]       # Ø3.2 锚孔（轴Z）
-WIN_X, WIN_Z0, WIN_Z1, WIN_R = 9.7, 2.6, 9.3, 2.0   # 大窗（本地 z）
-PILOTS = [(-5.5, 9.5), (5.5, 9.5)]  # Ø1.1 只有下方 2 个（世界 z11），实物确认
+WIN_X, WIN_Z0, WIN_Z1, WIN_R = 4.0, 3.1, 8.9, 1.2   # 中央通窗（本地 z，世界 4.6..10.4）
+SCREWS = [(-6.5, 6.0), (6.5, 6.0)]   # Ø2.2 过孔（本地 z6 = 世界 z7.5），M2 自攻穿墙入模块 Ø1.6 底孔
+CBORE_R, CBORE_D = 3.6, 2.0          # 内面沉台 Ø7.2 × 2.0，让出 Ø6 安装凸台
 
 doc = App.newDocument("TOF后支架")
 
@@ -48,9 +50,13 @@ for sx in (-1, 1):
         c = Part.makeCylinder(WIN_R, 4, Base.Vector(sx*(WIN_X-WIN_R), -128.7, zz),
                               Base.Vector(0, 1, 0))
         cuts.append(c)
-# 导孔 Ø1.1（轴Y，贯通墙）
-for px, pz in PILOTS:
-    cuts.append(Part.makeCylinder(0.55, 4, Base.Vector(px, -128.7, pz),
+# M2 自攻过孔 Ø2.2（轴Y，贯通墙）+ 内面沉台 Ø7.2×2.0（让开 Ø6 安装凸台）
+for px, pz in SCREWS:
+    cuts.append(Part.makeCylinder(1.1, 4, Base.Vector(px, -128.7, pz),
+                                  Base.Vector(0, 1, 0)))
+    # 沉台：从墙内面 y=-125.5 向车尾方向挖 2.0
+    cuts.append(Part.makeCylinder(CBORE_R, CBORE_D + 0.1,
+                                  Base.Vector(px, -125.5 - CBORE_D, pz),
                                   Base.Vector(0, 1, 0)))
 # 锚孔 Ø3.2（轴Z，贯通底座）
 for ax, ay in ANCHORS:
@@ -70,7 +76,7 @@ bb = body.BoundBox
 w("v4 支架 bbox: X[%.1f,%.1f] Y[%.1f,%.1f] Z[%.1f,%.1f]（本地）" % (
     bb.XMin, bb.XMax, bb.YMin, bb.YMax, bb.ZMin, bb.ZMax))
 w("大窗（世界）: x±%.1f, z %.1f..%.1f, r%.1f" % (WIN_X, WIN_Z0+ZW, WIN_Z1+ZW, WIN_R))
-w("导孔（世界 z）: %s" % [(px, pz+ZW) for px, pz in PILOTS])
+w("M2 过孔 Ø2.2（世界 z）: %s" % [(px, pz+ZW) for px, pz in SCREWS])
 
 # ---------- 同步更新装配体里的网格 ----------
 for asm in [r"E:/car_projects/freecad/test1_B_相机二层.FCStd"]:
