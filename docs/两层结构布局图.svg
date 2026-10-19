@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 530" width="680" height="530">
+<title>R3 小车三层布局最终方案</title>
+<desc>左：上层板俯视器件与孔位，右：侧视 Z 向层叠</desc>
+<style>
+.th { font-family: sans-serif; font-size: 14px; font-weight: 500; fill: #2C2C2A; }
+.ts { font-family: sans-serif; font-size: 12px; font-weight: 400; fill: #444441; }
+</style>
+
+<text class="th" x="240" y="26" text-anchor="middle">上层板俯视（车头朝上）</text>
+<text class="th" x="520" y="26" text-anchor="middle">侧视 Z 向层叠</text>
+
+<polygon points="147.9,433.1 148.8,434.6 170.5,444.5 239.9,434.2 309.6,444.5 332.0,433.8 330.9,379.9 332.7,353.3 353.3,225.6 353.2,196.8 345.1,193.4 339.7,188.9 333.6,175.3 332.3,161.1 334.7,110.1 295.7,77.2 184.6,77.1 145.2,110.1 147.8,161.1 146.9,172.8 144.4,182.1 140.3,188.9 134.9,193.4 126.8,196.4 126.8,225.6 147.3,353.3" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.7"/>
+<text class="ts" x="240" y="462" text-anchor="middle">底盘真实轮廓（STP 提取）· 注意两侧腰线与尾部缺口</text>
+
+<rect x="185.5" y="303.5" width="109" height="128" fill="#F5C4B3" stroke="#993C1D" stroke-width="0.5" stroke-dasharray="4 3"/>
+<text class="ts" x="240" y="358" text-anchor="middle" fill="#712B13">电池盒 72.6×85.6</text>
+<text class="ts" x="240" y="372" text-anchor="middle" fill="#712B13">（在下层，虚线=透视）</text>
+
+<rect x="146.25" y="178.5" width="187.5" height="123" fill="#C0DD97" stroke="#3B6D11" stroke-width="0.5"/>
+<text class="ts" x="240" y="236" text-anchor="middle">LubanCat 5 · 125×82</text>
+<text class="ts" x="240" y="250" text-anchor="middle">4×M3 孔 118×73</text>
+
+<rect x="177" y="147" width="126" height="186" fill="#FAC775" fill-opacity="0.3" stroke="#BA7517" stroke-width="0.5" stroke-dasharray="6 3"/>
+<text class="ts" x="183" y="142" fill="#854F0B">雷达桥平台 84×124</text>
+<rect x="187.5" y="187.5" width="105" height="105" fill="#FAC775" stroke="#BA7517" stroke-width="0.5"/>
+<circle cx="240" cy="240" r="26" fill="none" stroke="#993C1D" stroke-width="0.5" stroke-dasharray="3 2"/>
+<text class="ts" x="240" y="236" text-anchor="middle">雷达</text>
+<text class="ts" x="240" y="250" text-anchor="middle">4×M2.5 · 53.2²</text>
+
+<rect x="214.5" y="225" width="75" height="75" fill="none" stroke="#0F6E56" stroke-width="0.5" stroke-dasharray="3 3"/>
+<text class="ts" x="252" y="266" text-anchor="middle" fill="#0F6E56" font-size="11">TB6612 倒挂</text>
+<rect x="149.3" y="128.6" width="61.4" height="102.8" fill="none" stroke="#0F6E56" stroke-width="0.5" stroke-dasharray="3 3"/>
+<text class="ts" x="180" y="176" text-anchor="middle" fill="#0F6E56" font-size="11">F407 倒挂</text>
+<rect x="257.5" y="132" width="70" height="36" fill="none" stroke="#0F6E56" stroke-width="0.5" stroke-dasharray="3 3"/>
+<text class="ts" x="292.5" y="154" text-anchor="middle" fill="#0F6E56" font-size="11">RT8279 倒挂</text>
+
+<rect x="218" y="79" width="44" height="46" fill="#CECBF6" stroke="#534AB7" stroke-width="0.5"/>
+<text class="ts" x="240" y="72" text-anchor="middle" fill="#3C3489">IMX415 支架</text>
+<circle cx="204" cy="97.5" r="3.5" fill="#CECBF6" stroke="#534AB7" stroke-width="0.5"/>
+<circle cx="276" cy="97.5" r="3.5" fill="#CECBF6" stroke="#534AB7" stroke-width="0.5"/>
+<text class="ts" x="240" y="62" text-anchor="middle" fill="#3C3489" font-size="11">TOF-M / TOF-F2 前缘</text>
+
+<circle cx="315" cy="120" r="4.5" fill="#5F5E5A"/><circle cx="165" cy="120" r="4.5" fill="#5F5E5A"/>
+<circle cx="315" cy="255" r="4.5" fill="#5F5E5A"/><circle cx="165" cy="255" r="4.5" fill="#5F5E5A"/>
+<circle cx="315" cy="375" r="4.5" fill="#5F5E5A"/><circle cx="165" cy="375" r="4.5" fill="#5F5E5A"/>
+<text class="ts" x="248" y="118" font-size="11">铜柱</text><text class="ts" x="248" y="253" font-size="11">铜柱</text><text class="ts" x="248" y="373" font-size="11">铜柱</text>
+<rect x="192" y="159" width="6" height="6" fill="#BA7517"/><rect x="282" y="159" width="6" height="6" fill="#BA7517"/>
+<rect x="192" y="315" width="6" height="6" fill="#BA7517"/><rect x="282" y="315" width="6" height="6" fill="#BA7517"/>
+<text class="ts" x="240" y="494" text-anchor="middle">灰点=M3×50 铜柱（底盘现成孔）· 棕方块=平台腿 · 绿虚线=板底倒挂器件</text>
+
+<rect x="415" y="337.75" width="210.7" height="2.25" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="0.5"/>
+<text class="ts" x="418" y="352" font-size="11">底板</text>
+<rect x="422" y="274.75" width="74" height="63" fill="#F5C4B3" stroke="#993C1D" stroke-width="0.5"/>
+<text class="ts" x="459" y="310" text-anchor="middle" font-size="11">电池 42</text>
+<line x1="454.9" y1="262.75" x2="454.9" y2="337.75" stroke="#888780" stroke-width="2.5"/>
+<line x1="524.9" y1="262.75" x2="524.9" y2="337.75" stroke="#888780" stroke-width="2.5"/>
+<line x1="601.6" y1="262.75" x2="601.6" y2="337.75" stroke="#888780" stroke-width="2.5"/>
+<text class="ts" x="530" y="330" font-size="11">M3×50</text>
+<rect x="415" y="259.75" width="210.7" height="3" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
+<text class="ts" x="628" y="262" font-size="11" fill="#185FA5">上层板</text>
+<rect x="498" y="262.75" width="98" height="21" fill="#9FE1CB" stroke="#0F6E56" stroke-width="0.5" stroke-dasharray="3 2"/>
+<text class="ts" x="547" y="296" text-anchor="middle" font-size="11" fill="#0F6E56">TB6612/F407/RT8279 倒挂</text>
+<rect x="497.1" y="221.5" width="70.6" height="38.25" fill="#C0DD97" stroke="#3B6D11" stroke-width="0.5"/>
+<text class="ts" x="532" y="243" text-anchor="middle" font-size="11">LubanCat</text>
+<line x1="487.6" y1="222.25" x2="487.6" y2="259.75" stroke="#BA7517" stroke-width="2.5"/>
+<line x1="577" y1="222.25" x2="577" y2="259.75" stroke="#BA7517" stroke-width="2.5"/>
+<rect x="478.9" y="219.25" width="106.6" height="3" fill="#FAC775" stroke="#BA7517" stroke-width="0.5"/>
+<text class="ts" x="446" y="216" font-size="11" fill="#854F0B">M3×25</text>
+<rect x="502.2" y="182.5" width="60.3" height="36.75" fill="#FAC775" stroke="#BA7517" stroke-width="0.5"/>
+<text class="ts" x="532" y="204" text-anchor="middle" font-size="11">雷达</text>
+<rect x="605" y="220" width="14" height="39.75" fill="#CECBF6" stroke="#534AB7" stroke-width="0.5"/>
+<text class="ts" x="612" y="214" text-anchor="middle" font-size="11" fill="#3C3489">摄像</text>
+<text class="ts" x="240" y="510" text-anchor="middle">▲ 车头</text>
+<text class="ts" x="520" y="420" text-anchor="middle">Z：底板1.5 → 上层板51.5 → 平台78.5 → 雷达扫描面 ~105</text>
+</svg>

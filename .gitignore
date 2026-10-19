@@ -1,0 +1,35 @@
+# ===== 旧版/冻结内容（不入 git，磁盘保留）=====
+test1.FCStd
+test1.20261019-backup-before-twolayer.FCStd
+*.FCBak
+parts/上层板.FCStd
+parts/雷达平台.FCStd
+parts/摄像头支架.FCStd
+parts/RT8279转接片.FCStd
+parts/MPU6050座.FCStd
+parts/前传感器支架A.FCStd
+
+# ===== 大文件 / 原材料 =====
+models/
+tools/freecad-mcp/
+
+# ===== 派生大网格（tools/*.py 可重生成）=====
+output/stl/器件_*.stl
+output/stl/底盘.stl
+output/stl/上层板.stl
+output/stl/电池.stl
+output/stl/雷达平台.stl
+output/stl/摄像头支架.stl
+output/stl/RT8279转接片.stl
+output/stl/MPU6050座.stl
+output/stl/前传感器支架A.stl
+
+# ===== 旧渲染（只保留最新两张总览）=====
+output/renders/*
+!output/renders/装配总览_20261019-1022.png
+!output/renders/打印件总览_20261019-1022.png
+
+# ===== 过程报告 / 杂项 =====
+output/*.txt
+output/dxf/
+__pycache__/

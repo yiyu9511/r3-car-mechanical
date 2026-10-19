@@ -1,0 +1,61 @@
+# -*- coding: utf-8 -*-
+# fix_step_names.FCMacro — 修复 STEP 导入后的乱码对象名
+#
+# 适用场景（FreeCAD 1.1 dev 实测三种都会乱）：
+#   1. 名字带 \X2\56DB... 转义原文      → 解码为标准 Unicode
+#   2. UTF-8 被当 Latin-1（Ã¥Â›Â› 这种）→ 还原为中文
+#   3. GBK 被当 Latin-1                 → 还原为中文
+#
+# 用法：导入 STP/STEP 后，菜单 宏(Macro) → 宏… → 选本宏 → 运行。
+# 只改显示名（Label），不改内部 Name，对文件格式安全。
+#
+# 本文件由 E:\car_projects\freecad\tools\ 维护，已复制到 FreeCAD 宏目录：
+#   %APPDATA%\FreeCAD\v1-1\Macro\
+
+import re
+import FreeCAD as App
+
+_X2 = re.compile(r'\\X2\\([0-9A-Fa-f]+)\\X0\\')
+
+
+def _decode_x2(s):
+    def repl(m):
+        try:
+            return bytes.fromhex(m.group(1)).decode('utf-16-be')
+        except Exception:
+            return m.group(0)
+    return _X2.sub(repl, s)
+
+
+def _fix_label(s):
+    # 情形 1：含 \X2\ 转义
+    if '\\X2\\' in s:
+        return _decode_x2(s)
+    # 情形 2/3：全部字符都在 Latin-1 范围内，才可能是错读的字节
+    try:
+        raw = s.encode('latin-1')
+    except UnicodeEncodeError:
+        return s  # 含 Latin-1 之外的字符，名字本身正常，不动
+    for enc in ('utf-8', 'gbk'):
+        try:
+            t = raw.decode(enc)
+        except UnicodeDecodeError:
+            continue
+        if t != s and all(ord(c) >= 32 for c in t):
+            return t
+    return s
+
+
+doc = App.ActiveDocument
+if doc is None:
+    App.Console.PrintError('没有活动文档，请先导入模型再运行\n')
+else:
+    fixed = []
+    for obj in doc.Objects:
+        new = _fix_label(obj.Label)
+        if new != obj.Label:
+            fixed.append((obj.Label, new))
+            obj.Label = new
+    for old, new in fixed:
+        App.Console.PrintMessage('%s  ->  %s\n' % (old, new))
+    App.Console.PrintMessage('完成：修复 %d 个对象名\n' % len(fixed))
