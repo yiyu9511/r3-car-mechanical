@@ -10,7 +10,6 @@ parts/MPU6050座.FCStd
 parts/前传感器支架A.FCStd
 
 # ===== 大文件 / 原材料 =====
-models/
 tools/freecad-mcp/
 
 # ===== 派生大网格（tools/*.py 可重生成）=====
