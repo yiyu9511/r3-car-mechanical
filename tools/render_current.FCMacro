@@ -1,0 +1,115 @@
+"""Render the current two-layer steel-plate design and validate saved geometry."""
+import json
+import os
+from pathlib import Path
+import sys
+import traceback
+import time
+import FreeCAD as App
+import FreeCADGui as Gui
+from PySide import QtCore, QtGui, QtWidgets
+
+ROOT=Path(__file__).resolve().parents[1]
+OUT=ROOT/'output/two_layer'
+
+try:
+    data=json.loads((OUT/'two_layer_checks.json').read_text())
+    doc=App.openDocument(str(ROOT/'assemblies/two_layer.FCStd'))
+    doc.recompute()
+    sys.path.insert(0,str(Path.home()/'.codex/skills/freecad-model-validation/scripts'))
+    from validate_document import validate_document
+    report=validate_document(doc,expectations={
+        'objects':{
+            'UpperSteelPlate':{'valid':True,'closed':True,'solid_count':1,'bbox':{'z':1.5,'tolerance':.001}},
+            'CATMount':{'valid':True,'closed':True,'solid_count':1,'bbox':{'z':13,'tolerance':.001}},
+            'LidarMount':{'valid':True,'closed':True,'solid_count':1,'bbox':{'z':33,'tolerance':.001}},
+            'CameraMount':{'valid':True,'closed':True,'solid_count':1}},
+        'scope':'Two-layer layout and draft adapter geometry, not manufacturing acceptance',
+        'untested_risks':data['not_tested']})
+    assert report['summary']['fail']==0
+    (OUT/'saved_geometry_checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+
+    def normal_visibility():
+        for o in doc.Objects:
+            if hasattr(o,'ViewObject'):o.ViewObject.Visibility=False
+        for o in doc.Objects:
+            if o.TypeId=='App::Part':o.ViewObject.Visibility=True
+        for name in data['visible_object_names']:doc.getObject(name).ViewObject.Visibility=True
+
+    normal_visibility()
+    for name in data['visible_object_names']:
+        o=doc.getObject(name)
+        color=(.66,.69,.72)
+        if name=='C30D' or name=='CameraPCB':color=(.24,.57,.34)
+        elif name in ['CATMount','LidarMount','CameraMount']:color=(.15,.53,.77)
+        elif name=='BatteryCradle':color=(.90,.57,.19)
+        elif name in ['FrontTOF','RearTOF']:color=(.31,.24,.43)
+        elif name=='Lidar':color=(.22,.25,.29)
+        elif name.startswith('LayerPost') or name.startswith('MCUSpacer'):color=(.72,.58,.30)
+        o.ViewObject.ShapeColor=color
+        o.ViewObject.LineColor=(.12,.16,.19)
+        o.ViewObject.DisplayMode='Flat Lines'
+        if name.startswith('LayerPost'):o.ViewObject.Transparency=40
+        if name=='BatteryHeightEnvelope':
+            o.ViewObject.DisplayMode='Wireframe';o.ViewObject.LineColor=(.88,.48,.08);o.ViewObject.LineWidth=2
+        if name=='CameraLensEnvelope':
+            o.ViewObject.Transparency=65;o.ViewObject.ShapeColor=(.36,.24,.61)
+    view=Gui.activeDocument().activeView()
+    view.setCameraType('Orthographic')
+    def settle_view():
+        # FreeCAD animates view changes. Drain the event loop before capturing
+        # so screenshots do not catch a top/ISO transition or an edge-on frame.
+        until=time.monotonic()+.8
+        while time.monotonic()<until:
+            QtWidgets.QApplication.processEvents()
+            time.sleep(.04)
+        Gui.updateGui()
+    def capture(name,kind='iso',width=1600,height=1400):
+        if kind=='iso':view.viewAxonometric()
+        elif kind=='top':view.viewTop()
+        settle_view()
+        view.fitAll();Gui.updateGui()
+        settle_view()
+        view.saveImage(str(OUT/(name+'.png')),width,height,'White')
+    capture('assembled_iso')
+    # Save the intended normal view, then use temporary inspection states only.
+    doc.save()
+    doc.Layer2.setExpression('Placement.Base.z',None)
+    doc.Layer2.Placement.Base.z=131.5
+    doc.recompute();capture('exploded_iso')
+    doc.Layer2.setExpression('Placement.Base.z','Params.base_z + Params.layer_gap')
+    doc.recompute()
+    doc.Layer2.ViewObject.Visibility=False
+    doc.LayerPosts.ViewObject.Visibility=False
+    capture('layer1_top','top')
+    normal_visibility()
+    doc.Layer1.ViewObject.Visibility=False
+    doc.LayerPosts.ViewObject.Visibility=False
+    capture('layer2_top','top')
+    for o in doc.Objects:
+        if hasattr(o,'ViewObject') and o.TypeId!='App::Part':o.ViewObject.Visibility=False
+    doc.Layer2.ViewObject.Visibility=True;doc.CATGroup.ViewObject.Visibility=True
+    doc.CATMount.ViewObject.Visibility=True
+    rotation=App.Rotation(App.Vector(0,0,1),-25).multiply(App.Rotation(App.Vector(1,0,0),145))
+    view.setCameraOrientation(rotation.Q)
+    capture('cat_mount_underside',kind='custom',width=1600,height=1000)
+
+    canvas=QtGui.QImage(2800,1480,QtGui.QImage.Format_ARGB32)
+    canvas.fill(QtGui.QColor('white'))
+    painter=QtGui.QPainter(canvas)
+    font=QtGui.QFont('Noto Sans CJK SC');font.setPixelSize(34);painter.setFont(font)
+    painter.setPen(QtGui.QColor('#163244'))
+    titles=['两块相同铁底板 · 层间 50 mm','分层查看 · 上层临时抬起 80 mm']
+    for i,name in enumerate(['assembled_iso','exploded_iso']):
+        painter.drawText(QtCore.QRect(i*1400,5,1400,75),QtCore.Qt.AlignCenter,titles[i])
+        painter.drawImage(QtCore.QRect(i*1400,80,1400,1225),QtGui.QImage(str(OUT/(name+'.png'))))
+    font.setPixelSize(27);painter.setFont(font)
+    painter.drawText(QtCore.QRect(20,1310,2760,65),QtCore.Qt.AlignCenter,'第一层：前后 TOF · C30D MCU · 电池托架    ｜    第二层：CAT · 雷达 · 相机')
+    painter.drawText(QtCore.QRect(20,1380,2760,65),QtCore.Qt.AlignCenter,'橙色线框为电池高度预算；层间柱位、打印件锚孔、紧固与走线仍待确认。')
+    painter.end();canvas.save(str(OUT/'overview.png'))
+    App.closeDocument(doc.Name)
+    for backup in (ROOT/'assemblies').glob('*.FCBak'):backup.unlink()
+except Exception:
+    (OUT/'render_error.txt').write_text(traceback.format_exc())
+    os._exit(1)
+os._exit(0)

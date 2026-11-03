@@ -1,0 +1,8 @@
+# CAD source and native documents must retain their original bytes.
+*.step binary
+*.STEP binary
+*.stp binary
+*.STP binary
+*.FCStd binary
+*.stl binary
+*.3mf binary

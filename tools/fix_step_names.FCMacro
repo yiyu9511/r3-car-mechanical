@@ -9,8 +9,7 @@
 # 用法：导入 STP/STEP 后，菜单 宏(Macro) → 宏… → 选本宏 → 运行。
 # 只改显示名（Label），不改内部 Name，对文件格式安全。
 #
-# 本文件由 E:\car_projects\freecad\tools\ 维护，已复制到 FreeCAD 宏目录：
-#   %APPDATA%\FreeCAD\v1-1\Macro\
+# 维护位置：本仓库 tools/。在 FreeCAD 宏对话框中选择此文件运行。
 
 import re
 import FreeCAD as App

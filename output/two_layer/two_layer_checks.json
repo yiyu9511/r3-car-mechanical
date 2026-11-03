@@ -1,0 +1,232 @@
+{
+  "status": "geometry_layout_checked_not_manufacturing_ready",
+  "architecture": {
+    "plates": "two identical existing steel chassis plates",
+    "plate_thickness_mm": 1.5,
+    "layer_gap_mm": 50,
+    "lower_devices": [
+      "FrontTOF",
+      "RearTOF",
+      "C30D",
+      "BatteryCradle"
+    ],
+    "upper_devices": [
+      "CAT",
+      "Lidar",
+      "Camera"
+    ]
+  },
+  "datums_mm": {
+    "lower_plate_top": 1.5,
+    "upper_plate_bottom": 51.5,
+    "upper_plate_top": 53,
+    "cat_bottom": 66,
+    "cat_top": 112.60000000000008,
+    "lidar_base": 86,
+    "lidar_scan_head_lowest": 117.92192707366382
+  },
+  "checks": {
+    "identical_steel_plate_symmetric_difference_mm3": 0.0,
+    "lidar_head_above_cat_mm": 5.321927073663744,
+    "candidate_posts_vs_cradle_overlap_mm3": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cat_vent_count": 8,
+    "cat_vents_clear": true,
+    "layer_gap_parameter_test": "pass"
+  },
+  "battery_height_budget_mm": {
+    "support_z": 3.5,
+    "available_height": 48,
+    "clearance_budget": 2,
+    "max_battery_height": 46
+  },
+  "candidate_layer_post_xy_unconfirmed": [
+    [
+      -50.00005,
+      81.613399283666
+    ],
+    [
+      50.00005,
+      81.613399283666
+    ],
+    [
+      -59.998456700216,
+      27.613276538185
+    ],
+    [
+      60.001293299576,
+      27.613294418439
+    ],
+    [
+      -50.00005,
+      -118.38648623931
+    ],
+    [
+      50.00005,
+      -118.38648623931
+    ]
+  ],
+  "objects": {
+    "UpperSteelPlate": [
+      -75.4986567004061,
+      75.500943299594,
+      -136.35285381505955,
+      108.6160936209608,
+      51.49999999999998,
+      53.000000000000014
+    ],
+    "FrontTOF": [
+      -7.025891413290621,
+      34.60891212884,
+      103.991294660807,
+      111.00000000000001,
+      3.674108586709381,
+      40.32589141329061
+    ],
+    "RearTOF": [
+      -9.5,
+      9.5,
+      -137.41125440446953,
+      -127.086428571429,
+      9.5,
+      21.504002589254
+    ],
+    "BatteryCradle": [
+      -58.5,
+      58.500000000000014,
+      -117.30000000000001,
+      -50.69999999999999,
+      1.5,
+      13.5
+    ],
+    "BatteryHeightEnvelope": [
+      -43.3,
+      43.3,
+      -112.5,
+      -55.5,
+      3.5,
+      49.5
+    ],
+    "CATMount": [
+      -67.66300877886484,
+      67.66256477886543,
+      -90.24999999999935,
+      -9.749999999999318,
+      53.0,
+      66.00000000000001
+    ],
+    "Lidar": [
+      -35.348720185097605,
+      35.348720185097605,
+      -3.242307778303383,
+      93.10000000000002,
+      86.0,
+      165.9402141631563
+    ],
+    "LidarMount": [
+      -36.0,
+      36.0,
+      15.0,
+      95.0,
+      53.0,
+      86.0
+    ],
+    "CameraPCB": [
+      -14.5,
+      14.5,
+      104.0,
+      105.2,
+      56.0,
+      87.25
+    ],
+    "CameraLensEnvelope": [
+      -6.0,
+      6.0,
+      105.2,
+      113.2,
+      65.625,
+      77.625
+    ],
+    "CameraMount": [
+      -22.0,
+      22.0,
+      90.0,
+      104.0,
+      53.0,
+      88.5
+    ],
+    "CATShell0": [
+      -67.66300877886485,
+      67.66300877886599,
+      -90.24999999999935,
+      -9.749999999999316,
+      72.99999999999997,
+      112.60000000000008
+    ],
+    "CATShell1": [
+      -67.66300877886484,
+      67.66256477886543,
+      -90.24999999999935,
+      -9.749999999999318,
+      65.99999999999999,
+      99.55000000000008
+    ]
+  },
+  "reference_limitations": {
+    "CAT": "Only metal shells are positioned; external antennas and cables are not included in shell-clearance claims",
+    "rear_tof": "Source is a valid compound of shells, not solid; only reference/envelope checks apply",
+    "camera": "Board outline 29×31.25 and hole pitch 23×24 from V1R1 drawing; thickness/lens are placeholders",
+    "lidar": "Original fixed curved cable solids hidden; final cable route still required",
+    "battery": "No actual battery solid or confirmed height; reference cradle preserved"
+  },
+  "not_tested": [
+    "Physical availability of all new mounting holes",
+    "All fasteners and retention details",
+    "Actual battery height and camera thickness/lens geometry",
+    "Cable routing and full FOV/access",
+    "Strength, vibration, steel-plate deflection, print fit and temperature"
+  ],
+  "visible_object_names": [
+    "Chassis",
+    "C30D",
+    "UpperSteelPlate",
+    "FrontTOF",
+    "RearTOF",
+    "BatteryCradle",
+    "BatteryHeightEnvelope",
+    "CATMount",
+    "Lidar",
+    "LidarMount",
+    "CameraPCB",
+    "CameraLensEnvelope",
+    "CameraMount",
+    "CATShell0",
+    "CATShell1",
+    "LayerPost1",
+    "LayerPost2",
+    "LayerPost3",
+    "LayerPost4",
+    "LayerPost5",
+    "LayerPost6",
+    "MCUSpacer1",
+    "MCUSpacer2",
+    "MCUSpacer3",
+    "MCUSpacer4"
+  ],
+  "sources": {
+    "models/R3mini四驱小车底盘（无悬挂）_utf8.stp": "8c98c1b466ce4d315347af833bc5634447644e64e2b906d53b4a4cde80644fbc",
+    "models/TOFSense_F2_Mini_Appearance_V1.0.step": "035288b6dab67adce72305e24615c6bf2bffec7b420b9ae290bbdeba407587cd",
+    "models/LubanCat 5-外壳3D文件-20240911.STEP": "daa71902be729961a4fcff03520aa2ec9fd464a0b1a668bc37fbb40407b83185",
+    "models/C30D-V2.2_2026.04.20.stp": "3cfab51ff18931907e38666f805f6174fd3586c8ae1f872f5c79ce3bac1357b1",
+    "models/TOFSense_M_S_Appearance_V1.0.step": "9dfeec40c8914fb49f47659249c8ad66c89803385ec3350339d197c21dbd59db",
+    "models/单线雷达总装.STEP": "730b958006f9952dcc4990d4f89338954edcc5da93ac596c913e403e15bb4abf",
+    "models/LubanCat 5-PCB 3D文件.STEP": "30d61b0a4c7b87f7c2c90329db75d5b6a40bf2393e379715e84ab72577391ff1",
+    "models/电池托架参考.step": "8461791d8508f3a70778fc824729e387739feeab618d2a17d712210d9c2be4a4"
+  }
+}

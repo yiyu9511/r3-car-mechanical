@@ -1,0 +1,81 @@
+{
+  "stage": "current C30D reference; CAT/battery layout remains provisional",
+  "sources": {
+    "models/R3mini四驱小车底盘（无悬挂）_utf8.stp": "8c98c1b466ce4d315347af833bc5634447644e64e2b906d53b4a4cde80644fbc",
+    "models/C30D-V2.2_2026.04.20.stp": "3cfab51ff18931907e38666f805f6174fd3586c8ae1f872f5c79ce3bac1357b1"
+  },
+  "placement_mm": [
+    29.181652913797997,
+    -11.52038773807875,
+    7.5
+  ],
+  "standoff_height_mm": 6,
+  "chassis_top_z_mm": 1.5000000000000153,
+  "pcb_bottom_z_mm": 7.5,
+  "pcb_top_z_mm": 9.990047836761999,
+  "board_bbox_mm": [
+    -49.4833539628908,
+    43.381691061558,
+    -34.68043850480175,
+    22.803922219341896,
+    3.79999999404,
+    19.771047836761007
+  ],
+  "lowest_component_gap_mm": 2.299999994039985,
+  "mounts": [
+    {
+      "board_xy_mm": [
+        -21.045652140812003,
+        -29.79254928239875
+      ],
+      "chassis_xy_mm": [
+        -21.045525140558,
+        -29.7925492824
+      ],
+      "chassis_diameter_mm": 2.6,
+      "error_mm": 0.00012700025400391723
+    },
+    {
+      "board_xy_mm": [
+        36.954601859696,
+        -29.79254928239875
+      ],
+      "chassis_xy_mm": [
+        36.954474859442,
+        -29.792549282401
+      ],
+      "chassis_diameter_mm": 2.6000000000002,
+      "error_mm": 0.00012700025399681183
+    },
+    {
+      "board_xy_mm": [
+        -21.045652140812003,
+        19.20745071759825
+      ],
+      "chassis_xy_mm": [
+        -21.045525140558,
+        19.2074507176
+      ],
+      "chassis_diameter_mm": 2.6,
+      "error_mm": 0.00012700025400391723
+    },
+    {
+      "board_xy_mm": [
+        36.954601859696,
+        19.20745071759825
+      ],
+      "chassis_xy_mm": [
+        36.954474859442,
+        19.2074507176
+      ],
+      "chassis_diameter_mm": 3.2000000000002,
+      "error_mm": 0.0001270002539968118
+    }
+  ],
+  "parameter_change_check": "pass",
+  "not_tested": [
+    "Physical hardware tolerances",
+    "Cable/connector/service access"
+  ],
+  "saved_readback": "pass"
+}

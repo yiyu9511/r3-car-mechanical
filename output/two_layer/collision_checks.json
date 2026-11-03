@@ -1,0 +1,95 @@
+{
+  "status": "pass",
+  "evidence_level": "geometry",
+  "scope": "Positioned visible parts; excludes unconfirmed battery/lens envelopes and unrouted cable reference",
+  "pair_count": 253,
+  "boolean_pairs": [
+    {
+      "a": "C30D",
+      "b": "MCUSpacer1",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "C30D",
+      "b": "MCUSpacer2",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "C30D",
+      "b": "MCUSpacer3",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "C30D",
+      "b": "MCUSpacer4",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "BatteryCradle",
+      "b": "LayerPost5",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "BatteryCradle",
+      "b": "LayerPost6",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "Lidar",
+      "b": "CameraMount",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "LidarMount",
+      "b": "CameraMount",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "CATShell0",
+      "b": "CATShell1",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    }
+  ],
+  "violations": [],
+  "limitations": [
+    "Touching surfaces do not prove fastener access or retention",
+    "No actual battery body, lens, antennas or final cables included",
+    "Standoff positions and all new chassis anchors remain unconfirmed"
+  ]
+}
