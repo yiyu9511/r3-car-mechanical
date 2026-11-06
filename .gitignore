@@ -4,3 +4,18 @@ __pycache__/
 *.FCStd1
 *.log
 *.tmp
+
+# ── 旧方案遗留（2026-10 单层/旧支架方案，被 two_layer 装配替代；本地留存不入库）
+/parts/
+/*.FCStd
+/output/renders/
+/output/stl/
+/output/dxf/
+
+# ── 一次性分析中间产物（可再生成，不入库）
+/output/*.txt
+/output/dfam/
+/output/_*
+
+# ── 第三方工具（本地调试辅助，非项目内容）
+/tools/freecad-mcp/

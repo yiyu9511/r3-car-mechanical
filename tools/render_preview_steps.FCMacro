@@ -1,0 +1,118 @@
+"""Part gallery renders + step previews. Errors go to output/preview/render_error.txt."""
+import json
+import os
+import time
+import traceback
+from pathlib import Path
+import FreeCAD as App
+import FreeCADGui as Gui
+from PySide import QtCore, QtGui, QtWidgets
+
+ROOT = Path(__file__).resolve().parents[1]
+PRE = ROOT / 'output/preview'
+REN = ROOT / 'output/two_layer/renders'
+PRE.mkdir(parents=True, exist_ok=True)
+REN.mkdir(parents=True, exist_ok=True)
+
+try:
+    doc = App.openDocument(str(ROOT / 'assemblies/two_layer.FCStd'))
+    doc.recompute()
+
+    def settle():
+        until = time.monotonic() + .6
+        while time.monotonic() < until:
+            QtWidgets.QApplication.processEvents()
+            time.sleep(.03)
+        Gui.updateGui()
+
+    def show(objs):
+        for o in doc.Objects:
+            if hasattr(o, 'ViewObject'):
+                o.ViewObject.Visibility = (o.TypeId == 'App::Part') or (o.Name in objs)
+        doc.recompute(); settle()
+
+    def cam(view, kind):
+        view.setCameraType('Orthographic')
+        {'top': view.viewTop, 'front': view.viewFront, 'side': view.viewLeft,
+         'bottom': view.viewBottom}.get(kind, view.viewAxonometric)()
+        settle(); view.fitAll(); Gui.updateGui(); settle()
+
+    def snap(view, path, note, kind, w=1600, h=1200):
+        cam(view, kind)
+        view.saveImage(str(path), w, h, 'White')
+        img = QtGui.QImage(str(path))
+        if not img.isNull() and note:
+            painter = QtGui.QPainter(img)
+            f = QtGui.QFont(); f.setPixelSize(30); painter.setFont(f)
+            painter.setPen(QtGui.QColor('#163244'))
+            painter.fillRect(0, 0, img.width(), 52, QtGui.QColor(255, 255, 255, 230))
+            painter.drawText(16, 38, note)
+            painter.end(); img.save(str(path))
+
+    def render_set(view, prefix, folder, views, note_fn):
+        for kind in views:
+            snap(view, folder / f'{prefix}_{kind}.png', note_fn(kind), kind)
+
+    view = Gui.activeDocument().activeView()
+
+    # ---- part galleries ---------------------------------------------------
+    show(['BatteryCradle', 'BatCradleFused', 'BatteryCradleBase', 'BatLegacyFill1',
+          'BatLegacyFill2', 'BatLegacyFill3', 'BatLegacyFill4', 'BatEar1', 'BatEar2',
+          'BatAnchorHoles'])
+    notes = {'iso': '电池托架A2 · iso · 小耳/锚孔Ø3.0/扎带槽可见',
+             'top': '电池托架A2 · 俯视 · 锚孔(±50,-88.39)/(±50,-54.12) 螺距100×34.27',
+             'front': '电池托架A2 · 正视 · 高12 · 底板厚2',
+             'side': '电池托架A2 · 侧视 · 扎带槽贯通'}
+    render_set(view, 'battery_cradle_a2', REN, ['iso', 'top', 'front', 'side'],
+               lambda k: notes[k])
+
+    show(['CATMount'])
+    notes = {'iso': 'CAT托板连接件 · iso · 托板厚3 · 四落脚凸台Ø13',
+             'top': 'CAT托板连接件 · 俯视 · 保留8通风槽+6固定孔',
+             'bottom': 'CAT托板连接件 · 底视 · 凸台朝观察者 · M3孔Ø3.0 · 脚高10'}
+    render_set(view, 'cat_mount', REN, ['iso', 'top', 'bottom'], lambda k: notes[k])
+
+    # bosses-up iso (mount flipped visually by viewing from below at an angle)
+    show(['CATMount'])
+    cam(view, 'bottom')
+    rot = App.Rotation(App.Vector(1, 0, 0), 35)
+    view.setCameraOrientation(rot.Q); settle(); view.fitAll(); Gui.updateGui(); settle()
+    view.saveImage(str(REN / 'cat_mount_iso_bosses_up.png'), 1600, 1200, 'White')
+    img = QtGui.QImage(str(REN / 'cat_mount_iso_bosses_up.png'))
+    painter = QtGui.QPainter(img)
+    f = QtGui.QFont(); f.setPixelSize(30); painter.setFont(f)
+    painter.setPen(QtGui.QColor('#163244'))
+    painter.drawText(16, 38, 'CAT托板连接件 · iso 底视斜角 · 凸台+锚孔清晰')
+    painter.end(); img.save(str(REN / 'cat_mount_iso_bosses_up.png'))
+
+    # ---- step previews ----------------------------------------------------
+    def step(name, note, objs, kinds=('iso', 'top')):
+        show(objs)
+        for k in kinds:
+            snap(view, PRE / f'{name}_{k}.png', note, k)
+
+    step('battery_A2_step1', 'Step1 参考托架 66.6×117×12 · 原4孔Ø3.4 孔距26×105(将封堵)',
+         ['BatteryCradleBase'])
+    step('battery_A2_step2', 'Step2 封堵原孔×4 · 前锚孔小耳×2 (宽12.4)',
+         ['BatteryCradleBase', 'BatLegacyFill1', 'BatLegacyFill2', 'BatLegacyFill3',
+          'BatLegacyFill4', 'BatEar1', 'BatEar2'])
+    step('battery_A2_step3', 'Step3 孔位重排完成 · M3锚孔Ø3.0 (±50,-88.39)/(±50,-54.12)',
+         ['BatteryCradle'])
+    step('battery_A2_step4', 'Step4 装入第一层 · 中心Y=-79.2 · 承托面Z=3.5',
+         ['Chassis', 'BatteryCradle', 'BatteryHeightEnvelope'])
+    step('cat_feet_step1', 'Step1 贴壳托板 · 8通风槽+6固定孔 · 厚3',
+         ['CATContactPlate', 'CATBottomProfile'])
+    step('cat_feet_step2', 'Step2 四落脚挪到锚孔 (±50,-88.39)/(±50,-11.47)',
+         ['CATMountFused'])
+    step('cat_feet_step3', 'Step3 凸台Ø13+M3通孔Ø3.0 · 脚高10 · 通风槽无侵入',
+         ['CATMount'])
+    step('cat_feet_step4', 'Step4 装入第二层 · 上层板Z=51.5~53 · CAT壳底Z=66',
+         ['UpperSteelPlate', 'CATMount', 'CATShell0', 'CATShell1'])
+
+    App.closeDocument(doc.Name)
+    print(json.dumps({'ok': True, 'files': sorted(str(p.name) for p in
+          list(PRE.glob('*.png')) + list(REN.glob('*.png')))}, ensure_ascii=True))
+    os._exit(0)
+except Exception:
+    (PRE / 'render_error.txt').write_text(traceback.format_exc(), encoding='utf-8')
+    os._exit(1)

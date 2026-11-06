@@ -5,8 +5,14 @@
 第一层放 **前后 TOF、C30D MCU、电池**；第二层放 **CAT、雷达、相机**。
 打印件只做设备与铁板之间的转接和支撑。CAT 托板贴外壳底面并保留通风槽；电池托架沿用用户参考 STEP。
 
-**两层架构、各层设备和 50 mm 层间高度已由用户确认。支脚、层间铜柱的实际可用孔及各设备锚孔尚未定案。**
-孔位选择及禁用孔留到布局确认后讨论。当前没有可直接加工的最终打印包。
+**两层架构、各层设备和 50 mm 层间高度已由用户确认。电池托架（A2 方案）与 CAT 落脚的锚孔已定案并建模；层间铜柱孔位、雷达与相机支架暂缓，待电池/CAT 实物验证后再议。**
+
+## 打印文件（output/two_layer/）
+
+| 文件 | 说明 |
+|---|---|
+| [电池托架 STEP](output/two_layer/step/battery_cradle_a2.step) / [STL](output/two_layer/stl/battery_cradle_a2.stl) | A2 版：内腔/夹持/扎带槽保留，原 Ø3.4/26×105 封堵，改 M3 锚孔 (±50,-88.39)/(±50,-54.12)，前角小耳外扩 |
+| [CAT 托板连接件 STEP](output/two_layer/step/cat_mount.step) / [STL](output/two_layer/stl/cat_mount.stl) | 贴壳托板（8 通风槽 + 6 固定孔）+ 四个 Ø13 带孔落脚，锚孔 (±50,-88.39)/(±50,-11.47)，孔 Ø3.0（M3，铁板 Ø3.2 补偿） |
 
 ## 从这里查看
 
@@ -45,7 +51,8 @@ xvfb-run -a "$FREECAD_RUN" freecad tools/render_current.FCMacro
 ```
 
 打开两层装配，在 `Params` 中修改 `layer_gap` 会联动上层板、上层设备、层间柱和电池高度预算。
-CAT 连接件为贴壳托板与四个局部落脚；保留外壳原有 8 条通风槽和 6 个固定孔，尚未开铁板锚孔。
+CAT 连接件为贴壳托板 + 四个 Ø13 带孔落脚凸台，落脚坐于已确认锚孔 (±50,-88.39)/(±50,-11.47)，M3 对锁；
+电池托架为 A2 版，锚孔同上两行 + (±50,-54.12) 中的对称行，托架中心 Y=-79.2。
 两块铁板均按源模型厚度 1.5 mm；上层底面 Z=51.5、顶面 Z=53 mm。电池承托面 Z=3.5 mm，留 2 mm 余量时电池高度上限为 46 mm。
 
 已安装 `freecad-scripts`、`freecad-imported-geometry-audit`、`freecad-model-validation` 三个技能，

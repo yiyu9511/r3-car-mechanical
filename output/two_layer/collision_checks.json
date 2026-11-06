@@ -41,24 +41,6 @@
       ]
     },
     {
-      "a": "BatteryCradle",
-      "b": "LayerPost5",
-      "overlap_mm3": 0.0,
-      "method": [
-        "solid BRep",
-        "solid BRep"
-      ]
-    },
-    {
-      "a": "BatteryCradle",
-      "b": "LayerPost6",
-      "overlap_mm3": 0.0,
-      "method": [
-        "solid BRep",
-        "solid BRep"
-      ]
-    },
-    {
       "a": "Lidar",
       "b": "CameraMount",
       "overlap_mm3": 0.0,

@@ -13,12 +13,16 @@ ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'output/two_layer'
 
 try:
-    data=json.loads((OUT/'two_layer_checks.json').read_text())
+    data=json.loads((OUT/'two_layer_checks.json').read_text(encoding='utf-8'))
     doc=App.openDocument(str(ROOT/'assemblies/two_layer.FCStd'))
     doc.recompute()
     sys.path.insert(0,str(Path.home()/'.codex/skills/freecad-model-validation/scripts'))
-    from validate_document import validate_document
-    report=validate_document(doc,expectations={
+    try:
+        from validate_document import validate_document
+    except ImportError:
+        validate_document=None
+    if validate_document is not None:
+        report=validate_document(doc,expectations={
         'objects':{
             'UpperSteelPlate':{'valid':True,'closed':True,'solid_count':1,'bbox':{'z':1.5,'tolerance':.001}},
             'CATMount':{'valid':True,'closed':True,'solid_count':1,'bbox':{'z':13,'tolerance':.001}},
@@ -26,8 +30,27 @@ try:
             'CameraMount':{'valid':True,'closed':True,'solid_count':1}},
         'scope':'Two-layer layout and draft adapter geometry, not manufacturing acceptance',
         'untested_risks':data['not_tested']})
-    assert report['summary']['fail']==0
-    (OUT/'saved_geometry_checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+        assert report['summary']['fail']==0
+    else:
+        # Local fallback: direct geometry readback when the validator skill is absent.
+        import Part
+        def gshape(o):
+            s=o.Shape.copy()
+            s.Placement=o.getGlobalPlacement().multiply(o.Placement.inverse()).multiply(s.Placement)
+            return s
+        checks={}
+        for name,exp in {'UpperSteelPlate':51.5,'CATMount':53.0,'LidarMount':53.0,'BatteryCradle':1.5}.items():
+            o=doc.getObject(name);s=gshape(o)
+            b=s.BoundBox
+            checks[name]={'valid':s.isValid(),'closed':s.isClosed(),'solids':len(s.Solids),
+                          'zmin':round(b.ZMin,4),'expect_zmin':exp}
+            assert checks[name]['valid'] and checks[name]['closed'] and checks[name]['solids']==1
+            assert abs(b.ZMin-exp)<0.001
+        for n in data['visible_object_names']:
+            o=doc.getObject(n)
+            assert not any('Error' in str(st) or 'Invalid' in str(st) for st in o.State),n
+        report={'summary':{'fail':0,'pass':len(checks)},'fallback':'local geometry readback','checks':checks}
+    (OUT/'saved_geometry_checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
 
     def normal_visibility():
         for o in doc.Objects:

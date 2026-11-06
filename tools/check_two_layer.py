@@ -10,7 +10,7 @@ def global_shape(obj):
 
 
 out=ROOT/'output/two_layer'
-data=json.loads((out/'two_layer_checks.json').read_text())
+data=json.loads((out/'two_layer_checks.json').read_text(encoding='utf-8'))
 doc=App.openDocument(str(ROOT/'assemblies/two_layer.FCStd'))
 names=[n for n in data['visible_object_names'] if n not in ['BatteryHeightEnvelope','CameraLensEnvelope']]
 shapes={};methods={}
@@ -46,6 +46,7 @@ report={'status':'fail' if violations else 'pass','evidence_level':'geometry',
         'limitations':['Touching surfaces do not prove fastener access or retention',
                        'No actual battery body, lens, antennas or final cables included',
                        'Standoff positions and all new chassis anchors remain unconfirmed']}
-(out/'collision_checks.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+with open(out/'collision_checks.json','w',encoding='utf-8') as fh:
+    fh.write(json.dumps(report,ensure_ascii=False,indent=2))
 print(json.dumps({'status':report['status'],'pairs':report['pair_count'],'boolean_checks':len(checks),'violations':violations},ensure_ascii=False,indent=2),flush=True)
 assert not violations

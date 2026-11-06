@@ -38,7 +38,57 @@
     ],
     "cat_vent_count": 8,
     "cat_vents_clear": true,
-    "layer_gap_parameter_test": "pass"
+    "layer_gap_parameter_test": "pass",
+    "confirmed_anchor_holes_readback": "pass",
+    "nut_zone_clearance_c30d_and_battery": "pass"
+  },
+  "confirmed_fixtures": {
+    "battery_cradle_A2": {
+      "anchors_xy": [
+        [
+          -50,
+          -88.39
+        ],
+        [
+          -50,
+          -54.12
+        ],
+        [
+          50,
+          -88.39
+        ],
+        [
+          50,
+          -54.12
+        ]
+      ],
+      "hole_d_mm": 3.0,
+      "fastener": "M3 + 底面螺母",
+      "note": "内腔/夹持/扎带槽保留，原 Ø3.4/26×105 已封堵改位"
+    },
+    "cat_mount": {
+      "anchors_xy": [
+        [
+          -50,
+          -88.39
+        ],
+        [
+          -50,
+          -11.47
+        ],
+        [
+          50,
+          -88.39
+        ],
+        [
+          50,
+          -11.47
+        ]
+      ],
+      "foot_d_mm": 13,
+      "hole_d_mm": 3.0,
+      "fastener": "M3 对锁 + 底面螺母"
+    }
   },
   "battery_height_budget_mm": {
     "support_z": 3.5,
@@ -82,42 +132,42 @@
       53.000000000000014
     ],
     "FrontTOF": [
-      -7.025891413290621,
-      34.60891212884,
+      -7.025891413290623,
+      34.608912128840004,
       103.991294660807,
       111.00000000000001,
-      3.674108586709381,
-      40.32589141329061
+      3.6741085867093775,
+      40.32589141329063
     ],
     "RearTOF": [
-      -9.5,
-      9.5,
+      -9.500000000000004,
+      9.500000000000004,
       -137.41125440446953,
       -127.086428571429,
       9.5,
       21.504002589254
     ],
     "BatteryCradle": [
-      -58.5,
-      58.500000000000014,
-      -117.30000000000001,
-      -50.69999999999999,
-      1.5,
+      -58.50000000000003,
+      58.50000000000002,
+      -112.5,
+      -45.89999999999998,
+      1.4999999999999996,
       13.5
     ],
     "BatteryHeightEnvelope": [
       -43.3,
       43.3,
-      -112.5,
-      -55.5,
+      -107.7,
+      -50.7,
       3.5,
       49.5
     ],
     "CATMount": [
       -67.66300877886484,
       67.66256477886543,
-      -90.24999999999935,
-      -9.749999999999318,
+      -94.89,
+      -4.969999999999999,
       53.0,
       66.00000000000001
     ],
@@ -186,8 +236,9 @@
     "battery": "No actual battery solid or confirmed height; reference cradle preserved"
   },
   "not_tested": [
-    "Physical availability of all new mounting holes",
-    "All fasteners and retention details",
+    "Physical nut/bolt access under both plates (user to verify ground clearance)",
+    "Lidar and camera mounts (deferred by user until CAT/battery are fixed)",
+    "All remaining fastener retention details",
     "Actual battery height and camera thickness/lens geometry",
     "Cable routing and full FOV/access",
     "Strength, vibration, steel-plate deflection, print fit and temperature"
@@ -220,13 +271,13 @@
     "MCUSpacer4"
   ],
   "sources": {
-    "models/R3mini四驱小车底盘（无悬挂）_utf8.stp": "8c98c1b466ce4d315347af833bc5634447644e64e2b906d53b4a4cde80644fbc",
-    "models/TOFSense_F2_Mini_Appearance_V1.0.step": "035288b6dab67adce72305e24615c6bf2bffec7b420b9ae290bbdeba407587cd",
-    "models/LubanCat 5-外壳3D文件-20240911.STEP": "daa71902be729961a4fcff03520aa2ec9fd464a0b1a668bc37fbb40407b83185",
-    "models/C30D-V2.2_2026.04.20.stp": "3cfab51ff18931907e38666f805f6174fd3586c8ae1f872f5c79ce3bac1357b1",
-    "models/TOFSense_M_S_Appearance_V1.0.step": "9dfeec40c8914fb49f47659249c8ad66c89803385ec3350339d197c21dbd59db",
-    "models/单线雷达总装.STEP": "730b958006f9952dcc4990d4f89338954edcc5da93ac596c913e403e15bb4abf",
-    "models/LubanCat 5-PCB 3D文件.STEP": "30d61b0a4c7b87f7c2c90329db75d5b6a40bf2393e379715e84ab72577391ff1",
-    "models/电池托架参考.step": "8461791d8508f3a70778fc824729e387739feeab618d2a17d712210d9c2be4a4"
+    "models\\C30D-V2.2_2026.04.20.stp": "3cfab51ff18931907e38666f805f6174fd3586c8ae1f872f5c79ce3bac1357b1",
+    "models\\LubanCat 5-PCB 3D文件.STEP": "8b529dbdfa038571e2c62a320464a2d4617dc2651e650807219d9a121cb70e38",
+    "models\\LubanCat 5-外壳3D文件-20240911.STEP": "ab748f1bf80bf499b5e38b1b8f3854035624243dfdb0c76d98e6d51dd04d7696",
+    "models\\R3mini四驱小车底盘（无悬挂）_utf8.stp": "8c98c1b466ce4d315347af833bc5634447644e64e2b906d53b4a4cde80644fbc",
+    "models\\TOFSense_F2_Mini_Appearance_V1.0.step": "035288b6dab67adce72305e24615c6bf2bffec7b420b9ae290bbdeba407587cd",
+    "models\\TOFSense_M_S_Appearance_V1.0.step": "9dfeec40c8914fb49f47659249c8ad66c89803385ec3350339d197c21dbd59db",
+    "models\\单线雷达总装.STEP": "730b958006f9952dcc4990d4f89338954edcc5da93ac596c913e403e15bb4abf",
+    "models\\电池托架参考.step": "8461791d8508f3a70778fc824729e387739feeab618d2a17d712210d9c2be4a4"
   }
 }
