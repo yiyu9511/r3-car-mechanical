@@ -1,11 +1,29 @@
 # R3 小车机械设计
 
+> **分支说明**：本分支（`solidcraft`）的电池托架已改为 **SolidCraft 工作流**，当前定案为 **A8**
+> （见 [`cad_solidcraft/`](cad_solidcraft/)）。FreeCAD 侧的 A2 方案归档保留，但不再是当前件。
+> 分支间切换请用 `git switch solidcraft` / `git switch master`。
+
 当前电控为 **WHEELTEC C30D V2.3 驱控一体板**，使用厂家 V2.2 STEP 外形参考。
 使用两块相同的现有铁底板搭两层，层间铜柱先按 **50 mm**（可调）。
 第一层放 **前后 TOF、C30D MCU、电池**；第二层放 **CAT、雷达、相机**。
-打印件只做设备与铁板之间的转接和支撑。CAT 托板贴外壳底面并保留通风槽；电池托架沿用用户参考 STEP。
+打印件只做设备与铁板之间的转接和支撑。
 
-**两层架构、各层设备和 50 mm 层间高度已由用户确认。电池托架（A2 方案）与 CAT 落脚的锚孔已定案并建模；层间铜柱孔位、雷达与相机支架暂缓，待电池/CAT 实物验证后再议。**
+**两层架构、各层设备和 50 mm 层间高度已由用户确认。电池托架当前为 SolidCraft A8
+（对称四柱支撑 + 底面扎带槽），CAT 落脚锚孔仍用 FreeCAD 侧定案。**
+
+## 当前打印件：电池托架 A8（cad_solidcraft/）
+
+| 文件 | 说明 |
+|---|---|
+| [battery_cradle_a8.sc](cad_solidcraft/battery_cradle_a8.sc) | SolidCraft 原生设计（可编辑时间线） |
+| [battery_cradle_a8.step](cad_solidcraft/exports/battery_cradle_a8.step) | 打印/交付 STEP（单实体融合，66.6 × 90.6 × 12 mm） |
+| [总装预览](cad_solidcraft/renders/assembly_v10_view1.png) | 装在两层底盘上的效果 |
+
+A8 要点：本体按原参考件尺寸重建（外廓 66.6×90.6×12，电池腔 57×86.6），
+四根 Ø7×10 支撑柱 + 柱底法兰垫对称布置（对准底盘孔 (±43,-128.47)/(±39.04,-77.33)），
+柱内 Ø2.5×7 自攻孔配 M3×10；两条扎带槽在 y=±20 处切穿底部与侧壁（避开柱位），
+扎带可绕外围一圈绑住电池。详见 [cad_solidcraft/README.md](cad_solidcraft/README.md)。
 
 ## 打印文件（output/two_layer/）
 
@@ -40,20 +58,25 @@
 
 ## 重新生成
 
-本机使用 FreeCAD 1.1.4 的 Python 运行时。系统 `python3` 用于普通脚本，不能直接替代 FreeCAD Python。
+FreeCAD 脚本需要 FreeCAD 自带的 Python 运行时（系统 `python3` 不能直接替代）。
+下面的 `FREECAD_RUN` 指向本机 FreeCAD 安装目录里的 AppRun / freecadcmd，
+**路径按本机实际安装位置设置**（便携版、squashfs 解包版或系统安装均可）：
 
 ```bash
-FREECAD_RUN="$HOME/.local/opt/freecad-1.1.4/squashfs-root/AppRun"
+FREECAD_RUN="${FREECAD_RUN:-$HOME/.local/opt/freecad-1.1.4/squashfs-root/AppRun}"   # 按本机修改
 "$FREECAD_RUN" python tools/build_current_baseline.py
 "$FREECAD_RUN" python tools/build_two_layer_current.py
 "$FREECAD_RUN" python tools/check_two_layer.py
-xvfb-run -a "$FREECAD_RUN" freecad tools/render_current.FCMacro
+xvfb-run -a "$FREECAD_RUN" freecad tools/render_current.FCMacro   # 无显示环境才需要 xvfb-run
 ```
+
+所有脚本都以仓库根目录为基准解析相对路径，仓库放在任意位置都能运行；
+如需换位置，只改 `FREECAD_RUN` 指向的安装目录即可。
 
 打开两层装配，在 `Params` 中修改 `layer_gap` 会联动上层板、上层设备、层间柱和电池高度预算。
 CAT 连接件为贴壳托板 + 四个 Ø13 带孔落脚凸台，落脚坐于已确认锚孔 (±50,-88.39)/(±50,-11.47)，M3 对锁；
-电池托架为 A2 版，锚孔同上两行 + (±50,-54.12) 中的对称行，托架中心 Y=-79.2。
-两块铁板均按源模型厚度 1.5 mm；上层底面 Z=51.5、顶面 Z=53 mm。电池承托面 Z=3.5 mm，留 2 mm 余量时电池高度上限为 46 mm。
+电池托架当前为 **SolidCraft A8**（solidcraft 分支 `cad_solidcraft/`），FreeCAD 侧 A2 已归档。
+两块铁板均按源模型厚度 1.5 mm；上层底面 Z=51.5、顶面 Z=53 mm。
 
 已安装 `freecad-scripts`、`freecad-imported-geometry-audit`、`freecad-model-validation` 三个技能，
 分别用于脚本建模、导入几何检查和模型校验。
