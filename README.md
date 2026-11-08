@@ -1,29 +1,25 @@
 # R3 小车机械设计
 
-> **分支说明**：本分支（`solidcraft`）的电池托架已改为 **SolidCraft 工作流**，当前定案为 **A8**
-> （见 [`cad_solidcraft/`](cad_solidcraft/)）。FreeCAD 侧的 A2 方案归档保留，但不再是当前件。
-> 分支间切换请用 `git switch solidcraft` / `git switch master`。
+> **分支说明**：本分支（`solidcraft`）用于 SolidCraft 工作流与基础模型归档。
+> **电池托架的 A1–A8 系列修改模型已全部删除**；需求与已核实数据存档在
+> [`cad_solidcraft/电池托架需求存档.md`](cad_solidcraft/电池托架需求存档.md)。
+> FreeCAD 侧的 A2 方案同样归档，不再是当前件。分支切换：`git switch solidcraft` / `git switch master`。
 
 当前电控为 **WHEELTEC C30D V2.3 驱控一体板**，使用厂家 V2.2 STEP 外形参考。
 使用两块相同的现有铁底板搭两层，层间铜柱先按 **50 mm**（可调）。
 第一层放 **前后 TOF、C30D MCU、电池**；第二层放 **CAT、雷达、相机**。
 打印件只做设备与铁板之间的转接和支撑。
 
-**两层架构、各层设备和 50 mm 层间高度已由用户确认。电池托架当前为 SolidCraft A8
-（对称四柱支撑 + 底面扎带槽），CAT 落脚锚孔仍用 FreeCAD 侧定案。**
+**两层架构、各层设备和 50 mm 层间高度已由用户确认。电池托架待按需求存档重新设计；
+CAT 落脚锚孔仍用 FreeCAD 侧定案。**
 
-## 当前打印件：电池托架 A8（cad_solidcraft/）
+## 电池托架：需求存档与基础模型（cad_solidcraft/）
 
-| 文件 | 说明 |
-|---|---|
-| [battery_cradle_a8.sc](cad_solidcraft/battery_cradle_a8.sc) | SolidCraft 原生设计（可编辑时间线） |
-| [battery_cradle_a8.step](cad_solidcraft/exports/battery_cradle_a8.step) | 打印/交付 STEP（单实体融合，66.6 × 90.6 × 12 mm） |
-| [总装预览](cad_solidcraft/renders/assembly_v10_view1.png) | 装在两层底盘上的效果 |
-
-A8 要点：本体按原参考件尺寸重建（外廓 66.6×90.6×12，电池腔 57×86.6），
-四根 Ø7×10 支撑柱 + 柱底法兰垫对称布置（对准底盘孔 (±43,-128.47)/(±39.04,-77.33)），
-柱内 Ø2.5×7 自攻孔配 M3×10；两条扎带槽在 y=±20 处切穿底部与侧壁（避开柱位），
-扎带可绕外围一圈绑住电池。详见 [cad_solidcraft/README.md](cad_solidcraft/README.md)。
+- [电池托架需求存档](cad_solidcraft/电池托架需求存档.md)：用户确认的全部要求、
+  已核实的底盘孔位/尺寸/装配变换、未定案项与过程教训。
+- [原始参考件 STEP](cad_solidcraft/exports/ref2_底盘主层板与电池底座.step)
+- [上层钢板 STEP](cad_solidcraft/exports/steel_plate.step)、
+  [鲁班猫 PCB 简化 STEP](cad_solidcraft/exports/LubanCat5_PCB_simplified.step)
 
 ## 打印文件（output/two_layer/）
 
