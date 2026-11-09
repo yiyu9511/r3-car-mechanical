@@ -9,10 +9,10 @@
   "status": "fail",
   "printable_geometry_status": "pass",
   "summary": {
-    "pass": 58,
+    "pass": 80,
     "fail": 1,
     "warning": 1,
-    "not_tested": 3
+    "not_tested": 4
   },
   "checks": [
     {
@@ -27,25 +27,38 @@
       "method": "OCCT BRep probe"
     },
     {
-      "id": "bounds",
+      "id": "functional_xy_and_bottom_datums",
       "status": "pass",
       "actual": [
-        -33.3000001,
-        33.3000001,
-        -49.0000001,
-        49.0000001,
-        -2.400000099999962,
-        11.999999999999948
+        -33.3000001000003,
+        33.30000010000001,
+        -49.00000010000001,
+        49.000000100000534,
+        -2.400000100010793
       ],
       "expected": [
         -33.3,
         33.3,
         -49,
         49,
-        -2.4,
-        12
+        -2.4
       ],
-      "method": "OCCT optimalBoundingBox (tight curve bounds)"
+      "method": "OCCT optimalBoundingBox"
+    },
+    {
+      "id": "rounded_wall_top_envelope",
+      "status": "warning",
+      "actual": {
+        "zmax": 12.031652835189009,
+        "delta_from_nominal": 0.031652835189008854
+      },
+      "expected": {
+        "nominal_z": 12,
+        "nominal_tolerance": 0.001,
+        "non_mating_round_patch_review_limit": 0.05
+      },
+      "method": "OCCT tight bounds; additionally observed in fine tessellation",
+      "message": "Retain slight fillet-patch overshoot as a warning; mounting plane and inner-fit dimensions are checked separately."
     },
     {
       "id": "reference_cavity",
@@ -62,10 +75,59 @@
       "method": "OCCT BRep probe"
     },
     {
-      "id": "uniform_4p4_floor_no_honeycomb",
+      "id": "uniform_4p4_floor_outside_declared_slots_and_edge_rounds",
       "status": "pass",
-      "actual": 22271.397477947437,
-      "expected": 22271.39747794732,
+      "actual": 18470.178941277034,
+      "expected": 18470.178941280556,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "ventilation_slot_through_1",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "ventilation_slot_through_2",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "ventilation_slot_through_3",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "ventilation_slot_through_4",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "center_longitudinal_rib_below_edge_rounds",
+      "status": "pass",
+      "actual": 600.739392,
+      "expected": 600.739392,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "end_cross_beam_-33",
+      "status": "pass",
+      "actual": 1159.4999999996612,
+      "expected": 1159.5,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "end_cross_beam_28",
+      "status": "pass",
+      "actual": 1159.4999999999022,
+      "expected": 1159.5,
       "method": "OCCT BRep probe"
     },
     {
@@ -78,8 +140,8 @@
     {
       "id": "strap_roof_3p2_-14",
       "status": "pass",
-      "actual": 1661.0885431919999,
-      "expected": 1661.0885431919999,
+      "actual": 1641.9069391919998,
+      "expected": 1641.9069391919998,
       "method": "OCCT BRep probe"
     },
     {
@@ -106,8 +168,8 @@
     {
       "id": "strap_roof_3p2_8",
       "status": "pass",
-      "actual": 1661.0885431919999,
-      "expected": 1661.0885431919999,
+      "actual": 1641.9069391919998,
+      "expected": 1641.9069391919998,
       "method": "OCCT BRep probe"
     },
     {
@@ -125,24 +187,17 @@
       "method": "OCCT BRep probe"
     },
     {
-      "id": "thick_floor_continuity_-29",
+      "id": "outer_floor_continuity_-29",
       "status": "pass",
-      "actual": 1319.3999999999999,
-      "expected": 1319.3999999999999,
+      "actual": 791.6399999999999,
+      "expected": 791.6399999999999,
       "method": "OCCT BRep probe"
     },
     {
-      "id": "thick_floor_continuity_0",
+      "id": "outer_floor_continuity_26",
       "status": "pass",
-      "actual": 1319.3999999999999,
-      "expected": 1319.3999999999999,
-      "method": "OCCT BRep probe"
-    },
-    {
-      "id": "thick_floor_continuity_22",
-      "status": "pass",
-      "actual": 1319.3999999999999,
-      "expected": 1319.3999999999999,
+      "actual": 791.6399999999999,
+      "expected": 791.6399999999999,
       "method": "OCCT BRep probe"
     },
     {
@@ -150,6 +205,118 @@
       "status": "pass",
       "actual": 0.0,
       "expected": "symmetric difference <0.01 mm3",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "straight_wall_relief_-1",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "straight_wall_relief_1",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "rounded_external_corner_(-1, -1)",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "rounded_external_corner_(-1, 1)",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "rounded_external_corner_(1, -1)",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "rounded_external_corner_(1, 1)",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "rounded_vent_upper_lip_-23",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "rounded_vent_upper_lip_-3.5",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "rounded_vent_upper_lip_3.5",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "rounded_vent_upper_lip_23",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "rounded_strap_entry_(-11, -1)",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "rounded_strap_entry_(-11, 1)",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "rounded_strap_entry_(11, -1)",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "rounded_strap_entry_(11, 1)",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "rounded_functional_outer_lip_-1",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "rounded_functional_outer_lip_1",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
       "method": "OCCT BRep probe"
     },
     {
@@ -267,7 +434,7 @@
     {
       "id": "no_printed_standoffs",
       "status": "pass",
-      "actual": -2.400000099999962,
+      "actual": -2.400000100010793,
       "expected": -2.4,
       "method": "OCCT BRep probe"
     },
@@ -434,8 +601,8 @@
       "actual": [
         {
           "device": "RearTOF",
-          "overlap_mm3": 974.8466698201767,
-          "surface_intersection_area_mm2": 301.5151545518008
+          "overlap_mm3": 906.3326126157403,
+          "surface_intersection_area_mm2": 301.51515455174626
         }
       ],
       "expected": "no intersection; rear TOF uses conservative envelope",
@@ -445,7 +612,7 @@
       "id": "step_readback",
       "status": "pass",
       "actual": {
-        "volume_delta": 9.458744898438454e-11,
+        "volume_delta": 6.475602276623249e-10,
         "solids": 1
       },
       "expected": "valid single solid, delta <0.01 mm3",
@@ -459,9 +626,31 @@
       "method": "OCCT BRep probe"
     }
   ],
-  "volume_mm3": 31556.42004649482,
+  "volume_mm3": 27646.139093845963,
   "source_sha256": "8461791d8508f3a70778fc824729e387739feeab618d2a17d712210d9c2be4a4",
   "dimensions_mm": {
+    "ventilation_slots": {
+      "count": 4,
+      "width": 4,
+      "length": 54,
+      "end_radius": 2,
+      "direction": "local Y, parallel to cradle long sides"
+    },
+    "edge_radii": {
+      "outside_uprights": 1.2,
+      "wall_top": 0.5,
+      "vent_top": 0.35,
+      "strap_entry": 0.5,
+      "flange_outer_long_lips": 0.4
+    },
+    "wall_relief_above_rear_nuts": {
+      "width": 8,
+      "z_min": 2,
+      "x_range": [
+        21.57,
+        29.57
+      ]
+    },
     "floor_thickness": 4.4,
     "strap_width": 6,
     "strap_depth": 1.2,
@@ -480,7 +669,8 @@
   "untested_risks": [
     "Physical nut fit, usable stud thread length and manufacturing tolerances",
     "Actual battery, connector/cable route, actual fastener occupancy and ground clearance",
-    "Printing orientation/support, material, strength, temperature and vibration"
+    "Printing orientation/support, material, strength, temperature and vibration",
+    "Actual battery cooling improvement; contact pressure on the remaining support ribs"
   ],
   "battery_height_budget_mm": {
     "floor_world_z": 15.9,
@@ -495,5 +685,9 @@
     "battery_mount.sc",
     "battery_mount.step"
   ],
-  "verification_input": "Generator replay at /tmp/r3-brass-replay; native volume matches accepted model within 0.001 mm3"
+  "user_acceptance": "User accepted rounded vented model with rectangular wall reliefs above nuts; physical print-fit testing pending",
+  "artifact_sha256": {
+    "battery_cradle.step": "3953dc2f34ffcc7aa3af99a66c1eb4ff585f4a825f8dbf80fc213ee806d6d256",
+    "battery_cradle.stl": "88b788d955a619e109ebe4c1bbd2d41a6b3ba5a144cf68439e244b5a6739a43f"
+  }
 }

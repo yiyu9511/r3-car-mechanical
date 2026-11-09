@@ -1,39 +1,47 @@
 {
   "date": "2026-11-09",
-  "scope": "Approved CAT uniform5mm tray, four-way straight ribs, recessed M3 nuts and current two-layer assembly",
-  "user_acceptance": "User accepted the SolidCraft assembled version and requested commit/push; this is not physical manufacturing acceptance",
-  "documentation": "README, current design and SolidCraft usage reflect CAT shell bottom Z68, approved anchors, both M3x10 fastener types and current checks",
-  "scripts": "Current generator uses native features and original shell interfaces; standalone verification covers all16 full-height ribs, neighbor holes, nut seats and export readback; old CAT generation replaced in assembly script",
-  "configuration": "New generator/validator/preparation are documented; staging, locks and backups ignored",
-  "memory_notes": "Targeted Markdown search found no matching r3-car-mechanical / CAT connector / cat_mount / battery-cradle entry in main Obsidian vault and local ZCode/Claude project-memory roots; no external notes modified",
+  "scope": "Battery ventilation, targeted rounds, straight wall nut reliefs, current assemblies and P2S printing discussion",
+  "user_acceptance": "User accepted the rounded model and requested a local commit; no push requested for this change",
+  "documentation": "Current dimensions, four vents, rounded-edge scope and 8mm wall reliefs synchronized; P2S 0.4 nozzle / 0.2 layer / 20% Gyroid / 4 walls / 5 top-bottom layers recorded as trial settings",
+  "scripts": "Full rounded generator replay matches interactive model; current native model and hardware assembly reopened without timeline errors; quarter-round strap cutter explicitly constructed where fillet end-face support is absent",
+  "memory_notes": "Targeted project-term searches in main Obsidian vault and local ZCode/Claude Markdown project-memory roots found no matching project state to update",
   "external_documents": "No linked Feishu document identified; none opened or modified",
   "validation": {
-    "cat_geometry": {
-      "pass": 94,
-      "fail": 0,
-      "warning": 0,
+    "battery": {
+      "pass": 80,
+      "fail": 1,
+      "warning": 1,
       "not_tested": 4
     },
-    "native_model_and_assembly_reopen": "pass",
-    "saved_two_layer_geometry": {
+    "native_replay": "pass",
+    "saved_assembly": {
       "pass": 25,
       "fail": 0,
       "warning": 0,
       "not_tested": 0
     },
-    "assembly_collision": "only existing RearTOF / BatteryCradle interference; no new collision",
-    "source_export_hash": "matches two_layer_checks.json",
-    "python_syntax": "pass",
-    "markdown_links": "pass"
+    "current_assembly_collision": [
+      {
+        "a": "RearTOF",
+        "b": "BatteryCradle",
+        "overlap_mm3": 906.3326126157399,
+        "method": [
+          "conservative bbox envelope (source has no solids)",
+          "solid BRep"
+        ]
+      }
+    ],
+    "source_hashes": "assembly references current rounded battery STEP"
   },
   "limitations": [
-    "Printing, self-tapping pilot fit and nut fit untested",
-    "Machine-screw head clearance under CAT PCB unverified",
-    "Lidar lower scan-head envelope is 3.32mm above raised CAT shell, below previous 5mm allowance; full optical FOV unverified",
-    "Rear TOF interference remains unresolved"
+    "Rounded non-mating wall-top export envelope exceeds nominal by about0.032mm; recorded as warning, not hidden by relaxed mating tolerances",
+    "RearTOF still intersects battery tray",
+    "Actual print/hardware fit, cooling benefit, battery pressure and service load untested"
   ],
+  "CAT_geometry": "Unchanged from user-approved four-straight-rib version; optimization directions documented only",
   "next_tasks": [
-    "Printing and hardware-fit optimization for battery cradle and CAT mount",
-    "Resolve RearTOF clearance and verify CAT/lidar optical and access margins"
+    "Print PLA/PETG-specific fit coupons and inspect slicer paths",
+    "Discuss CAT printability, local root rounds and lightweight design without silently changing uniform5mm tray",
+    "Resolve remaining assembly clearance and hardware access issues"
   ]
 }

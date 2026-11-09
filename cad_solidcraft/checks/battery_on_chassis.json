@@ -1,0 +1,17 @@
+{
+  "status": "pass",
+  "scope": "current native cradle placement on original chassis; no TOF/other equipment in this scene",
+  "world_bounds": {
+    "max": [
+      49.00000000000054,
+      -69.59999999999884,
+      25.92447909189483
+    ],
+    "min": [
+      -49.0,
+      -136.20000000000002,
+      11.499999999989102
+    ]
+  },
+  "source": "cad_solidcraft/battery_mount.sc"
+}

@@ -2,41 +2,43 @@
   "active_sketch": null,
   "bodies": [
     {
-      "area_mm2": 20422.655829598676,
+      "area_mm2": 20355.01757368766,
       "bbox": {
         "max": [
           33.300000000000004,
-          49.00000000000001,
-          11.99999999999995
+          49.00000000000053,
+          11.999999999980986
         ],
         "min": [
-          -33.300000000000004,
-          -49.000000000000014,
-          -2.399999999999963
+          -33.300000000001155,
+          -49.0,
+          -2.400000000010898
         ]
       },
       "center_of_mass": [
-        0.1591236803665215,
-        0.3346386126490174,
-        1.0259778402775857
+        0.0773670281422844,
+        0.3801160410400794,
+        1.15342187390099
       ],
       "closed": true,
-      "edges": 252,
+      "edges": 520,
       "face_types": {
-        "cylinder": 4,
-        "plane": 88
+        "cone": 8,
+        "cylinder": 83,
+        "other": 12,
+        "plane": 98
       },
-      "faces": 92,
+      "faces": 201,
       "kernel": {
-        "edges": 268,
-        "faces": 96,
+        "edges": 626,
+        "faces": 236,
         "shells": 1,
-        "vertices": 176
+        "vertices": 396
       },
       "name": "BatteryCradle",
-      "vertices": 168,
+      "vertices": 327,
       "visible": true,
-      "volume_mm3": 31556.430133403574
+      "volume_mm3": 27646.01261021524
     }
   ],
   "dirty": true,
@@ -49,9 +51,9 @@
     "XZ",
     "YZ"
   ],
-  "marker": 25,
+  "marker": 58,
   "metadata": {},
-  "name": "Battery cradle — M3 10+4 brass standoffs",
+  "name": "Battery cradle — rounded edges and straight nut reliefs",
   "params": [
     {
       "comment": "",
@@ -151,11 +153,29 @@
       "name": "stud_length",
       "unit": "mm",
       "value": 4.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "2",
+      "model": false,
+      "name": "vent_radius",
+      "unit": "mm",
+      "value": 2.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "54",
+      "model": false,
+      "name": "vent_length",
+      "unit": "mm",
+      "value": 54.0
     }
   ],
-  "path": "/tmp/r3-battery-brass/battery_cradle.sc",
+  "path": "/tmp/r3-battery-round-replay/battery_cradle.sc",
   "redo": 0,
-  "revision": 85,
+  "revision": 155,
   "selection": [],
   "sketches": [
     {
@@ -2175,7 +2195,7 @@
       },
       "error": null,
       "id": 1,
-      "ms": 1.8147149999999999,
+      "ms": 0.5479299999999999,
       "name": "Measured reference envelope",
       "rolled_back": false,
       "suppressed": false,
@@ -2189,7 +2209,7 @@
       },
       "error": null,
       "id": 2,
-      "ms": 7.033298,
+      "ms": 3.790694,
       "name": "Measured reference battery cavity",
       "rolled_back": false,
       "suppressed": false,
@@ -2203,7 +2223,7 @@
       },
       "error": null,
       "id": 3,
-      "ms": 25.011782999999998,
+      "ms": 8.88228,
       "name": "Measured reference cable opening",
       "rolled_back": false,
       "suppressed": false,
@@ -2217,7 +2237,7 @@
       },
       "error": null,
       "id": 4,
-      "ms": 0.166509,
+      "ms": 0.126329,
       "name": "Functional edge -1 outline",
       "rolled_back": false,
       "suppressed": false,
@@ -2231,7 +2251,7 @@
       },
       "error": null,
       "id": 5,
-      "ms": 39.787959,
+      "ms": 9.226967,
       "name": "Integrated functional edge -1",
       "rolled_back": false,
       "suppressed": false,
@@ -2245,7 +2265,7 @@
       },
       "error": null,
       "id": 6,
-      "ms": 0.223955,
+      "ms": 0.090406,
       "name": "Functional edge 1 outline",
       "rolled_back": false,
       "suppressed": false,
@@ -2259,7 +2279,7 @@
       },
       "error": null,
       "id": 7,
-      "ms": 43.711497,
+      "ms": 12.914062000000001,
       "name": "Integrated functional edge 1",
       "rolled_back": false,
       "suppressed": false,
@@ -2273,7 +2293,7 @@
       },
       "error": null,
       "id": 8,
-      "ms": 0.360087,
+      "ms": 0.16094699999999998,
       "name": "M3 nut access and trap 1 sketch",
       "rolled_back": false,
       "suppressed": false,
@@ -2287,7 +2307,7 @@
       },
       "error": null,
       "id": 9,
-      "ms": 7.465904,
+      "ms": 12.588396999999999,
       "name": "M3 nut access and trap 1",
       "rolled_back": false,
       "suppressed": false,
@@ -2301,7 +2321,7 @@
       },
       "error": null,
       "id": 10,
-      "ms": 65.089018,
+      "ms": 34.548304,
       "name": "M3 stud clearance 1",
       "rolled_back": false,
       "suppressed": false,
@@ -2315,7 +2335,7 @@
       },
       "error": null,
       "id": 11,
-      "ms": 0.397782,
+      "ms": 0.132253,
       "name": "M3 nut access and trap 2 sketch",
       "rolled_back": false,
       "suppressed": false,
@@ -2329,7 +2349,7 @@
       },
       "error": null,
       "id": 12,
-      "ms": 62.172129999999996,
+      "ms": 21.521178,
       "name": "M3 nut access and trap 2",
       "rolled_back": false,
       "suppressed": false,
@@ -2343,7 +2363,7 @@
       },
       "error": null,
       "id": 13,
-      "ms": 73.461427,
+      "ms": 39.20534,
       "name": "M3 stud clearance 2",
       "rolled_back": false,
       "suppressed": false,
@@ -2357,7 +2377,7 @@
       },
       "error": null,
       "id": 14,
-      "ms": 0.122867,
+      "ms": 0.10791,
       "name": "M3 nut access and trap 3 sketch",
       "rolled_back": false,
       "suppressed": false,
@@ -2371,7 +2391,7 @@
       },
       "error": null,
       "id": 15,
-      "ms": 44.262783,
+      "ms": 31.294496999999996,
       "name": "M3 nut access and trap 3",
       "rolled_back": false,
       "suppressed": false,
@@ -2385,7 +2405,7 @@
       },
       "error": null,
       "id": 16,
-      "ms": 70.800453,
+      "ms": 54.386986,
       "name": "M3 stud clearance 3",
       "rolled_back": false,
       "suppressed": false,
@@ -2399,7 +2419,7 @@
       },
       "error": null,
       "id": 17,
-      "ms": 0.17851299999999998,
+      "ms": 0.297977,
       "name": "M3 nut access and trap 4 sketch",
       "rolled_back": false,
       "suppressed": false,
@@ -2413,7 +2433,7 @@
       },
       "error": null,
       "id": 18,
-      "ms": 34.824211,
+      "ms": 42.555085999999996,
       "name": "M3 nut access and trap 4",
       "rolled_back": false,
       "suppressed": false,
@@ -2427,7 +2447,7 @@
       },
       "error": null,
       "id": 19,
-      "ms": 82.663034,
+      "ms": 51.811257,
       "name": "M3 stud clearance 4",
       "rolled_back": false,
       "suppressed": false,
@@ -2441,8 +2461,8 @@
       },
       "error": null,
       "id": 20,
-      "ms": 53.48118,
-      "name": "Uninterrupted central strap underside",
+      "ms": 43.853063,
+      "name": "Straight wall relief above nut",
       "rolled_back": false,
       "suppressed": false,
       "type": "BoxFeature",
@@ -2455,8 +2475,8 @@
       },
       "error": null,
       "id": 21,
-      "ms": 40.777761000000005,
-      "name": "Strap end-wall and rail opening",
+      "ms": 42.271341,
+      "name": "Straight wall relief above nut",
       "rolled_back": false,
       "suppressed": false,
       "type": "BoxFeature",
@@ -2469,21 +2489,7 @@
       },
       "error": null,
       "id": 22,
-      "ms": 63.341289999999994,
-      "name": "Strap end-wall and rail opening",
-      "rolled_back": false,
-      "suppressed": false,
-      "type": "BoxFeature",
-      "warning": null
-    },
-    {
-      "boolean_diagnostics": {
-        "events": [],
-        "truncated": false
-      },
-      "error": null,
-      "id": 23,
-      "ms": 80.39514100000001,
+      "ms": 44.031857,
       "name": "Uninterrupted central strap underside",
       "rolled_back": false,
       "suppressed": false,
@@ -2496,8 +2502,22 @@
         "truncated": false
       },
       "error": null,
+      "id": 23,
+      "ms": 51.970495,
+      "name": "Strap end-wall and rail opening",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
       "id": 24,
-      "ms": 80.82620299999999,
+      "ms": 47.241225,
       "name": "Strap end-wall and rail opening",
       "rolled_back": false,
       "suppressed": false,
@@ -2511,14 +2531,506 @@
       },
       "error": null,
       "id": 25,
-      "ms": 81.059282,
+      "ms": 45.968917,
+      "name": "Uninterrupted central strap underside",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 26,
+      "ms": 56.718906,
       "name": "Strap end-wall and rail opening",
       "rolled_back": false,
       "suppressed": false,
       "type": "BoxFeature",
       "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 27,
+      "ms": 46.741986,
+      "name": "Strap end-wall and rail opening",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 28,
+      "ms": 39.844736999999995,
+      "name": "Ventilation slot 1 core",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 29,
+      "ms": 82.35820700000001,
+      "name": "Ventilation slot 1 rounded end",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 30,
+      "ms": 67.945531,
+      "name": "Ventilation slot 1 rounded end",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 31,
+      "ms": 66.513954,
+      "name": "Ventilation slot 2 core",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 32,
+      "ms": 77.859491,
+      "name": "Ventilation slot 2 rounded end",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 33,
+      "ms": 77.607089,
+      "name": "Ventilation slot 2 rounded end",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 34,
+      "ms": 59.015507,
+      "name": "Ventilation slot 3 core",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 35,
+      "ms": 88.03949899999999,
+      "name": "Ventilation slot 3 rounded end",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 36,
+      "ms": 73.43870399999999,
+      "name": "Ventilation slot 3 rounded end",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 37,
+      "ms": 85.324271,
+      "name": "Ventilation slot 4 core",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 38,
+      "ms": 102.32197099999999,
+      "name": "Ventilation slot 4 rounded end",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 39,
+      "ms": 91.778423,
+      "name": "Ventilation slot 4 rounded end",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 40,
+      "ms": 424.26506600000005,
+      "name": "Fillet1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 41,
+      "ms": 613.5591489999999,
+      "name": "Fillet2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 42,
+      "ms": 299.02941500000003,
+      "name": "Fillet3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 43,
+      "ms": 404.458927,
+      "name": "Fillet4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 44,
+      "ms": 373.39655799999997,
+      "name": "Fillet5",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 45,
+      "ms": 451.128281,
+      "name": "Fillet6",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 46,
+      "ms": 0.326105,
+      "name": "Box1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 47,
+      "ms": 13.553986,
+      "name": "Strap entry R0.5 cutter",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [
+          {
+            "face_shift_mm": 0.0,
+            "rotation_rad": 0.0,
+            "strategy": "refined_tolerance",
+            "tolerance_mm": 0.6650273603736492,
+            "translation_mm": 0.0
+          },
+          {
+            "face_shift_mm": 0.0,
+            "rotation_rad": 0.0,
+            "strategy": "refined_tolerance",
+            "tolerance_mm": 0.6650273603736492,
+            "translation_mm": 0.0
+          }
+        ],
+        "truncated": false
+      },
+      "error": null,
+      "id": 48,
+      "ms": 5767.229359,
+      "name": "Combine1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CombineFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 49,
+      "ms": 0.339557,
+      "name": "Box2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 50,
+      "ms": 13.614668,
+      "name": "Strap entry R0.5 cutter",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [
+          {
+            "face_shift_mm": 0.0,
+            "rotation_rad": 0.0,
+            "strategy": "refined_tolerance",
+            "tolerance_mm": 0.6650273603715198,
+            "translation_mm": 0.0
+          },
+          {
+            "face_shift_mm": 0.0,
+            "rotation_rad": 0.0,
+            "strategy": "refined_tolerance",
+            "tolerance_mm": 0.6650273603715198,
+            "translation_mm": 0.0
+          }
+        ],
+        "truncated": false
+      },
+      "error": null,
+      "id": 51,
+      "ms": 5802.186971,
+      "name": "Combine2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CombineFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 52,
+      "ms": 0.389246,
+      "name": "Box3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 53,
+      "ms": 16.123847,
+      "name": "Strap entry R0.5 cutter",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 54,
+      "ms": 4656.335848000001,
+      "name": "Combine3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CombineFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 55,
+      "ms": 0.394917,
+      "name": "Box4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 56,
+      "ms": 13.462678,
+      "name": "Strap entry R0.5 cutter",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 57,
+      "ms": 4394.716732,
+      "name": "Combine4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CombineFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 58,
+      "ms": 2645.065793,
+      "name": "Fillet7",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
     }
   ],
-  "undo": 45,
+  "undo": 80,
   "units": "mm"
 }

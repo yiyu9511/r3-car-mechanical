@@ -138,12 +138,12 @@
       21.504002589254
     ],
     "BatteryCradle": [
-      -49.00000000000001,
-      49.00000000000001,
-      -136.20000000000002,
-      -69.6,
-      11.500000000000037,
-      25.89999999999995
+      -162.66046246559037,
+      162.66046246559264,
+      -230.2604624655915,
+      24.460462465591476,
+      11.499999999989207,
+      25.899999999995075
     ],
     "BatteryHeightEnvelope": [
       -43.3,
@@ -273,7 +273,7 @@
     "MCUSpacer4"
   ],
   "cat_source_sha256": "25739cb9886a165ec57e6babb3de79b7fa580420cd17b65ae1342a7552636f2c",
-  "battery_source_sha256": "a29cb5f6fcdfef7124d351dc4ea6ca45382e221e339dbe01a487a8d0c7e0a1dc",
+  "battery_source_sha256": "3953dc2f34ffcc7aa3af99a66c1eb4ff585f4a825f8dbf80fc213ee806d6d256",
   "sources": {
     "models/R3mini四驱小车底盘（无悬挂）_utf8.stp": "8c98c1b466ce4d315347af833bc5634447644e64e2b906d53b4a4cde80644fbc",
     "models/TOFSense_F2_Mini_Appearance_V1.0.step": "035288b6dab67adce72305e24615c6bf2bffec7b420b9ae290bbdeba407587cd",

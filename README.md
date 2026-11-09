@@ -10,7 +10,8 @@ C30D 实物为 V2.3，机械参考使用厂家 V2.2 STEP。
 依据 `models/电池托架参考.step` 实测尺寸重建 SolidCraft 原生特征。
 保留 62.6×86.6 mm 内腔、16 mm 出线口；去掉原安装耳，使用四根铜柱和嵌入式 M3 螺母。
 两侧为一体功能边；底板整体 **4.4 mm**，中间两条扎带槽 **宽 6 mm、深 1.2 mm**，槽上剩余 **3.2 mm**。
-本轮不做蜂窝或透气孔。
+底板另开 4 条纵向圆头通槽（4×54 mm），避开扎带承托带和固定区；不做蜂窝。
+外壁、上沿、槽口及外扩长边已做小圆角；靠端墙的两处螺母上方改为 8 mm 直边避让口，下面六角窝保留。
 
 | 文件 | 用途 |
 |---|---|
@@ -19,7 +20,7 @@ C30D 实物为 V2.3，机械参考使用厂家 V2.2 STEP。
 | [STEP](cad_solidcraft/exports/battery_cradle.step) / [STL](cad_solidcraft/exports/battery_cradle.stl) | 当前几何导出，尚未完成打印与装车验收 |
 | [托架预览](cad_solidcraft/renders/cradle_iso.png) / [底面](cad_solidcraft/renders/cradle_bottom.png) | 当前造型 |
 | [安装近景](output/two_layer/battery_fit_closeup.png) | 电池盒、铜柱与底盘的实际几何位置，红色为后 TOF |
-| [SolidCraft 底盘安装](cad_solidcraft/battery_on_chassis.sc) / [原生渲染](cad_solidcraft/renders/battery_on_chassis_render.png) | 在 SolidCraft 内直接查看电池盒、铜柱、螺母与原底盘 |
+| [SolidCraft 底盘安装](cad_solidcraft/battery_on_chassis.sc) / [安装视图](cad_solidcraft/renders/battery_on_chassis.png) | 在 SolidCraft 内直接查看电池盒、铜柱、螺母与原底盘 |
 | [两层装配](assemblies/two_layer.FCStd) / [装配预览](output/two_layer/overview.png) | 已更新当前电池盒及铜柱 |
 | [零件检查](cad_solidcraft/checks/battery_cradle_checks.json) / [装配碰撞检查](output/two_layer/collision_checks.json) | 几何证据与未解决事项 |
 
@@ -43,6 +44,8 @@ CAT 底面因托板加厚升到 Z=68 mm；雷达扫描头最低包络高于 CAT 
 新件几何检查通过，尚未完成打印、五金配合、PCB 下方螺丝头净空和实物装车验证。
 
 ## 文档和后续任务
+
+[打印与配合基线](docs/打印与配合.md)：P2S、0.4 喷嘴、0.2 层高、4 道墙、顶底各 5 层、20% Gyroid；公差尚待 PLA/PETG 分别试配。
 
 - [当前设计](docs/当前设计.md)：装配约束、定位与已知问题。
 - [电池盒要求及测量](cad_solidcraft/电池托架需求存档.md)：最新用户要求与几何基准。

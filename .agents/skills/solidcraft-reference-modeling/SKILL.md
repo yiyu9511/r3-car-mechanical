@@ -106,6 +106,9 @@ SOLIDCRAFT_CONNECT=127.0.0.1:27878 python3 cad_solidcraft/scripts/build_battery_
 用软件控制协议 `ui.workspace` 切换 `render`，用 `render.result.view` 显示 image/fit；
 `ui.workspace` 是控制协议方法，不是引擎 execute 命令。读取 UI 的 showing_result 核实状态。
 
+圆角按接触功能分组，不对所有边“一键全圆”。短边、相邻小面或圆角端面不受内核支持时，先缩小选择范围；不要无限减小半径重试。需要确定截面时可用方块减圆柱形成四分之一圆切削工具，再对主体做差集，保留原生可编辑步骤。
+螺母窝切入端墙形成窄斜壁时，将墙上的避让区改为独立直边窗口；仍保留板内六角防转与承压面。边界检查分别覆盖通道直段、入口圆角和保护的配合区域。
+
 ## 独立验收，不把一次成功当作交付
 
 SolidCraft 用于设计，FreeCAD/OCCT 可用于独立读回检查。运行方式见仓库 README。

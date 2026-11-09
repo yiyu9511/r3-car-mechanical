@@ -6,6 +6,15 @@
   "boolean_pairs": [
     {
       "a": "C30D",
+      "b": "BatteryCradle",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "C30D",
       "b": "MCUSpacer1",
       "overlap_mm3": 0.0,
       "method": [
@@ -43,7 +52,7 @@
     {
       "a": "RearTOF",
       "b": "BatteryCradle",
-      "overlap_mm3": 974.8466698201717,
+      "overlap_mm3": 906.3326126157399,
       "method": [
         "conservative bbox envelope (source has no solids)",
         "solid BRep"
@@ -189,7 +198,7 @@
     {
       "a": "RearTOF",
       "b": "BatteryCradle",
-      "overlap_mm3": 974.8466698201717,
+      "overlap_mm3": 906.3326126157399,
       "method": [
         "conservative bbox envelope (source has no solids)",
         "solid BRep"
