@@ -37,6 +37,9 @@
 
 ## 文件和状态
 
+用户手动保存的 3MF 切片工程：[`r3.3mf`](r3.3mf) 和 [`exports/battery_cradle.3mf`](exports/battery_cradle.3mf)。
+`r3.3mf` 的对象元数据包含电池架与 CAT 支架。两份文件均通过容器完整性和模型 XML 可读性检查，单位为毫米；保存的切片设置未由生成脚本改写。
+
 - `battery_cradle.sc`：打印件原生设计。
 - `battery_mount.sc`：托架 + 四铜柱 + 四螺母，共 9 个实体。
 - `battery_on_chassis.sc`：上述原生特征经刚体定位，插入原 R3 底盘；可在 SolidCraft 设计窗口旋转查看，不含其他设备。
