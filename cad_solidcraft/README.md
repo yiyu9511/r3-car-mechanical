@@ -121,3 +121,23 @@ SOLIDCRAFT_CONNECT=127.0.0.1:27878 python3 cad_solidcraft/scripts/build_cat_moun
 `scripts/finish_cat_mount.py` 实现当前定向修边；`R3_CAT_OUT` 可指定生成与验证暂存目录。
 生成器先开托板孔槽，再旋转生成完整支撑并合并，避免相切圆锥/圆柱叠加的内核问题。
 参数改变后需要重新验收；支撑旋转截面等尺寸存在原生草图中，不宣称所有尺寸都由参数表自动联动。
+
+## 雷达与相机接口查看
+
+`lidar_mount_inspection.sc`：雷达原始坐标的安装接口标注（B1/B2底孔，S1/S2侧耳）。
+`camera_hole_inspection.sc`：相机图纸四孔中心参考；显示用0.2mm板厚不是实物尺寸，未假定孔径。
+报告见 `checks/sensor_interfaces.json` 与 [接口分析](../docs/雷达与相机接口分析.md)。
+源件没有修改；当前阶段不生成可打印支架，不复用占位架的候选孔作为定案。
+
+```bash
+"$FREECAD_RUN" python cad_solidcraft/scripts/audit_lidar_source.py
+"$FREECAD_RUN" python cad_solidcraft/scripts/prepare_lidar_inspection.py
+SOLIDCRAFT_CONNECT=127.0.0.1:27878 python3 cad_solidcraft/scripts/show_lidar_inspection.py
+```
+
+## 雷达与相机当前设计初稿
+
+`lidar_camera_system.sc` 是完整装配；`lidar_frame.sc`、`camera_dock.sc`、`camera_housing.sc`、`camera_rear_lid.sc` 是独立原生零件。
+检查副本存入 `review/`，没有新STL打印包。雷达安装耳与90°盲区朝世界-Y；相机壳和后盖包含未测尺寸留量。
+方案、文件用途和未通过的角度测试见[模块初稿](../docs/雷达相机模块初稿.md)。
+此前的独立T槽/大保护框探索模型已被本版替代。用户的`r3.3mf`改动不由本轮脚本改写。

@@ -2,7 +2,7 @@
   "status": "fail",
   "evidence_level": "geometry",
   "scope": "Positioned visible parts; excludes unconfirmed battery/lens envelopes and unrouted cable reference",
-  "pair_count": 406,
+  "pair_count": 465,
   "boolean_pairs": [
     {
       "a": "C30D",
@@ -132,7 +132,7 @@
     },
     {
       "a": "Lidar",
-      "b": "CameraMount",
+      "b": "LidarMount",
       "overlap_mm3": 0.0,
       "method": [
         "solid BRep",
@@ -142,6 +142,60 @@
     {
       "a": "LidarMount",
       "b": "CameraMount",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "CameraPCB",
+      "b": "CameraMount",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "CameraPCB",
+      "b": "CameraHousing",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "CameraPCB",
+      "b": "CameraRearCover",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "CameraMount",
+      "b": "CameraHousing",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "CameraMount",
+      "b": "CameraRearCover",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "CameraHousing",
+      "b": "CameraRearCover",
       "overlap_mm3": 0.0,
       "method": [
         "solid BRep",

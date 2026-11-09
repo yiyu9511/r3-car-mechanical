@@ -1,0 +1,57 @@
+{
+  "scope": "Height screening against current CAT shell, not full optical or physical FOV validation",
+  "plate_top_world_mm": 53,
+  "cat_top_world_mm": 114.60000000000008,
+  "source": "Richbeam LakiBeam1(L) RBDOC-UM-1001 January2023, p29 fig8.5 and p31 fig8.7",
+  "laser_center_above_bottom_mm_used": 54.3,
+  "source_ambiguity": "p29 prose says56.75 while fig8.5 says54.32 and fig8.7 says54.3; use lower54.3 for conservative screening",
+  "receiver_zone_height_mm": 25,
+  "receiver_lower_above_bottom_mm_estimated": 41.8,
+  "receiver_assumption": "25mm receiving region is treated as centered around54.3 per diagram; exact lower-edge ordinate is not independently dimensioned",
+  "near_far_CAT_horizontal_distance_mm": [
+    64.75,
+    160.23683742822683
+  ],
+  "inclination_allowance_at_farthest_CAT_mm": 2.7969444012019453,
+  "cases": [
+    {
+      "total_raise_mm": 20,
+      "lidar_bottom_world_mm": 73,
+      "estimated_receiving_lower_world_mm": 114.8,
+      "receiving_lower_above_CAT_mm": 0.19999999999991758,
+      "nominal_laser_center_world_mm": 127.3
+    },
+    {
+      "total_raise_mm": 25,
+      "lidar_bottom_world_mm": 78,
+      "estimated_receiving_lower_world_mm": 119.8,
+      "receiving_lower_above_CAT_mm": 5.199999999999918,
+      "nominal_laser_center_world_mm": 132.3
+    },
+    {
+      "total_raise_mm": 30,
+      "lidar_bottom_world_mm": 83,
+      "estimated_receiving_lower_world_mm": 124.8,
+      "receiving_lower_above_CAT_mm": 10.199999999999918,
+      "nominal_laser_center_world_mm": 137.3
+    },
+    {
+      "total_raise_mm": 33,
+      "lidar_bottom_world_mm": 86,
+      "estimated_receiving_lower_world_mm": 127.8,
+      "receiving_lower_above_CAT_mm": 13.199999999999918,
+      "nominal_laser_center_world_mm": 140.3
+    }
+  ],
+  "recommendation_total_raise_mm": 30,
+  "current_raise_mm": 33,
+  "cautions": [
+    "Total lift means nominal LiDAR bottom reference above top steel plate, including printed support plate",
+    "Current model/richbeam drawing revision may differ; check actual optical zone against fitted device",
+    "270deg scan has an existing90deg blind sector; do not claim360deg unobstructed scanning",
+    "CAT antennas/cables, printing/mounting tolerances, body pitch/roll and full beam envelope not modeled"
+  ],
+  "actual_device_model": "LakiBeam1, not1L",
+  "manual_applicability": "Shared LakiBeam1 and1L manual, confirmed by p9 product-model table; official dimensions60x60x80mm for both. Height screening remains provisional due manual center-height discrepancy and receiving-lower-edge estimate.",
+  "mount_orientation": "User confirmed Rz(-90deg), ear/blind-sector side towardCAT/world-Y; keep33mm raise for initial frame; do not assume all CAT corners lie inside90deg blind sector"
+}

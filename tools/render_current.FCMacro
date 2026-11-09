@@ -28,7 +28,7 @@ try:
         'objects':{
             'UpperSteelPlate':{'valid':True,'closed':True,'solid_count':1,'bbox':{'z':1.5,'tolerance':.001}},
             'CATMount':{'valid':True,'closed':True,'solid_count':1,'bbox':{'z':15,'tolerance':.001}},
-            'LidarMount':{'valid':True,'closed':True,'solid_count':1,'bbox':{'z':33,'tolerance':.001}},
+            'LidarMount':{'valid':True,'closed':True,'solid_count':1,'bbox':{'z':35.5,'tolerance':.001}},
             'CameraMount':{'valid':True,'closed':True,'solid_count':1}},
         'scope':'Two-layer layout and draft adapter geometry, not manufacturing acceptance',
         'untested_risks':data['not_tested']})
@@ -67,6 +67,7 @@ try:
         color=(.66,.69,.72)
         if name=='C30D' or name=='CameraPCB':color=(.24,.57,.34)
         elif name in ['CATMount','LidarMount','CameraMount']:color=(.15,.53,.77)
+        elif name in ['CameraHousing','CameraRearCover']:color=(.85,.49,.24)
         elif name=='BatteryCradle':color=(.90,.57,.19)
         elif name in ['FrontTOF','RearTOF']:color=(.31,.24,.43)
         elif name=='Lidar':color=(.22,.25,.29)

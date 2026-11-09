@@ -47,9 +47,7 @@ entries=[('base_z',1.5,'下层铁板上表面'),('plate_t',1.5,'两块铁板厚�
          ('battery_margin',2,'电池到上层铁板的高度预算余量'),
          ('tof_front_y',111,'前 TOF 光学面 Y'),('tof_front_z',22,'前 TOF 中心高度'),
          ('tof_rear_y',-132,'后 TOF PCB 原点 Y'),('tof_rear_z',12.5,'后 TOF 原点高度'),
-         ('camera_y',104,'相机 PCB 平面 Y'),('camera_base',3,'相机 PCB 底边离二层板面'),
-         ('camera_pcb_t',1.2,'相机板厚占位，未实测'),('camera_lens_r',6,'镜头半径占位，未实测'),
-         ('camera_lens_depth',8,'镜头深度占位，未实测')]
+         ('camera_model_note',0,'相机模块位置由雷达接口定义；孔径/板厚/镜头为待测占位')]
 params.set('A1','Parameter');params.set('B1','Value');params.set('C1','Meaning')
 for row,(name,val,note) in enumerate(entries,2):
     params.set(f'A{row}',name);params.set(f'B{row}',f'={val} mm')
@@ -154,45 +152,37 @@ wire_solids=[s.copy() for s in lidar_source.Solids if s.BoundBox.YMax<-40]
 main=Part.makeCompound(main_solids)
 lidar_seat=main.BoundBox.ZMin
 scan_lower=min(s.BoundBox.ZMin for s in main_solids if s.BoundBox.ZMax>20)-lidar_seat
-main.translate(V(0,0,-lidar_seat))
+main.translate(V(0,0,-lidar_seat));main.rotate(V(),V(0,0,1),-90)
 lidar_group=group('LidarGroup','第二层雷达 · 扫描头抬过 CAT 壳顶',l2)
 lidar_group.setExpression('Placement.Base.y','Params.lidar_y')
 lidar_group.setExpression('Placement.Base.z','Params.plate_t + Params.lidar_lift')
 lidar=feature(lidar_group,'Lidar','雷达机身与扫描头（原弯曲线缆另列）',main)
-cables=Part.makeCompound(wire_solids);cables.translate(V(0,0,-lidar_seat))
+cables=Part.makeCompound(wire_solids);cables.translate(V(0,0,-lidar_seat));cables.rotate(V(),V(0,0,1),-90)
 wire_ref=feature(lidar_group,'LidarCableReference','原模型线缆形状 · 待重新走线 · 默认隐藏',cables)
-platform=box(lidar_group,'LidarPlatform',-36,-40,-3,72,80,3)
-platform.setExpression('Height','Params.lidar_plate_t')
-platform.setExpression('Placement.Base.z','-Params.lidar_plate_t')
-lidar_feet=[]
-for i,(x,y) in enumerate([(-26,-28),(26,-28),(-26,28),(26,28)],1):
-    f=cylinder(lidar_group,'LidarFoot'+str(i),x,y,-33,5,30)
-    f.setExpression('Height','Params.lidar_lift - Params.lidar_plate_t')
-    f.setExpression('Placement.Base.z','-Params.lidar_lift');lidar_feet.append(f)
-lidar_mount=fusion(lidar_group,'LidarMount','雷达转接架占位 · 保持原机身 · 紧固与锚孔未定',[platform]+lidar_feet)
+# Current LiDAR prototype: actual selected steel anchors and three-sided modular rim.
+lidar_frame_shape=Part.read(str(ROOT/'cad_solidcraft/review/lidar_frame.step'))
+lidar_frame_shape.translate(V(0,0,-33))
+lidar_mount=feature(lidar_group,'LidarMount','雷达架初稿 · M3×10自攻 / 前左右孔带 / 耳朝后',lidar_frame_shape)
 
-camera_group=group('CameraGroup','第二层前缘相机 · 朝 +Y · 镜头占位',l2)
-camera_group.setExpression('Placement.Base.y','Params.camera_y')
-camera_group.setExpression('Placement.Base.z','Params.plate_t + Params.camera_base')
-pcb=Part.makeBox(29,1.2,31.25,V(-14.5,0,0))
+camera_group=group('CameraGroup','相机小盒＋后盖初稿 · 暂估配合 / 俯角10°',l2)
+camera_group.setExpression('Placement.Base.y','Params.lidar_y')
+camera_group.setExpression('Placement.Base.z','Params.plate_t')
+def pitched(shape):
+    shape.rotate(V(0,61,24),V(1,0,0),-10)
+    return shape
+cam_pcb_shape=Part.makeBox(29,1.2,31,V(-14.5,55,8.5))
 for x in [-11.5,11.5]:
-    for z in [3.625,27.625]:pcb=pcb.cut(Part.makeCylinder(1.25,1.2,V(x,0,z),V(0,1,0)))
-cam_pcb=feature(camera_group,'CameraPCB','IMX415 V1R1 板轮廓/孔位 · 厚度未实测',pcb)
-lens=cylinder(camera_group,'CameraLensEnvelope',0,1.2,15.625,6,8)
-lens.Label='镜头包络占位 · 尺寸不是加工依据'
-lens.Placement.Rotation=App.Rotation(V(0,0,1),V(0,1,0))
-lens.setExpression('Radius','Params.camera_lens_r');lens.setExpression('Height','Params.camera_lens_depth')
-cam_base=Part.makeBox(44,14,3,V(-22,-14,-3))
-cam_wall=Part.makeBox(34,3,35.5,V(-17,-3,-3))
-cam_frame=cam_base.fuse(cam_wall).removeSplitter()
-for x in [-11.5,11.5]:
-    for z in [3.625,27.625]:cam_frame=cam_frame.cut(Part.makeCylinder(1.4,3,V(x,-3,z),V(0,1,0)))
-camera_mount=feature(camera_group,'CameraMount','相机支架概念 · 无铁板锚孔',cam_frame)
+    for z in [11.5,36.5]:cam_pcb_shape=cam_pcb_shape.cut(Part.makeCylinder(1.25,1.2,V(x,55,z),V(0,1,0)))
+cam_pcb=feature(camera_group,'CameraPCB','IMX415图纸板形/孔距 · 厚度和孔径未测',pitched(cam_pcb_shape))
+lens=feature(camera_group,'CameraLensEnvelope','镜头包络Ø12×8及中心高度暂估',pitched(Part.makeCylinder(6,8,V(0,56.2,28),V(0,1,0))))
+camera_mount=feature(camera_group,'CameraMount','双挂钩相机座 · 下脚落板 / M3防脱',Part.read(str(ROOT/'cad_solidcraft/review/camera_dock.step')))
+camera_housing=feature(camera_group,'CameraHousing','相机小外壳初稿 · 镜头口Ø18暂估',pitched(Part.read(str(ROOT/'cad_solidcraft/review/camera_housing.step'))))
+camera_cover=feature(camera_group,'CameraRearCover','后盖及后置螺母窝 · 板厚/元件高度待测',pitched(Part.read(str(ROOT/'cad_solidcraft/review/camera_rear_lid.step'))))
 doc.recompute()
 
 # Read geometry in the document coordinate system, including all parent groups.
-shapes={o.Name:global_shape(o) for o in [upper,front,rear,cradle,budget,cat_mount,lidar,lidar_mount,cam_pcb,lens,camera_mount]+cat_shell_objs}
-for o in [cat_mount,lidar_mount,camera_mount]:
+shapes={o.Name:global_shape(o) for o in [upper,front,rear,cradle,budget,cat_mount,lidar,lidar_mount,cam_pcb,lens,camera_mount,camera_housing,camera_cover]+cat_shell_objs}
+for o in [cat_mount,lidar_mount,camera_mount,camera_housing,camera_cover]:
     assert o.Shape.isValid() and o.Shape.isClosed() and len(o.Shape.Solids)==1,o.Name
 assert abs(shapes['UpperSteelPlate'].BoundBox.ZMin-51.5)<1e-6
 assert abs(shapes['UpperSteelPlate'].BoundBox.ZMax-53)<1e-6
@@ -264,7 +254,7 @@ assert abs(global_shape(doc.getObject('C30D')).BoundBox.ZMin-original_driver)<1e
 assert all(abs(p.Height.Value-60)<1e-6 for p in post_objs)
 params.set(cell,'=50 mm');doc.recompute()
 
-visible=[doc.getObject('Chassis'),doc.getObject('C30D'),upper,front,rear,cradle,budget,cat_mount,lidar,lidar_mount,cam_pcb,lens,camera_mount]+cat_shell_objs+post_objs
+visible=[doc.getObject('Chassis'),doc.getObject('C30D'),upper,front,rear,cradle,budget,cat_mount,lidar,lidar_mount,cam_pcb,lens,camera_mount,camera_housing,camera_cover]+cat_shell_objs+post_objs
 visible += hardware
 visible += [doc.getObject('MCUSpacer'+str(i)) for i in range(1,5)]
 for o in doc.Objects:
@@ -296,17 +286,18 @@ report={'status':'assembly_conflict_rear_tof_unresolved',
         'objects':{k:bounds(v) for k,v in shapes.items()},
         'reference_limitations':{'CAT':'Only metal shells are positioned; external antennas and cables are not included in shell-clearance claims',
                                  'rear_tof':'Source is a valid compound of shells, not solid; only reference/envelope checks apply',
-                                 'camera':'Board outline 29×31.25 and hole pitch 23×24 from V1R1 drawing; thickness/lens are placeholders',
-                                 'lidar':'Original fixed curved cable solids hidden; final cable route still required',
+                                 'camera':'Current enclosed-camera prototype:29x31 outline,23x25 pitch confirmed; hole diameter2.5, thickness1.2,lens12x8 and center19.5from bottom are UNMEASURED; -10deg pitch example, optical clearance/dust sealing untested',
+                                 'lidar':'LakiBeam1 rotated-90deg about Z, ears and90deg blind sector toward world-Y/CAT; bottom thread/depth variant still needs confirmation; remote cable hidden',
                                  'battery':'No actual battery solid or confirmed height; reference cradle preserved'},
         'layout_warnings':['CAT raised 2mm; lidar scan-head lower envelope remains above CAT by about 3.32mm, below previous 5mm allowance; optical FOV unverified'],
         'known_conflicts':['RearTOF intersects the current battery floor at the existing placement; do not treat this assembly as installation-ready'],
         'not_tested':['Physical nut/bolt access under both plates (user to verify ground clearance)',
-                      'Lidar and camera mounts (deferred by user until CAT/battery are fixed)',
+                      'LiDAR/camera initial prototype, selected chassis anchors and self-tap fastening confirmed; clip insertion, hardware fit and printability still under verification',
                       'All remaining fastener retention details',
                       'Actual battery height and camera thickness/lens geometry','Cable routing and full FOV/access',
                       'Strength, vibration, steel-plate deflection, print fit and temperature'],
         'visible_object_names':[o.Name for o in visible],
+        'lidar_frame_source_sha256':hashlib.sha256((ROOT/'cad_solidcraft/review/lidar_frame.step').read_bytes()).hexdigest(),
         'cat_source_sha256':hashlib.sha256((ROOT/'cad_solidcraft/exports/cat_mount.step').read_bytes()).hexdigest(),
         'battery_source_sha256':hashlib.sha256((ROOT/'cad_solidcraft/exports/battery_cradle.step').read_bytes()).hexdigest(),
         'sources':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (ROOT/'models').glob('*') if p.suffix.lower() in ['.step','.stp']}}

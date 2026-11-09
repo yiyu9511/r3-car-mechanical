@@ -1,0 +1,264 @@
+{
+  "status": "pass",
+  "scope": "Read-only source interface audit, not support design or fastener approval",
+  "source": "models/单线雷达总装.STEP",
+  "source_sha256": "730b958006f9952dcc4990d4f89338954edcc5da93ac596c913e403e15bb4abf",
+  "source_solid_count": 22,
+  "lowest_bbox_z": -32.9219270736639,
+  "nominal_bottom_plane_source_z": -32.9,
+  "note": "User confirmed mounting-ear side and90deg blind sector face vehicle rear/world-Y. Native source coordinates remain unchanged; inspection scene is source-coordinate only.",
+  "interfaces": [
+    {
+      "id": "S1",
+      "kind": "side_ear_through_hole",
+      "source_solid": 14,
+      "mouth_source": [
+        30.5,
+        -34.4,
+        -13.5
+      ],
+      "mouth_world_current": [
+        -34.4,
+        24.5,
+        105.42192707366391
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "diameter_mm": 4.3,
+      "ear_thickness_mm": 3,
+      "hole_pair_pitch_mm": 68.8,
+      "thread": "not present; plain through-hole geometry",
+      "note": "Existing separate factory ears; inner mounting screws at y=+-25.5 are occupied and are not these outer holes."
+    },
+    {
+      "id": "S2",
+      "kind": "side_ear_through_hole",
+      "source_solid": 13,
+      "mouth_source": [
+        30.5,
+        34.4,
+        -13.5
+      ],
+      "mouth_world_current": [
+        34.4,
+        24.5,
+        105.42192707366391
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "diameter_mm": 4.3,
+      "ear_thickness_mm": 3,
+      "hole_pair_pitch_mm": 68.8,
+      "thread": "not present; plain through-hole geometry",
+      "note": "Existing separate factory ears; inner mounting screws at y=+-25.5 are occupied and are not these outer holes."
+    },
+    {
+      "id": "B1",
+      "kind": "bottom_blind_bore",
+      "mouth_source": [
+        -8.3,
+        -25.5,
+        -30.4
+      ],
+      "mouth_world_current": [
+        -25.5,
+        63.3,
+        88.5219270736639
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "modeled_bore_diameter_mm": 2.5,
+      "straight_bore_depth_mm": 5,
+      "tip_source_z": -24.648924,
+      "nominal_bottom_plane_z": -32.9,
+      "recess_from_bottom_plane_mm": 2.5,
+      "hole_pair_pitch_mm": 51,
+      "thread": "not modeled; do not infer M2.5 or M3 thread from cylindrical diameter",
+      "screw_length": "unknown; obtain actual thread and allowed insertion depth before choosing screw"
+    },
+    {
+      "id": "B2",
+      "kind": "bottom_blind_bore",
+      "mouth_source": [
+        -8.3,
+        25.5,
+        -30.4
+      ],
+      "mouth_world_current": [
+        25.5,
+        63.3,
+        88.5219270736639
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "modeled_bore_diameter_mm": 2.5,
+      "straight_bore_depth_mm": 5,
+      "tip_source_z": -24.648924,
+      "nominal_bottom_plane_z": -32.9,
+      "recess_from_bottom_plane_mm": 2.5,
+      "hole_pair_pitch_mm": 51,
+      "thread": "not modeled; do not infer M2.5 or M3 thread from cylindrical diameter",
+      "screw_length": "unknown; obtain actual thread and allowed insertion depth before choosing screw"
+    }
+  ],
+  "checks": [
+    {
+      "id": "side_ear_open_1",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0
+    },
+    {
+      "id": "side_ear_open_2",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0
+    },
+    {
+      "id": "bottom_bore_clear_1",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0
+    },
+    {
+      "id": "bottom_closed_end_1",
+      "status": "pass",
+      "actual": 0.1570796326794894,
+      "expected": "solid stop beyond drill tip"
+    },
+    {
+      "id": "bottom_pad_1",
+      "status": "pass",
+      "actual": -30.400000000000002,
+      "expected": -30.4
+    },
+    {
+      "id": "bottom_bore_clear_2",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0
+    },
+    {
+      "id": "bottom_closed_end_2",
+      "status": "pass",
+      "actual": 0.15707963267948938,
+      "expected": "solid stop beyond drill tip"
+    },
+    {
+      "id": "bottom_pad_2",
+      "status": "pass",
+      "actual": -30.400000000000002,
+      "expected": -30.4
+    }
+  ],
+  "camera": {
+    "source": "docs/ref/IMX415_V1R1_尺寸图.png",
+    "evidence": "Dimension lines read visually from source drawing; no camera STEP found",
+    "pcb_outline_mm": [
+      29,
+      31
+    ],
+    "outer_mount_pitch_mm": [
+      23,
+      25
+    ],
+    "outer_mount_count": 4,
+    "hole_diameter": "not dimensioned in supplied drawing",
+    "additional_20mm_pair": "inner lens-holder pair; not treated as PCB-to-support mounting holes",
+    "24_mark": "near ribbon connector, not the vertical hole pitch",
+    "unverified": [
+      "actual camera variant",
+      "PCB thickness",
+      "hole diameters",
+      "lens and component envelope",
+      "connector and ribbon clearance"
+    ],
+    "hole_positions_from_lower_left_mm": [
+      [
+        3,
+        3
+      ],
+      [
+        26,
+        3
+      ],
+      [
+        3,
+        28
+      ],
+      [
+        26,
+        28
+      ]
+    ],
+    "confirmed_by_user": true,
+    "current_world_mount_centers": [
+      [
+        -11.5,
+        107.92055126109013,
+        65.73179215334899
+      ],
+      [
+        -11.5,
+        112.26175570276338,
+        90.35198597865418
+      ],
+      [
+        11.5,
+        107.92055126109013,
+        65.73179215334899
+      ],
+      [
+        11.5,
+        112.26175570276338,
+        90.35198597865418
+      ]
+    ],
+    "pose_note": "Current adjustable camera draft uses10deg down pitch about local(0,61,24), then translate(0,55,53); actual optics/PCBdepth unknown"
+  },
+  "user_identification": {
+    "lidar": "LakiBeam1 (Richbeam), explicitly NOT LakiBeam1L",
+    "camera": "User confirmed supplied IMX415 V1R1 drawing; hole diameter and board thickness not measured"
+  },
+  "manufacturer_reference": {
+    "product_url": "https://www.richbeam.com/product/LakiBeam",
+    "pdf_url": "https://7765-web-6g7t44mf88c25c24-1317651364.tcb.qcloud.la/weda-uploader/app-lfyqsn7z/6ee3040596eef0112b6563d16c781197-LakiBeam-User-Manual.pdf",
+    "local_pdf": "docs/ref/LakiBeam1_and_1L_User_Manual_RBDOC-UM-1001.pdf",
+    "document": "RBDOC-UM-1001 January2023 LakiBeam1(L)",
+    "page": 31,
+    "figure": "8.7 LiDAR Dimension Drawing",
+    "callouts": {
+      "ear_holes": "2-Ø4.3",
+      "side_shell_holes": "2-M3",
+      "bottom_view": "4-M3"
+    },
+    "discrepancy": "Source STEP exposes only2 bottom blind bores; manufacturer drawing labels4-M3. Do not create missing anchors without physical version confirmation.",
+    "allowed_insertion_depth": "not specified on mechanical drawing; modeled straight cylinder length5mm is not guaranteed usable thread engagement",
+    "applicability": "Shared manual: product specification table on p9 explicitly lists LakiBeam1 and LakiBeam1L; official product page lists both60x60x80mm. No evidence of a separate optical drawing for non-L in this manual; dimensional/version discrepancies remain."
+  },
+  "mcp_confirmation": {
+    "tool": "body_topology faces=cylinders",
+    "result_file": "cad_solidcraft/checks/lidar_mcp_cylinders.json",
+    "observations": "Bottom2 origin(-8.3,+-25.5,-30.4), radius1.25 extent0..5; matching independent OCCT source audit."
+  },
+  "source_to_current_world_transform": {
+    "rotation_z_deg": -90,
+    "translation": [
+      0,
+      55,
+      118.92192707366391
+    ]
+  }
+}

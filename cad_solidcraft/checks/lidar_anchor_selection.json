@@ -1,0 +1,120 @@
+{
+  "status": "four_anchors_confirmed_by_user",
+  "world_plate_top_z": 53,
+  "lidar_source_translation": [
+    0,
+    55,
+    118.92192707366391
+  ],
+  "proposed_anchors": [
+    {
+      "id": "L1",
+      "xy": [
+        -20.0,
+        29.353509465302
+      ],
+      "diameter": 3.2,
+      "probe_common": 0.0,
+      "pad_r6_contact_mm2": 105.0548583360422
+    },
+    {
+      "id": "L2",
+      "xy": [
+        20.0,
+        29.353509465301
+      ],
+      "diameter": 3.2,
+      "probe_common": 0.0,
+      "pad_r6_contact_mm2": 105.05485833604223
+    },
+    {
+      "id": "L3",
+      "xy": [
+        -20.85965,
+        84.072809465302
+      ],
+      "diameter": 3.2,
+      "probe_common": 0.0,
+      "pad_r6_contact_mm2": 100.29871038773871
+    },
+    {
+      "id": "L4",
+      "xy": [
+        20.85965,
+        84.072809465302
+      ],
+      "diameter": 3.2,
+      "probe_common": 0.0,
+      "pad_r6_contact_mm2": 100.29871038774068
+    }
+  ],
+  "rejected_for_now": "Existing layer post candidates (±50,81.61),(±60,27.61) intentionally not reused",
+  "scope": "Source geometry confirms hole existence and D12 contact; does not confirm physical occupancy or choose final frame geometry",
+  "footprint_markers": "Illustrative D14 x2.5mm feet, not final design; front feet have R3 neighboring-hole relief",
+  "camera_module": "Current prototype: three-sided U hole rim and two-hook camera dock",
+  "front_coordinate_interpretation": "User19.26 is inner edge of D3.2 hole; measured center X=+-20.85965,Y84.072809465302",
+  "rear_pair_confirmation": "User accepted compact four-anchor scheme and requested complete LiDAR support",
+  "neighbor_relief": {
+    "centers": [
+      [
+        26,
+        81.613399283666
+      ],
+      [
+        -26,
+        81.613399283666
+      ]
+    ],
+    "radius": 3,
+    "scope": "Current frame: R3 relief through bottom4.2mm and R1.8 shank corridor above; physical driver/head envelope needs trial"
+  },
+  "front_pad_validation": [
+    {
+      "side": -1,
+      "center": [
+        -20.85965,
+        84.072809465302
+      ],
+      "hole_diameter": 3.2,
+      "x_edge_near_center": -19.259649999999997,
+      "neighbor_center": [
+        -26,
+        81.613399283666
+      ],
+      "neighbor_diameter": 3.2,
+      "neighbor_relief_radius": 3,
+      "foot_outer_radius": 7,
+      "probe_common_mm3": 0.0,
+      "foot_net_area_mm2": 124.26557390779945,
+      "supported_area_mm2": 124.26557390779945,
+      "selected": "user selected this front pair by its near X edge19.26 and Y84.07"
+    },
+    {
+      "side": 1,
+      "center": [
+        20.85965,
+        84.072809465302
+      ],
+      "hole_diameter": 3.2,
+      "x_edge_near_center": 19.259649999999997,
+      "neighbor_center": [
+        26,
+        81.613399283666
+      ],
+      "neighbor_diameter": 3.2,
+      "neighbor_relief_radius": 3,
+      "foot_outer_radius": 7,
+      "probe_common_mm3": 0.0,
+      "foot_net_area_mm2": 124.26557390780061,
+      "supported_area_mm2": 124.26557390780061,
+      "selected": "user selected this front pair by its near X edge19.26 and Y84.07"
+    }
+  ],
+  "pair_spans_mm": {
+    "front_width": 41.7193,
+    "rear_width": 40,
+    "longitudinal": 54.719300000000004
+  },
+  "frame_fastener": "M3x10 self tapping from below steel into printed frame; D2.5x9 is trial fit",
+  "current_design": "cad_solidcraft/lidar_frame.sc"
+}

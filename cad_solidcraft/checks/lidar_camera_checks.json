@@ -1,0 +1,839 @@
+{
+  "schema_version": "0.1",
+  "report_type": "freecad-model-validation",
+  "status": "fail",
+  "scope": "Compact LiDAR frame and removable-lid camera enclosure prototype; not final print approval",
+  "checks": [
+    {
+      "id": "lidar_frame_topology",
+      "status": "pass",
+      "actual": {
+        "solids": 1,
+        "valid": true,
+        "closed": true
+      },
+      "expected": "one valid closed solid",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "camera_dock_topology",
+      "status": "pass",
+      "actual": {
+        "solids": 1,
+        "valid": true,
+        "closed": true
+      },
+      "expected": "one valid closed solid",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "camera_housing_topology",
+      "status": "pass",
+      "actual": {
+        "solids": 1,
+        "valid": true,
+        "closed": true
+      },
+      "expected": "one valid closed solid",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "camera_rear_lid_topology",
+      "status": "pass",
+      "actual": {
+        "solids": 1,
+        "valid": true,
+        "closed": true
+      },
+      "expected": "one valid closed solid",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "frame_detailed_BOP_check",
+      "status": "warning",
+      "actual": {
+        "BOP check found the following errors:": 1,
+        "Error in Edge: BOPAlgo_InvalidCurveOnSurface": 108,
+        "Error in Face: BOPAlgo_InvalidCurveOnSurface": 108
+      },
+      "expected": "no BOP diagnostic",
+      "message": "Detailed exported-curve warnings retained; initial design only, not production release."
+    },
+    {
+      "id": "pilot_1",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "empty D2.5 x9 blind bore",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pilot_closed_roof_1",
+      "status": "pass",
+      "actual": 4.410798913073459,
+      "expected": 4.410798913073459,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "selected_steel_hole_1",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "zero material along selected D3.2 hole",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pilot_2",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "empty D2.5 x9 blind bore",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pilot_closed_roof_2",
+      "status": "pass",
+      "actual": 4.410798913073459,
+      "expected": 4.410798913073459,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "selected_steel_hole_2",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "zero material along selected D3.2 hole",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pilot_3",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "empty D2.5 x9 blind bore",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pilot_closed_roof_3",
+      "status": "pass",
+      "actual": 4.410798913073459,
+      "expected": 4.410798913073459,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "selected_steel_hole_3",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "zero material along selected D3.2 hole",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "adjacent_head_clear_3",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "adjacent_shank_clear_3",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pilot_wall_next_to_relief_3",
+      "status": "pass",
+      "actual": 1.4484117580282714,
+      "expected": ">1.4mm geometric ligament before self-tapping; physical retention untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pilot_4",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "empty D2.5 x9 blind bore",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pilot_closed_roof_4",
+      "status": "pass",
+      "actual": 4.410798913073459,
+      "expected": 4.410798913073459,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "selected_steel_hole_4",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "zero material along selected D3.2 hole",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "adjacent_head_clear_4",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "adjacent_shank_clear_4",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pilot_wall_next_to_relief_4",
+      "status": "pass",
+      "actual": 1.4484117580282714,
+      "expected": ">1.4mm geometric ligament before self-tapping; physical retention untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "rotated_bottom_mount_-25.5",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "rotated_bottom_mount_25.5",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "lidar_clearance_pad_height",
+      "status": "pass",
+      "actual": 35.499999999999375,
+      "expected": 35.5,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_FRONT_-25",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_FRONT_-15",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_FRONT_-5",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_FRONT_5",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_FRONT_15",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_FRONT_25",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_LEFT_-25",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_LEFT_-15",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_LEFT_-5",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_LEFT_5",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_LEFT_15",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_LEFT_25",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_RIGHT_-25",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_RIGHT_-15",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_RIGHT_-5",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_RIGHT_5",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_RIGHT_15",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "port_RIGHT_25",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "rear_wiring_open",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "frame_dock_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "frame_hardware_envelopes_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "dock_guard_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "dock_rear_lid_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "dock_camera_references_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "dock_hardware_envelopes_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "guard_rear_lid_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "guard_camera_references_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "guard_hardware_envelopes_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "rear_lid_camera_references_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "rear_lid_hardware_envelopes_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "camera_references_hardware_envelopes_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "frame_steel_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "no penetration, footprint contacts at Z53",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "frame_lidar_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "no penetration into unchanged rotated source geometry",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "dock_steel_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "no penetration, footprint contacts at Z53",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "dock_lidar_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "no penetration into unchanged rotated source geometry",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "guard_steel_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "no penetration, footprint contacts at Z53",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "guard_lidar_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "no penetration into unchanged rotated source geometry",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "rear_lid_steel_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "no penetration, footprint contacts at Z53",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "rear_lid_lidar_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "no penetration into unchanged rotated source geometry",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "camera_references_steel_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "no penetration, footprint contacts at Z53",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "camera_references_lidar_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "no penetration into unchanged rotated source geometry",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "hardware_envelopes_steel_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "no penetration, footprint contacts at Z53",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "hardware_envelopes_lidar_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "no penetration into unchanged rotated source geometry",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "frame_CAT_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "dock_CAT_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "guard_CAT_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "rear_lid_CAT_clear",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_-20_guard_frame",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_-20_guard_dock",
+      "status": "fail",
+      "actual": 17.345409587752666,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_-20_guard_steel",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_-20_guard_lidar",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_-20_camera_frame",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_-20_camera_dock",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_-20_camera_steel",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_-20_camera_lidar",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_0_guard_frame",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_0_guard_dock",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_0_guard_steel",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_0_guard_lidar",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_0_camera_frame",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_0_camera_dock",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_0_camera_steel",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_0_camera_lidar",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_20_guard_frame",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_20_guard_dock",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_20_guard_steel",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_20_guard_lidar",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_20_camera_frame",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_20_camera_dock",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_20_camera_steel",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "pitch_20_camera_lidar",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "collision-free nominal envelope; cable sweep untested",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "hook_release_y0_z2",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "solid clearance with anti-lift bolt removed",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "hook_release_y2_z2",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "solid clearance with anti-lift bolt removed",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "hook_release_y5_z2",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "solid clearance with anti-lift bolt removed",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "hook_release_y5_z12",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "solid clearance with anti-lift bolt removed",
+      "method": "OCCT BRep geometry"
+    },
+    {
+      "id": "camera_foot_contact",
+      "status": "pass",
+      "actual": {
+        "supported_area": 125.19563332629652,
+        "nominal_area": 128
+      },
+      "expected": ">95% nominal foot supported; small existing hole area excluded",
+      "method": "OCCT BRep geometry"
+    }
+  ],
+  "summary": {
+    "pass": 100,
+    "fail": 1,
+    "warning": 1
+  },
+  "anchors_world_xy": [
+    [
+      -20.0,
+      29.353509465302
+    ],
+    [
+      20.0,
+      29.353509465301
+    ],
+    [
+      -20.85965,
+      84.072809465302
+    ],
+    [
+      20.85965,
+      84.072809465302
+    ]
+  ],
+  "lidar_orientation": "source Rz(-90deg), translation(0,55,118.921927); ears/90deg blind sector toward world-Y/CAT",
+  "frame_steel_fastener": "M3x10 self-tapping as user confirmed, D2.5 x9 pilot trial",
+  "interface": "U rim front/left/right, rear open;18 rectangular6.4x5 slots at10mm pitch; two5.6mm-wide down hooks; M3x10 anti-lift lock from inside frame",
+  "camera": "29x31 PCB and23x25 pitch confirmed; cavity31x33, shell34.2x36.2x18.5; PCBthickness1.2/hole2.5/lens12x8 with optical center19.5from board bottom are UNMEASURED placeholders; body fixing proposedM2.5 and length must be verified",
+  "world_bounds": {
+    "frame": [
+      -35.000000100001074,
+      35.00000010000139,
+      18.9999999,
+      94.00000010000008,
+      52.999999899995935,
+      88.50000009999935
+    ],
+    "dock": [
+      -22.300000100000005,
+      22.300000100000005,
+      89.8,
+      121.0000001,
+      53.0,
+      84.0000001
+    ],
+    "guard": [
+      -19.000000100000005,
+      19.000000100000005,
+      102.02408260109405,
+      124.55947475733878,
+      58.21991459331078,
+      96.73515038385719
+    ],
+    "rear_lid": [
+      -17.100000100000003,
+      17.100000100000003,
+      100.05446719506986,
+      112.9216188778977,
+      61.08510952481539,
+      97.08244663919106
+    ],
+    "camera_references": [
+      -14.5000001,
+      14.5000001,
+      107.39960662808909,
+      120.88786668630836,
+      62.56899098111209,
+      93.30640933769084
+    ],
+    "hardware_envelopes": [
+      -24.300000100000005,
+      24.300000100000005,
+      88.99999989999992,
+      118.75000010000001,
+      67.24999989999999,
+      79.75000010000002
+    ]
+  },
+  "unverified": [
+    "Physical LiDAR bottom-hole count/thread/allowed insertion depth",
+    "Camera actual PCB thickness/hole diameter, components and ribbon path",
+    "Printed clearances, clip strength, self-tapping retention and vibration",
+    "Actual optical FOV and image performance at tilt angles",
+    "Print orientation/support strategy for U rim and guards; no print-ready claim"
+  ],
+  "user_acceptance": "Initial visual design accepted; user requested commit/push. Not manufacture approval.",
+  "current_pose_status": "pass",
+  "pose_limits": "-10deg illustrated pose clear; -20deg guard-to-dock interference remains; not a tested continuous angular range",
+  "artifact_sha256": {
+    "lidar_frame.sc": "6c611036385fa0dcda23e42fec5c4df4ffe8d3b1ce2a344edc677ad9188069cd",
+    "camera_dock.sc": "cbb10f3106ee151503514939f99a1b51f34d901980c636a462e9227eace4c906",
+    "camera_housing.sc": "e4dbe6e06bbfc78ee1fec5a9766110a37f5db4795e7285c2234639a53b42ecc8",
+    "camera_rear_lid.sc": "f8cd7f2f3328287bd92617bdde820f5c0bbc1e4580bfb05b20d5cee3ace8106a",
+    "lidar_camera_system.sc": "dd2d768f334eb26ac6e487aa6bab8892cfae8f5ffb257345a95b19212799b8bf"
+  }
+}

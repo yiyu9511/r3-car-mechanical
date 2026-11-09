@@ -162,44 +162,60 @@
       67.99999999999984
     ],
     "Lidar": [
-      -35.348720185097605,
-      35.348720185097605,
-      -3.242307778303383,
-      93.10000000000002,
+      -58.24230777830338,
+      38.10000000000004,
+      19.651279814902388,
+      90.34872018509762,
       86.0,
       165.9402141631563
     ],
     "LidarMount": [
-      -36.0,
-      36.0,
-      15.0,
-      95.0,
-      53.0,
-      86.0
+      -35.00000000000107,
+      35.000000000001386,
+      19.0,
+      94.00000000000009,
+      52.99999999999592,
+      88.49999999999937
     ],
     "CameraPCB": [
       -14.5,
       14.5,
-      104.0,
-      105.2,
-      56.0,
-      87.25
+      107.39960672808934,
+      113.96446953937885,
+      62.56899108111204,
+      93.30640923769081
     ],
     "CameraLensEnvelope": [
       -6.0,
       6.0,
-      105.2,
-      113.2,
-      65.625,
-      77.625
+      110.92562643020754,
+      120.88786658630839,
+      74.47471032544141,
+      87.68158878292334
     ],
     "CameraMount": [
-      -22.0,
-      22.0,
-      90.0,
-      104.0,
+      -22.300000000000008,
+      22.30000000000001,
+      89.8,
+      121.0,
       53.0,
-      88.5
+      84.0
+    ],
+    "CameraHousing": [
+      -19.00000000000001,
+      19.000000000000014,
+      102.02408270109406,
+      124.5594746573388,
+      58.21991469331077,
+      96.7351502838572
+    ],
+    "CameraRearCover": [
+      -17.1,
+      17.1,
+      100.05446719506986,
+      112.99128118213294,
+      61.085109624815374,
+      97.08244663919106
     ],
     "CATShell0": [
       -67.66300877886485,
@@ -221,8 +237,8 @@
   "reference_limitations": {
     "CAT": "Only metal shells are positioned; external antennas and cables are not included in shell-clearance claims",
     "rear_tof": "Source is a valid compound of shells, not solid; only reference/envelope checks apply",
-    "camera": "Board outline 29×31.25 and hole pitch 23×24 from V1R1 drawing; thickness/lens are placeholders",
-    "lidar": "Original fixed curved cable solids hidden; final cable route still required",
+    "camera": "Current enclosed-camera prototype:29x31 outline,23x25 pitch confirmed; hole diameter2.5, thickness1.2,lens12x8 and center19.5from bottom are UNMEASURED; -10deg pitch example, optical clearance/dust sealing untested",
+    "lidar": "LakiBeam1 rotated-90deg about Z, ears and90deg blind sector toward world-Y/CAT; bottom thread/depth variant still needs confirmation; remote cable hidden",
     "battery": "No actual battery solid or confirmed height; reference cradle preserved"
   },
   "layout_warnings": [
@@ -233,7 +249,7 @@
   ],
   "not_tested": [
     "Physical nut/bolt access under both plates (user to verify ground clearance)",
-    "Lidar and camera mounts (deferred by user until CAT/battery are fixed)",
+    "LiDAR/camera initial prototype, selected chassis anchors and self-tap fastening confirmed; clip insertion, hardware fit and printability still under verification",
     "All remaining fastener retention details",
     "Actual battery height and camera thickness/lens geometry",
     "Cable routing and full FOV/access",
@@ -253,6 +269,8 @@
     "CameraPCB",
     "CameraLensEnvelope",
     "CameraMount",
+    "CameraHousing",
+    "CameraRearCover",
     "CATShell0",
     "CATShell1",
     "LayerPost1",
@@ -272,6 +290,7 @@
     "MCUSpacer3",
     "MCUSpacer4"
   ],
+  "lidar_frame_source_sha256": "407c5d852bf3cf4c46a9ac8e1a4e135a3ffeaca2297e49cd688cdbeffa3d810b",
   "cat_source_sha256": "f254497f0fec7ca50b48cf0b7c83709ef0c7900260ee5dc1b9f0377a6a9fd584",
   "battery_source_sha256": "3953dc2f34ffcc7aa3af99a66c1eb4ff585f4a825f8dbf80fc213ee806d6d256",
   "sources": {

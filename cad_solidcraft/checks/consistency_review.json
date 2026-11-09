@@ -1,44 +1,20 @@
 {
-  "date": "2026-11-09",
-  "scope": "CAT printing edge finishes and foot-overhang transition; publish latest battery and CAT slice-ready geometry",
-  "authorization": "User requested local geometry optimization only for edge finishes and overhang, then commit and push; infill/lightweight windows not changed",
-  "geometry": "Four full-height ribs retained; continuous radius4-to6 foot transition over2mm, outside R3, root R0.6, bottom outside chamfer0.3 and nut/pilot lead-ins0.25; shell mating top left unchanged",
-  "documentation": "Current model descriptions, STL/STEP locations, print orientations and outstanding physical-fit risks synchronized",
-  "scripts": "Support from a single revolved section; holes in plate before support unions; native root/edge finishing; boundary fingerprint caching avoids repeated expensive face integrals",
-  "memory_notes": "No matching project state found in earlier targeted local Obsidian/ZCode/Claude Markdown searches; no external memory files changed",
-  "external_documents": "No Feishu documents opened or changed",
-  "validation": {
-    "CAT": {
-      "pass": 211,
-      "fail": 0,
-      "warning": 1,
-      "not_tested": 4
-    },
-    "native_full_replay": "pass; interactive/replay volumes agree",
-    "native_reopen": "pass",
-    "saved_assembly": {
-      "pass": 25,
-      "fail": 0,
-      "warning": 0,
-      "not_tested": 0
-    },
-    "assembly_collision": [
-      {
-        "a": "RearTOF",
-        "b": "BatteryCradle",
-        "overlap_mm3": 906.3326126157399,
-        "method": [
-          "conservative bbox envelope (source has no solids)",
-          "solid BRep"
-        ]
-      }
-    ],
-    "print_meshes": "closed; details in print_meshes.json"
+  "scope": "Initial LiDAR/camera modular design, source interface audit, orientation correction and current assembly",
+  "status": "reviewed_initial_draft",
+  "checks": {
+    "python_syntax": "pass",
+    "documentation_links": "pass",
+    "native_features": "no errors",
+    "current_minus10deg_pose": "pass",
+    "minus20deg_pose": "known collision retained",
+    "detailed_frame_BOP": "diagnostic warning retained",
+    "full_assembly": "existing RearTOF/BatteryCradle collision retained"
   },
+  "excluded_user_file": "cad_solidcraft/r3.3mf",
   "limitations": [
-    "STEP coincident Boolean diagnostic differs from its matching vertex/face/volume readback; warning retained",
-    "Support-free printing, actual pilot fit and nut fit need physical trial",
-    "CAT PCB screw-head clearance and full optical FOV unverified",
-    "RearTOF/battery interference remains"
-  ]
+    "Camera PCB thickness/hole diameter/optics envelope unmeasured",
+    "Prototype not print approved",
+    "No additional design expansion during commit"
+  ],
+  "external_sources": "Manufacturer manual retained for source evidence; no external collaborative document changes"
 }

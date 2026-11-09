@@ -185,25 +185,25 @@
     },
     {
       "name": "LidarMount",
-      "label": "雷达转接架占位 · 保持原机身 · 紧固与锚孔未定",
-      "type_id": "Part::MultiFuse",
+      "label": "雷达架初稿 · M3×10自攻 / 前左右孔带 / 耳朝后",
+      "type_id": "Part::Feature",
       "observed": {
-        "shape_type": "Compound",
+        "shape_type": "Solid",
         "is_null": false,
         "valid": true,
         "closed": true,
         "solid_count": 1,
-        "volume_mm3": 26704.77796076939,
+        "volume_mm3": 33452.944967791016,
         "bbox_mm": {
-          "x": 72.0,
-          "y": 80.0,
-          "z": 33.0,
-          "xmin": -36.0,
-          "ymin": -40.0,
-          "zmin": -33.0,
-          "xmax": 36.0,
-          "ymax": 40.0,
-          "zmax": 0.0
+          "x": 70.00000000000246,
+          "y": 75.00000000000007,
+          "z": 35.50000000000345,
+          "xmin": -35.00000000000107,
+          "ymin": -36.0,
+          "zmin": -33.00000000000408,
+          "xmax": 35.000000000001386,
+          "ymax": 39.00000000000007,
+          "zmax": 2.499999999999376
         }
       },
       "checks": [
@@ -245,7 +245,7 @@
           "expected": {
             "minimum_exclusive": 0
           },
-          "actual": 26704.77796076939,
+          "actual": 33452.944967791016,
           "method": "Shape.Volume",
           "message": "positive volume"
         },
@@ -253,13 +253,13 @@
           "id": "LidarMount.bbox.z",
           "status": "pass",
           "expected": {
-            "value": 33.0,
+            "value": 35.5,
             "tolerance": 0.001,
             "unit": "mm"
           },
           "actual": {
-            "value": 33.0,
-            "delta": 0.0,
+            "value": 35.50000000000345,
+            "delta": 3.453237695794087e-12,
             "unit": "mm"
           },
           "method": "Shape.BoundBox.ZLength",
@@ -269,25 +269,25 @@
     },
     {
       "name": "CameraMount",
-      "label": "相机支架概念 · 无铁板锚孔",
+      "label": "双挂钩相机座 · 下脚落板 / M3防脱",
       "type_id": "Part::Feature",
       "observed": {
-        "shape_type": "Compound",
+        "shape_type": "Solid",
         "is_null": false,
         "valid": true,
         "closed": true,
         "solid_count": 1,
-        "volume_mm3": 5089.109740787568,
+        "volume_mm3": 3823.5257761819566,
         "bbox_mm": {
-          "x": 44.0,
-          "y": 14.0,
-          "z": 35.5,
-          "xmin": -22.0,
-          "ymin": -14.0,
-          "zmin": -3.0,
-          "xmax": 22.0,
-          "ymax": 0.0,
-          "zmax": 32.5
+          "x": 44.60000000000002,
+          "y": 31.200000000000003,
+          "z": 31.0,
+          "xmin": -22.300000000000008,
+          "ymin": 34.8,
+          "zmin": 0.0,
+          "xmax": 22.30000000000001,
+          "ymax": 66.0,
+          "zmax": 31.0
         }
       },
       "checks": [
@@ -329,7 +329,7 @@
           "expected": {
             "minimum_exclusive": 0
           },
-          "actual": 5089.109740787568,
+          "actual": 3823.5257761819566,
           "method": "Shape.Volume",
           "message": "positive volume"
         }
@@ -507,7 +507,7 @@
       "expected": {
         "minimum_exclusive": 0
       },
-      "actual": 26704.77796076939,
+      "actual": 33452.944967791016,
       "method": "Shape.Volume",
       "message": "positive volume"
     },
@@ -515,13 +515,13 @@
       "id": "LidarMount.bbox.z",
       "status": "pass",
       "expected": {
-        "value": 33.0,
+        "value": 35.5,
         "tolerance": 0.001,
         "unit": "mm"
       },
       "actual": {
-        "value": 33.0,
-        "delta": 0.0,
+        "value": 35.50000000000345,
+        "delta": 3.453237695794087e-12,
         "unit": "mm"
       },
       "method": "Shape.BoundBox.ZLength",
@@ -565,7 +565,7 @@
       "expected": {
         "minimum_exclusive": 0
       },
-      "actual": 5089.109740787568,
+      "actual": 3823.5257761819566,
       "method": "Shape.Volume",
       "message": "positive volume"
     }
@@ -574,7 +574,7 @@
   "assumptions": [],
   "untested_risks": [
     "Physical nut/bolt access under both plates (user to verify ground clearance)",
-    "Lidar and camera mounts (deferred by user until CAT/battery are fixed)",
+    "LiDAR/camera initial prototype, selected chassis anchors and self-tap fastening confirmed; clip insertion, hardware fit and printability still under verification",
     "All remaining fastener retention details",
     "Actual battery height and camera thickness/lens geometry",
     "Cable routing and full FOV/access",
