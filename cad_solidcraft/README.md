@@ -1,66 +1,69 @@
-﻿# cad_solidcraft/ —— SolidCraft 工作流与电池托架
+# SolidCraft 电池盒：当前铜柱版
 
-SolidCraft（solidcraft-cli 0.30.1）在本项目中的使用说明与交付件。
-需求与全部确认过程见 [电池托架需求存档.md](电池托架需求存档.md)。
+2026-11-09，按用户最新反馈更新。源件是 `../models/电池托架参考.step`；
+本目录 `exports/ref2_底盘主层板与电池底座.step` 与其哈希相同。
+原配层板不用；原参考尺寸是依据，不沿用之前的打印柱/蜂窝版本。
 
-## 当前件：电池托架 v10（2026-11-09 用户确认）
+## 当前几何与五金
 
-| 文件 | 说明 |
+| 项目 | 当前值 |
 |---|---|
-| `battery_cradle.sc` | SolidCraft 原生设计（时间线可编辑） |
-| `exports/battery_cradle.step` | 交付 STEP（单实体，66.6 × 90.6 × 12 mm，体积 15252 mm³） |
-| `renders/cradle_v10_top.png` / `_under.png` / `_iso.png` | 渲染图 |
-| `renders/fit_top.png` / `fit_iso.png` / `fit_bottom.png` | 装到 R3mini 真实底盘上的贴合对比 |
-| `scripts/verify_cradle.py` | 数值验证（15 项全 PASS） |
-| `scripts/fix_step_solid.py` | STEP 导出成壳时用 OCCT 缝合修复 |
+| 原托盘主体外廓 | 66.6×90.6 mm |
+| 含功能边的打印件外廓 | 66.6×98×14.4 mm |
+| 内腔两内壁间距 | 62.6×86.6 mm |
+| 出线口 | 原件位置，宽 16 mm |
+| 均匀底板 | 4.4 mm，局部 Z=-2.4..2 |
+| 两条扎带槽 | X=-14..-8、8..14；宽 6，深 1.2，槽顶 Z=-1.2，槽上厚 3.2 |
+| 功能边 | 两侧一体加强边，外角 2 mm 斜切，扎带出口完整切开 |
+| 固定件 | M3×10+4 单头铜柱 ×4，外螺纹朝上；普通 M3 螺母 ×4 |
+| 螺母窝 | 六角对边 5.8；螺母支承面 Z=-1；夹持底厚 1.4 |
+| 螺柱通孔 | Ø3.3 |
+| 名义五金 | 铜柱六角对边 5.5；螺母对边 5.5、高 2.4，待实物核对 |
 
-设计要点：
+螺柱尖低于电池承托面 0.4 mm，螺母顶低于承托面 0.6 mm，均为名义尺寸计算。
+五金示意没有真实螺纹；铜柱内孔示意深度 6 mm 尚无厂家依据，不能据此选底部螺丝长度。
+本轮没有蜂窝和透气孔，后续可评估简单直槽。
 
-- 基础盒 66.6 × 90.6 × 12（板 2 / 壁 2），电池腔顶开，左长壁 y -41..-23 供电口。
-- **扎带槽 ×2**：中间两条纵向（x -63~-55、-43~-35），沿 Y 全程；从底部打薄 1.35 留 0.75 薄层
-  （底板不切穿）；只把两条槽 X 范围对应的端壁切穿（前后各 2 窗口）。
-- **底板六边形蜂窝**：105 个正六边形（R3.0，壁约 1mm）贯穿底板；**柱附近（距柱心 <11mm）不切**，
-  柱/法兰/筋周围完整实心；蜂窝不避让扎带槽。
-- **四柱** Ø7×10 + **Ø14×3 圆形法兰** + **十字加强筋**（2 片 14×2×7.6/柱），柱内 Ø2.5×7 自攻孔，
-  M3×10 从下穿上、不碰主体。柱位局部 (-23.73,±43)、(-74.87,±39.04)
-  → 底盘孔 (±43,-128.47)、(±39.04,-77.33)。
-- **端部筋沿**：两端各 3 段（跳过扎带窗口），覆盖后柱，作为功能性脚/加强沿。
+## 文件和状态
 
-装配变换：`x_world = y_local`、`y_world = -x_local - 152.2`、`z_world = z_local - 50`。
+- `battery_cradle.sc`：打印件原生设计。
+- `battery_mount.sc`：托架 + 四铜柱 + 四螺母，共 9 个实体。
+- `exports/battery_cradle.step` / `.stl`：只导出打印件。
+- `exports/battery_mount.step`：名义五金安装示意。
+- `checks/battery_cradle_checks.json`：独立 OCCT 检查。
+- `checks/solidcraft_inspect.json`：原生时间线及参数读数。
+- `renders/`：当前零件与安装视图。
 
-底盘贴合：后柱 Ø14 法兰距底盘板后缘 0.93 mm（偏紧，实物验证时留意）；两侧轮组约 10 mm 间隙；
-电机在板下方，不干涉。
+**零件几何符合本轮要求，整车装配仍有后 TOF 干涉。**
+现有 TOF 实际表面与底板交叠面积约 301.5 mm²；包络重叠体积约 974.8 mm³。
+两个读数采用不同方法，不是同一个测量量。后 TOF 未擅自移动。
+打印配合、实际螺纹长度、材料、支撑、强度、温度、振动和电池实物尚未验证。
 
-## 基础模型
+装配坐标：`X_world = y_local`，`Y_world = -x_local - 102.9`，`Z_world = z_local + 13.9`。
+铜柱底面落在下层铁板顶面 Z=1.5；托架底面 Z=11.5、承托面 Z=15.9。
+四锚点为 `(±43,-128.47)`、`(±39.04,-77.33)`；前锚点位于短长圆孔的端部圆弧中心。
 
-| 文件 | 说明 |
-|---|---|
-| `exports/ref2_底盘主层板与电池底座.step` | 用户提供的原始参考件（含主层板 + 电池底座；主层板不属于本项目） |
-| `exports/steel_plate.step` | 从 R3 底盘提取的 1.5 mm 钢板（上层板用） |
-| `exports/LubanCat5_PCB_simplified.step` | 鲁班猫 5 PCB 简化板体（125×80×3.3，保留全部 14 个孔位） |
-| `exports/LubanCat5_PCB_holes.txt` | 鲁班猫板 14 个孔位清单（x、y、直径 mm） |
+## 重建
 
-## 工具
+`solidcraft-cli` 从 PATH 或 `SOLIDCRAFT_CLI` 获取。GUI 内迭代使用：
 
-| 文件 | 说明 |
-|---|---|
-| `scripts/sc_mcp.py` | SolidCraft MCP stdio 客户端（`python scripts/sc_mcp.py reqs.json --wait 秒`） |
-| `scripts/simplify_lubancat.py` | 鲁班猫板体提取导出（OCCT，`cadgen run`） |
-| `scripts/bake_meshes2.py` / `bake_shell.py` | 供应商模型（C30D/雷达/CAT 壳）定位烘焙为 STL，供总装使用 |
+```bash
+solidcraft --control 27878
+SOLIDCRAFT_CONNECT=127.0.0.1:27878 python3 cad_solidcraft/scripts/build_battery_cradle.py
+```
 
-## SolidCraft 使用要点
+生成器新建设计，默认输出到被忽略的 `cad_solidcraft/build/`；不会自动覆盖已接受的导出目录。
+批处理设置 `SOLIDCRAFT_HEADLESS=1`，使用 `R3_CAD_OUT` 指定其他暂存目录。
 
-- CLI：`solidcraft-cli 0.30.1`（路径按本机安装调整）。
-- MCP 注册在 `~/.dsh/profiles/desktop/cordis.patch.yml` 的 `solidcraft-mcp` 条目（stdio，`solidcraft-cli mcp`）；
-  未重启 DSH 时用 `scripts/sc_mcp.py` 驱动。
-- 桥接：GUI 打开时 MCP 自动桥到应用，建模实时可见；`--headless` 为独立会话。
-- **每个 MCP 连接是独立设计会话**，相关操作须在同一次连接内完成；`file.insert_step` 等是引擎命令，走 `batch`/`execute`。
+```bash
+SOLIDCRAFT_HEADLESS=1 python3 cad_solidcraft/scripts/build_battery_cradle.py
+FREECAD_RUN="${FREECAD_RUN:-$HOME/.local/opt/freecad-1.1.4/squashfs-root/AppRun}"
+"$FREECAD_RUN" python cad_solidcraft/scripts/verify_cradle.py
+```
 
-## 已知坑
+验证器检查生成目录的文件，并写出 STEP 读回、STL、装配坐标版本和报告。
+它会因当前后 TOF 干涉返回非零；不要删除这项检查来获得“全通过”。
+验证后按报告分辨零件与整车状态，再将本轮认可的结果替换到当前目录。
 
-- SolidCraft 0.30.1 的 STEP 导出偶发把实体写成壳：用 `scripts/fix_step_solid.py` 缝合修复，或按需改用 OCCT 导出。
-- `sketch.pattern.rectangular` 的 entities 必须给多边形曲线 id（给点 id 会得到错误阵列）；逐个 `sketch.polygon.inscribed` 更稳。
-- 六边形蜂窝若按顶点相接排布（R=间距），切完底板会碎；需留 1mm 左右筋壁（R 比理论值小 ~1）。
-- `selection.delete` 删实体：`items:[{"type":"body","name":"<名>"}]`，可先 dry_run。
-- 拉伸 join 仅面贴合会被拒，需 0.1–0.2 mm 嵌入量；薄层短距切偶发静默失败，改用全高切。
-- 选孔必须用实体探针（材料体积=0 才是通孔），别信旧清单/圆角面。
+本机 Codex 与 DSH 已配置 SolidCraft MCP；DSH 为 `~/.dsh/profiles/web/cordis.patch.yml`。
+跨机器不要照搬用户目录或 Windows 绝对路径。

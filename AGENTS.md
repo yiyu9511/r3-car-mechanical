@@ -3,6 +3,10 @@
 先读 `README.md`、`docs/当前设计.md` 和 `docs/C30D集成板安装说明.md`。
 当前电控为 C30D V2.3；机械外形使用仓库内的 V2.2 STEP。
 
+继续参考件改造、SolidCraft 建模或机械转接件设计时，使用仓库级技能
+[`solidcraft-reference-modeling`](.agents/skills/solidcraft-reference-modeling/SKILL.md)。
+具体尺寸与当前状态仍以用户最新指令、当前文档和模型测量为准，不照搬技能案例尺寸。
+
 用户已确定采用两块相同的现有铁底板搭两层，默认层间铜柱 50 mm（可调）。
 第一层：前后 TOF、C30D MCU、电池。第二层：CAT、雷达、相机。
 铁板保留原轮廓和孔型；打印件只做设备转接和支撑，不另造打印主层板。

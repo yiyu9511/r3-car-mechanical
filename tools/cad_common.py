@@ -42,13 +42,3 @@ def cat_shells():
     assert abs(lower.BoundBox.XLength - 135.3256) < .01
     assert abs(lower.BoundBox.YLength - 80.5) < .01
     return shells, face
-
-
-def battery_cradle():
-    reference = Part.read(str(ROOT/'models/电池托架参考.step'))
-    assert len(reference.Solids) == 2
-    cradle = min(reference.Solids, key=lambda s: s.Volume).copy()
-    b = cradle.BoundBox
-    assert abs(b.XLength-66.6) < .001 and abs(b.YLength-117) < .001
-    cradle.translate(V(-b.Center.x, -b.Center.y, -b.ZMin))
-    return cradle

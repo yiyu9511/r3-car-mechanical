@@ -45,7 +45,7 @@ report={'status':'fail' if violations else 'pass','evidence_level':'geometry',
         'pair_count':len(names)*(len(names)-1)//2,'boolean_pairs':checks,'violations':violations,
         'limitations':['Touching surfaces do not prove fastener access or retention',
                        'No actual battery body, lens, antennas or final cables included',
-                       'Standoff positions and all new chassis anchors remain unconfirmed']}
+                       'Layer-support positions, hardware dimensions and physical hole occupancy need verification']}
 with open(out/'collision_checks.json','w',encoding='utf-8') as fh:
     fh.write(json.dumps(report,ensure_ascii=False,indent=2))
 print(json.dumps({'status':report['status'],'pairs':report['pair_count'],'boolean_checks':len(checks),'violations':violations},ensure_ascii=False,indent=2),flush=True)

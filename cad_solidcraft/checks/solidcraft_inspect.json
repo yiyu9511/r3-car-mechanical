@@ -1,0 +1,2524 @@
+{
+  "active_sketch": null,
+  "bodies": [
+    {
+      "area_mm2": 20422.655829598676,
+      "bbox": {
+        "max": [
+          33.300000000000004,
+          49.00000000000001,
+          11.99999999999995
+        ],
+        "min": [
+          -33.300000000000004,
+          -49.000000000000014,
+          -2.399999999999963
+        ]
+      },
+      "center_of_mass": [
+        0.1591236803665215,
+        0.3346386126490174,
+        1.0259778402775857
+      ],
+      "closed": true,
+      "edges": 252,
+      "face_types": {
+        "cylinder": 4,
+        "plane": 88
+      },
+      "faces": 92,
+      "kernel": {
+        "edges": 268,
+        "faces": 96,
+        "shells": 1,
+        "vertices": 176
+      },
+      "name": "BatteryCradle",
+      "vertices": 168,
+      "visible": true,
+      "volume_mm3": 31556.430133403574
+    }
+  ],
+  "dirty": true,
+  "hidden_origin": [
+    "O",
+    "X",
+    "Y",
+    "Z",
+    "XY",
+    "XZ",
+    "YZ"
+  ],
+  "marker": 25,
+  "metadata": {},
+  "name": "Battery cradle — M3 10+4 brass standoffs",
+  "params": [
+    {
+      "comment": "",
+      "error": null,
+      "expression": "6",
+      "model": false,
+      "name": "strap_width",
+      "unit": "mm",
+      "value": 6.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "11",
+      "model": false,
+      "name": "strap_offset",
+      "unit": "mm",
+      "value": 11.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "1.2",
+      "model": false,
+      "name": "strap_depth",
+      "unit": "mm",
+      "value": 1.2
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "2",
+      "model": false,
+      "name": "floor_thickness",
+      "unit": "mm",
+      "value": 2.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "2.4",
+      "model": false,
+      "name": "seat_drop",
+      "unit": "mm",
+      "value": 2.4
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "5.5",
+      "model": false,
+      "name": "seat_radius",
+      "unit": "mm",
+      "value": 5.5
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "1.65",
+      "model": false,
+      "name": "stud_clearance_radius",
+      "unit": "mm",
+      "value": 1.65
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "5.8",
+      "model": false,
+      "name": "nut_pocket_af",
+      "unit": "mm",
+      "value": 5.8
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "-1",
+      "model": false,
+      "name": "nut_seat_z",
+      "unit": "mm",
+      "value": -1.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "10",
+      "model": false,
+      "name": "brass_height",
+      "unit": "mm",
+      "value": 10.0
+    },
+    {
+      "comment": "",
+      "error": null,
+      "expression": "4",
+      "model": false,
+      "name": "stud_length",
+      "unit": "mm",
+      "value": 4.0
+    }
+  ],
+  "path": "/tmp/r3-battery-brass/battery_cradle.sc",
+  "redo": 0,
+  "revision": 85,
+  "selection": [],
+  "sketches": [
+    {
+      "constraints": [],
+      "curves": [
+        {
+          "construction": false,
+          "end": "l1.end",
+          "end_at": [
+            33.3,
+            -33.5
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1",
+          "start": "l1.start",
+          "start_at": [
+            -33.3,
+            -33.5
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l2.end",
+          "end_at": [
+            33.3,
+            -47.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l2",
+          "start": "l1.end",
+          "start_at": [
+            33.3,
+            -33.5
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l3.end",
+          "end_at": [
+            31.3,
+            -49.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l3",
+          "start": "l2.end",
+          "start_at": [
+            33.3,
+            -47.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l4.end",
+          "end_at": [
+            -31.3,
+            -49.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l4",
+          "start": "l3.end",
+          "start_at": [
+            31.3,
+            -49.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l5.end",
+          "end_at": [
+            -33.3,
+            -47.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l5",
+          "start": "l4.end",
+          "start_at": [
+            -31.3,
+            -49.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l6.end",
+          "end_at": [
+            -33.3,
+            -33.5
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l6",
+          "start": "l5.end",
+          "start_at": [
+            -33.3,
+            -47.0
+          ],
+          "type": "line"
+        }
+      ],
+      "dof": 14,
+      "failing": [],
+      "fully_constrained": false,
+      "id": 4,
+      "links": [],
+      "name": "Functional edge -1 outline",
+      "plane": {
+        "origin": [
+          0.0,
+          0.0,
+          -2.4
+        ],
+        "x_dir": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "y_dir": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "points": [
+        {
+          "at": [
+            0.0,
+            0.0
+          ],
+          "fixed": true,
+          "fully_constrained": true,
+          "id": "origin",
+          "link": null,
+          "world": [
+            0.0,
+            0.0,
+            -2.4
+          ]
+        },
+        {
+          "at": [
+            -33.3,
+            -33.5
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1.start",
+          "link": null,
+          "world": [
+            -33.3,
+            -33.5,
+            -2.4
+          ]
+        },
+        {
+          "at": [
+            33.3,
+            -33.5
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1.end",
+          "link": null,
+          "world": [
+            33.3,
+            -33.5,
+            -2.4
+          ]
+        },
+        {
+          "at": [
+            33.3,
+            -47.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l2.end",
+          "link": null,
+          "world": [
+            33.3,
+            -47.0,
+            -2.4
+          ]
+        },
+        {
+          "at": [
+            31.3,
+            -49.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l3.end",
+          "link": null,
+          "world": [
+            31.3,
+            -49.0,
+            -2.4
+          ]
+        },
+        {
+          "at": [
+            -31.3,
+            -49.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l4.end",
+          "link": null,
+          "world": [
+            -31.3,
+            -49.0,
+            -2.4
+          ]
+        },
+        {
+          "at": [
+            -33.3,
+            -47.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l5.end",
+          "link": null,
+          "world": [
+            -33.3,
+            -47.0,
+            -2.4
+          ]
+        },
+        {
+          "at": [
+            -33.3,
+            -33.5
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l6.end",
+          "link": null,
+          "world": [
+            -33.3,
+            -33.5,
+            -2.4
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "area_mm2": 1028.2999999999997,
+          "centroid_sketch": [
+            5.896429069162232e-16,
+            -41.22244643262343
+          ],
+          "curves": [
+            "l1",
+            "l6",
+            "l5",
+            "l4",
+            "l3",
+            "l2"
+          ],
+          "holes": [],
+          "index": 0
+        }
+      ],
+      "status": "solved",
+      "visible": false,
+      "wires": []
+    },
+    {
+      "constraints": [],
+      "curves": [
+        {
+          "construction": false,
+          "end": "l1.end",
+          "end_at": [
+            33.3,
+            33.5
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1",
+          "start": "l1.start",
+          "start_at": [
+            -33.3,
+            33.5
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l2.end",
+          "end_at": [
+            33.3,
+            47.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l2",
+          "start": "l1.end",
+          "start_at": [
+            33.3,
+            33.5
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l3.end",
+          "end_at": [
+            31.3,
+            49.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l3",
+          "start": "l2.end",
+          "start_at": [
+            33.3,
+            47.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l4.end",
+          "end_at": [
+            -31.3,
+            49.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l4",
+          "start": "l3.end",
+          "start_at": [
+            31.3,
+            49.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l5.end",
+          "end_at": [
+            -33.3,
+            47.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l5",
+          "start": "l4.end",
+          "start_at": [
+            -31.3,
+            49.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l6.end",
+          "end_at": [
+            -33.3,
+            33.5
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l6",
+          "start": "l5.end",
+          "start_at": [
+            -33.3,
+            47.0
+          ],
+          "type": "line"
+        }
+      ],
+      "dof": 14,
+      "failing": [],
+      "fully_constrained": false,
+      "id": 6,
+      "links": [],
+      "name": "Functional edge 1 outline",
+      "plane": {
+        "origin": [
+          0.0,
+          0.0,
+          -2.4
+        ],
+        "x_dir": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "y_dir": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "points": [
+        {
+          "at": [
+            0.0,
+            0.0
+          ],
+          "fixed": true,
+          "fully_constrained": true,
+          "id": "origin",
+          "link": null,
+          "world": [
+            0.0,
+            0.0,
+            -2.4
+          ]
+        },
+        {
+          "at": [
+            -33.3,
+            33.5
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1.start",
+          "link": null,
+          "world": [
+            -33.3,
+            33.5,
+            -2.4
+          ]
+        },
+        {
+          "at": [
+            33.3,
+            33.5
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1.end",
+          "link": null,
+          "world": [
+            33.3,
+            33.5,
+            -2.4
+          ]
+        },
+        {
+          "at": [
+            33.3,
+            47.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l2.end",
+          "link": null,
+          "world": [
+            33.3,
+            47.0,
+            -2.4
+          ]
+        },
+        {
+          "at": [
+            31.3,
+            49.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l3.end",
+          "link": null,
+          "world": [
+            31.3,
+            49.0,
+            -2.4
+          ]
+        },
+        {
+          "at": [
+            -31.3,
+            49.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l4.end",
+          "link": null,
+          "world": [
+            -31.3,
+            49.0,
+            -2.4
+          ]
+        },
+        {
+          "at": [
+            -33.3,
+            47.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l5.end",
+          "link": null,
+          "world": [
+            -33.3,
+            47.0,
+            -2.4
+          ]
+        },
+        {
+          "at": [
+            -33.3,
+            33.5
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l6.end",
+          "link": null,
+          "world": [
+            -33.3,
+            33.5,
+            -2.4
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "area_mm2": 1028.2999999999997,
+          "centroid_sketch": [
+            -5.896429069162232e-16,
+            41.22244643262343
+          ],
+          "curves": [
+            "l1",
+            "l2",
+            "l3",
+            "l4",
+            "l5",
+            "l6"
+          ],
+          "holes": [],
+          "index": 0
+        }
+      ],
+      "status": "solved",
+      "visible": false,
+      "wires": []
+    },
+    {
+      "constraints": [
+        {
+          "a": 0,
+          "b": 1,
+          "id": "k1",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "a": 1,
+          "b": 2,
+          "id": "k2",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "a": 2,
+          "b": 3,
+          "id": "k3",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "a": 3,
+          "b": 4,
+          "id": "k4",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "a": 4,
+          "b": 5,
+          "id": "k5",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "c": 6,
+          "id": "k6",
+          "name": "Coincident",
+          "p": 1,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k7",
+          "name": "Coincident",
+          "p": 2,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k8",
+          "name": "Coincident",
+          "p": 3,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k9",
+          "name": "Coincident",
+          "p": 4,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k10",
+          "name": "Coincident",
+          "p": 5,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k11",
+          "name": "Coincident",
+          "p": 6,
+          "type": "point_on_curve"
+        }
+      ],
+      "curves": [
+        {
+          "construction": false,
+          "end": "p2",
+          "end_at": [
+            -23.895684219350084,
+            -36.14
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1",
+          "start": "p1",
+          "start_at": [
+            -22.22136843870017,
+            -39.04
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p3",
+          "end_at": [
+            -27.244315780649913,
+            -36.14
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l2",
+          "start": "p2",
+          "start_at": [
+            -23.895684219350084,
+            -36.14
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p4",
+          "end_at": [
+            -28.91863156129983,
+            -39.04
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l3",
+          "start": "p3",
+          "start_at": [
+            -27.244315780649913,
+            -36.14
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p5",
+          "end_at": [
+            -27.244315780649917,
+            -41.94
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l4",
+          "start": "p4",
+          "start_at": [
+            -28.91863156129983,
+            -39.04
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p6",
+          "end_at": [
+            -23.895684219350084,
+            -41.94
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l5",
+          "start": "p5",
+          "start_at": [
+            -27.244315780649917,
+            -41.94
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p1",
+          "end_at": [
+            -22.22136843870017,
+            -39.04
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l6",
+          "start": "p6",
+          "start_at": [
+            -23.895684219350084,
+            -41.94
+          ],
+          "type": "line"
+        },
+        {
+          "center": "c1.center",
+          "center_at": [
+            -25.57,
+            -39.04
+          ],
+          "construction": true,
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "c1",
+          "radius": 3.3486315612998294,
+          "type": "circle"
+        }
+      ],
+      "dof": 4,
+      "failing": [],
+      "fully_constrained": false,
+      "id": 8,
+      "links": [],
+      "name": "M3 nut access and trap 1 sketch",
+      "plane": {
+        "origin": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "x_dir": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "y_dir": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "points": [
+        {
+          "at": [
+            0.0,
+            0.0
+          ],
+          "fixed": true,
+          "fully_constrained": true,
+          "id": "origin",
+          "link": null,
+          "world": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            -22.22136843870017,
+            -39.04
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p1",
+          "link": null,
+          "world": [
+            -22.22136843870017,
+            -39.04,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            -23.895684219350084,
+            -36.14
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p2",
+          "link": null,
+          "world": [
+            -23.895684219350084,
+            -36.14,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            -27.244315780649913,
+            -36.14
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p3",
+          "link": null,
+          "world": [
+            -27.244315780649913,
+            -36.14,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            -28.91863156129983,
+            -39.04
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p4",
+          "link": null,
+          "world": [
+            -28.91863156129983,
+            -39.04,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            -27.244315780649917,
+            -41.94
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p5",
+          "link": null,
+          "world": [
+            -27.244315780649917,
+            -41.94,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            -23.895684219350084,
+            -41.94
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p6",
+          "link": null,
+          "world": [
+            -23.895684219350084,
+            -41.94,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            -25.57,
+            -39.04
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "c1.center",
+          "link": null,
+          "world": [
+            -25.57,
+            -39.04,
+            -1.0
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "area_mm2": 29.13309458330849,
+          "centroid_sketch": [
+            -25.569999999999997,
+            -39.04
+          ],
+          "curves": [
+            "l1",
+            "l2",
+            "l3",
+            "l4",
+            "l5",
+            "l6"
+          ],
+          "holes": [],
+          "index": 0
+        }
+      ],
+      "status": "solved",
+      "visible": false,
+      "wires": []
+    },
+    {
+      "constraints": [
+        {
+          "a": 0,
+          "b": 1,
+          "id": "k1",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "a": 1,
+          "b": 2,
+          "id": "k2",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "a": 2,
+          "b": 3,
+          "id": "k3",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "a": 3,
+          "b": 4,
+          "id": "k4",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "a": 4,
+          "b": 5,
+          "id": "k5",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "c": 6,
+          "id": "k6",
+          "name": "Coincident",
+          "p": 1,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k7",
+          "name": "Coincident",
+          "p": 2,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k8",
+          "name": "Coincident",
+          "p": 3,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k9",
+          "name": "Coincident",
+          "p": 4,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k10",
+          "name": "Coincident",
+          "p": 5,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k11",
+          "name": "Coincident",
+          "p": 6,
+          "type": "point_on_curve"
+        }
+      ],
+      "curves": [
+        {
+          "construction": false,
+          "end": "p2",
+          "end_at": [
+            -23.895684219350084,
+            41.94
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1",
+          "start": "p1",
+          "start_at": [
+            -22.22136843870017,
+            39.04
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p3",
+          "end_at": [
+            -27.244315780649913,
+            41.94
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l2",
+          "start": "p2",
+          "start_at": [
+            -23.895684219350084,
+            41.94
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p4",
+          "end_at": [
+            -28.91863156129983,
+            39.04
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l3",
+          "start": "p3",
+          "start_at": [
+            -27.244315780649913,
+            41.94
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p5",
+          "end_at": [
+            -27.244315780649917,
+            36.14
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l4",
+          "start": "p4",
+          "start_at": [
+            -28.91863156129983,
+            39.04
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p6",
+          "end_at": [
+            -23.895684219350084,
+            36.14
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l5",
+          "start": "p5",
+          "start_at": [
+            -27.244315780649917,
+            36.14
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p1",
+          "end_at": [
+            -22.22136843870017,
+            39.04
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l6",
+          "start": "p6",
+          "start_at": [
+            -23.895684219350084,
+            36.14
+          ],
+          "type": "line"
+        },
+        {
+          "center": "c1.center",
+          "center_at": [
+            -25.57,
+            39.04
+          ],
+          "construction": true,
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "c1",
+          "radius": 3.3486315612998294,
+          "type": "circle"
+        }
+      ],
+      "dof": 4,
+      "failing": [],
+      "fully_constrained": false,
+      "id": 11,
+      "links": [],
+      "name": "M3 nut access and trap 2 sketch",
+      "plane": {
+        "origin": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "x_dir": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "y_dir": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "points": [
+        {
+          "at": [
+            0.0,
+            0.0
+          ],
+          "fixed": true,
+          "fully_constrained": true,
+          "id": "origin",
+          "link": null,
+          "world": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            -22.22136843870017,
+            39.04
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p1",
+          "link": null,
+          "world": [
+            -22.22136843870017,
+            39.04,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            -23.895684219350084,
+            41.94
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p2",
+          "link": null,
+          "world": [
+            -23.895684219350084,
+            41.94,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            -27.244315780649913,
+            41.94
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p3",
+          "link": null,
+          "world": [
+            -27.244315780649913,
+            41.94,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            -28.91863156129983,
+            39.04
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p4",
+          "link": null,
+          "world": [
+            -28.91863156129983,
+            39.04,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            -27.244315780649917,
+            36.14
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p5",
+          "link": null,
+          "world": [
+            -27.244315780649917,
+            36.14,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            -23.895684219350084,
+            36.14
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p6",
+          "link": null,
+          "world": [
+            -23.895684219350084,
+            36.14,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            -25.57,
+            39.04
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "c1.center",
+          "link": null,
+          "world": [
+            -25.57,
+            39.04,
+            -1.0
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "area_mm2": 29.13309458330866,
+          "centroid_sketch": [
+            -25.56999999999997,
+            39.03999999999991
+          ],
+          "curves": [
+            "l1",
+            "l2",
+            "l3",
+            "l4",
+            "l5",
+            "l6"
+          ],
+          "holes": [],
+          "index": 0
+        }
+      ],
+      "status": "solved",
+      "visible": false,
+      "wires": []
+    },
+    {
+      "constraints": [
+        {
+          "a": 0,
+          "b": 1,
+          "id": "k1",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "a": 1,
+          "b": 2,
+          "id": "k2",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "a": 2,
+          "b": 3,
+          "id": "k3",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "a": 3,
+          "b": 4,
+          "id": "k4",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "a": 4,
+          "b": 5,
+          "id": "k5",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "c": 6,
+          "id": "k6",
+          "name": "Coincident",
+          "p": 1,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k7",
+          "name": "Coincident",
+          "p": 2,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k8",
+          "name": "Coincident",
+          "p": 3,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k9",
+          "name": "Coincident",
+          "p": 4,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k10",
+          "name": "Coincident",
+          "p": 5,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k11",
+          "name": "Coincident",
+          "p": 6,
+          "type": "point_on_curve"
+        }
+      ],
+      "curves": [
+        {
+          "construction": false,
+          "end": "p2",
+          "end_at": [
+            27.244315780649917,
+            -40.1
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1",
+          "start": "p1",
+          "start_at": [
+            28.91863156129983,
+            -43.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p3",
+          "end_at": [
+            23.895684219350088,
+            -40.1
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l2",
+          "start": "p2",
+          "start_at": [
+            27.244315780649917,
+            -40.1
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p4",
+          "end_at": [
+            22.22136843870017,
+            -43.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l3",
+          "start": "p3",
+          "start_at": [
+            23.895684219350088,
+            -40.1
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p5",
+          "end_at": [
+            23.895684219350084,
+            -45.9
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l4",
+          "start": "p4",
+          "start_at": [
+            22.22136843870017,
+            -43.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p6",
+          "end_at": [
+            27.244315780649917,
+            -45.9
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l5",
+          "start": "p5",
+          "start_at": [
+            23.895684219350084,
+            -45.9
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p1",
+          "end_at": [
+            28.91863156129983,
+            -43.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l6",
+          "start": "p6",
+          "start_at": [
+            27.244315780649917,
+            -45.9
+          ],
+          "type": "line"
+        },
+        {
+          "center": "c1.center",
+          "center_at": [
+            25.57,
+            -43.0
+          ],
+          "construction": true,
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "c1",
+          "radius": 3.3486315612998294,
+          "type": "circle"
+        }
+      ],
+      "dof": 4,
+      "failing": [],
+      "fully_constrained": false,
+      "id": 14,
+      "links": [],
+      "name": "M3 nut access and trap 3 sketch",
+      "plane": {
+        "origin": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "x_dir": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "y_dir": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "points": [
+        {
+          "at": [
+            0.0,
+            0.0
+          ],
+          "fixed": true,
+          "fully_constrained": true,
+          "id": "origin",
+          "link": null,
+          "world": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            28.91863156129983,
+            -43.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p1",
+          "link": null,
+          "world": [
+            28.91863156129983,
+            -43.0,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            27.244315780649917,
+            -40.1
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p2",
+          "link": null,
+          "world": [
+            27.244315780649917,
+            -40.1,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            23.895684219350088,
+            -40.1
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p3",
+          "link": null,
+          "world": [
+            23.895684219350088,
+            -40.1,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            22.22136843870017,
+            -43.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p4",
+          "link": null,
+          "world": [
+            22.22136843870017,
+            -43.0,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            23.895684219350084,
+            -45.9
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p5",
+          "link": null,
+          "world": [
+            23.895684219350084,
+            -45.9,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            27.244315780649917,
+            -45.9
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p6",
+          "link": null,
+          "world": [
+            27.244315780649917,
+            -45.9,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            25.57,
+            -43.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "c1.center",
+          "link": null,
+          "world": [
+            25.57,
+            -43.0,
+            -1.0
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "area_mm2": 29.133094583308605,
+          "centroid_sketch": [
+            25.569999999999965,
+            -42.99999999999997
+          ],
+          "curves": [
+            "l1",
+            "l2",
+            "l3",
+            "l4",
+            "l5",
+            "l6"
+          ],
+          "holes": [],
+          "index": 0
+        }
+      ],
+      "status": "solved",
+      "visible": false,
+      "wires": []
+    },
+    {
+      "constraints": [
+        {
+          "a": 0,
+          "b": 1,
+          "id": "k1",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "a": 1,
+          "b": 2,
+          "id": "k2",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "a": 2,
+          "b": 3,
+          "id": "k3",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "a": 3,
+          "b": 4,
+          "id": "k4",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "a": 4,
+          "b": 5,
+          "id": "k5",
+          "name": "Equal",
+          "type": "equal"
+        },
+        {
+          "c": 6,
+          "id": "k6",
+          "name": "Coincident",
+          "p": 1,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k7",
+          "name": "Coincident",
+          "p": 2,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k8",
+          "name": "Coincident",
+          "p": 3,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k9",
+          "name": "Coincident",
+          "p": 4,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k10",
+          "name": "Coincident",
+          "p": 5,
+          "type": "point_on_curve"
+        },
+        {
+          "c": 6,
+          "id": "k11",
+          "name": "Coincident",
+          "p": 6,
+          "type": "point_on_curve"
+        }
+      ],
+      "curves": [
+        {
+          "construction": false,
+          "end": "p2",
+          "end_at": [
+            27.244315780649917,
+            45.9
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1",
+          "start": "p1",
+          "start_at": [
+            28.91863156129983,
+            43.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p3",
+          "end_at": [
+            23.895684219350088,
+            45.9
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l2",
+          "start": "p2",
+          "start_at": [
+            27.244315780649917,
+            45.9
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p4",
+          "end_at": [
+            22.22136843870017,
+            43.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l3",
+          "start": "p3",
+          "start_at": [
+            23.895684219350088,
+            45.9
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p5",
+          "end_at": [
+            23.895684219350084,
+            40.1
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l4",
+          "start": "p4",
+          "start_at": [
+            22.22136843870017,
+            43.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p6",
+          "end_at": [
+            27.244315780649917,
+            40.1
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l5",
+          "start": "p5",
+          "start_at": [
+            23.895684219350084,
+            40.1
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "p1",
+          "end_at": [
+            28.91863156129983,
+            43.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l6",
+          "start": "p6",
+          "start_at": [
+            27.244315780649917,
+            40.1
+          ],
+          "type": "line"
+        },
+        {
+          "center": "c1.center",
+          "center_at": [
+            25.57,
+            43.0
+          ],
+          "construction": true,
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "c1",
+          "radius": 3.3486315612998294,
+          "type": "circle"
+        }
+      ],
+      "dof": 4,
+      "failing": [],
+      "fully_constrained": false,
+      "id": 17,
+      "links": [],
+      "name": "M3 nut access and trap 4 sketch",
+      "plane": {
+        "origin": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "x_dir": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "y_dir": [
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "points": [
+        {
+          "at": [
+            0.0,
+            0.0
+          ],
+          "fixed": true,
+          "fully_constrained": true,
+          "id": "origin",
+          "link": null,
+          "world": [
+            0.0,
+            0.0,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            28.91863156129983,
+            43.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p1",
+          "link": null,
+          "world": [
+            28.91863156129983,
+            43.0,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            27.244315780649917,
+            45.9
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p2",
+          "link": null,
+          "world": [
+            27.244315780649917,
+            45.9,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            23.895684219350088,
+            45.9
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p3",
+          "link": null,
+          "world": [
+            23.895684219350088,
+            45.9,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            22.22136843870017,
+            43.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p4",
+          "link": null,
+          "world": [
+            22.22136843870017,
+            43.0,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            23.895684219350084,
+            40.1
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p5",
+          "link": null,
+          "world": [
+            23.895684219350084,
+            40.1,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            27.244315780649917,
+            40.1
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "p6",
+          "link": null,
+          "world": [
+            27.244315780649917,
+            40.1,
+            -1.0
+          ]
+        },
+        {
+          "at": [
+            25.57,
+            43.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "c1.center",
+          "link": null,
+          "world": [
+            25.57,
+            43.0,
+            -1.0
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "area_mm2": 29.133094583308434,
+          "centroid_sketch": [
+            25.570000000000007,
+            43.00000000000004
+          ],
+          "curves": [
+            "l1",
+            "l2",
+            "l3",
+            "l4",
+            "l5",
+            "l6"
+          ],
+          "holes": [],
+          "index": 0
+        }
+      ],
+      "status": "solved",
+      "visible": false,
+      "wires": []
+    }
+  ],
+  "timeline": [
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 1,
+      "ms": 1.8147149999999999,
+      "name": "Measured reference envelope",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 2,
+      "ms": 7.033298,
+      "name": "Measured reference battery cavity",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 3,
+      "ms": 25.011782999999998,
+      "name": "Measured reference cable opening",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 4,
+      "ms": 0.166509,
+      "name": "Functional edge -1 outline",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 5,
+      "ms": 39.787959,
+      "name": "Integrated functional edge -1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 6,
+      "ms": 0.223955,
+      "name": "Functional edge 1 outline",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 7,
+      "ms": 43.711497,
+      "name": "Integrated functional edge 1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 8,
+      "ms": 0.360087,
+      "name": "M3 nut access and trap 1 sketch",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 9,
+      "ms": 7.465904,
+      "name": "M3 nut access and trap 1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 10,
+      "ms": 65.089018,
+      "name": "M3 stud clearance 1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 11,
+      "ms": 0.397782,
+      "name": "M3 nut access and trap 2 sketch",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 12,
+      "ms": 62.172129999999996,
+      "name": "M3 nut access and trap 2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 13,
+      "ms": 73.461427,
+      "name": "M3 stud clearance 2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 14,
+      "ms": 0.122867,
+      "name": "M3 nut access and trap 3 sketch",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 15,
+      "ms": 44.262783,
+      "name": "M3 nut access and trap 3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 16,
+      "ms": 70.800453,
+      "name": "M3 stud clearance 3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 17,
+      "ms": 0.17851299999999998,
+      "name": "M3 nut access and trap 4 sketch",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 18,
+      "ms": 34.824211,
+      "name": "M3 nut access and trap 4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ExtrudeFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 19,
+      "ms": 82.663034,
+      "name": "M3 stud clearance 4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CylinderFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 20,
+      "ms": 53.48118,
+      "name": "Uninterrupted central strap underside",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 21,
+      "ms": 40.777761000000005,
+      "name": "Strap end-wall and rail opening",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 22,
+      "ms": 63.341289999999994,
+      "name": "Strap end-wall and rail opening",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 23,
+      "ms": 80.39514100000001,
+      "name": "Uninterrupted central strap underside",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 24,
+      "ms": 80.82620299999999,
+      "name": "Strap end-wall and rail opening",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 25,
+      "ms": 81.059282,
+      "name": "Strap end-wall and rail opening",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    }
+  ],
+  "undo": 45,
+  "units": "mm"
+}

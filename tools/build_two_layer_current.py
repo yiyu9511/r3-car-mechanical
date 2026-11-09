@@ -1,11 +1,13 @@
-"""Current two-steel-plate layout. Draft adapters have no chosen chassis holes."""
+"""Current two-plate layout with the SolidCraft brass-standoff battery cradle.
+Rear TOF interference remains unresolved and is reported by check_two_layer.py.
+"""
 import hashlib
 import json
 import math
 import sys
 if sys.stdout and hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-from cad_common import App, Part, ROOT, V, bounds, cat_shells, battery_cradle
+from cad_common import App, Part, ROOT, V, bounds, cat_shells
 
 OUT=ROOT/'output/two_layer'
 OUT.mkdir(parents=True,exist_ok=True)
@@ -39,13 +41,10 @@ entries=[('base_z',1.5,'下层铁板上表面'),('plate_t',1.5,'两块铁板厚�
          ('cat_anchor_hole_d',3.0,'M3 锚孔打印补偿孔径（铁板孔 Ø3.2）'),
          ('lidar_y',55,'雷达中心 Y'),('lidar_lift',33,'雷达局部架高；让扫描头越过 CAT'),
          ('lidar_plate_t',3,'雷达概念托架顶板厚度'),
-         ('battery_y',-79.2,'电池托架中心 Y；使后锚孔落在托架底板实心区（原 -84 处为内部开槽）'),
-         ('battery_floor_h',2,'参考托架承托面离其底面'),
+         ('battery_y',-102.9,'当前托架局部原点的世界 Y'),
+         ('battery_lift',12.4,'铜柱 10 + 托架局部底面下沉 2.4；对应导入模型的局部坐标'),
+         ('battery_floor_h',2,'当前模型承托面局部 Z'),
          ('battery_margin',2,'电池到上层铁板的高度预算余量'),
-         ('bat_anchor_x',50,'托架 A2 锚孔列 X；用户已确认方案 A2'),
-         ('bat_anchor_y_rear',-88.39,'托架 A2 后锚孔行 Y'),
-         ('bat_anchor_y_front',-54.12,'托架 A2 前锚孔行 Y'),
-         ('bat_hole_d',3.0,'托架 A2 固定孔径（M3，打印补偿后）'),
          ('tof_front_y',111,'前 TOF 光学面 Y'),('tof_front_z',22,'前 TOF 中心高度'),
          ('tof_rear_y',-132,'后 TOF PCB 原点 Y'),('tof_rear_z',12.5,'后 TOF 原点高度'),
          ('camera_y',104,'相机 PCB 平面 Y'),('camera_base',3,'相机 PCB 底边离二层板面'),
@@ -93,58 +92,37 @@ for i,s in enumerate(mcu_spacers,1):feature(l1,'MCUSpacer'+str(i),'MCU 铜柱',s
 upper=feature(l2,'UpperSteelPlate','第二块相同铁底板 · 原轮廓 / 原孔型',steel)
 upper.addProperty('App::PropertyString','MaterialNote').MaterialNote='用户现有铁板；源模型厚度 1.5 mm'
 
-# Six candidate standoffs use actual common holes, but availability is unresolved.
+# Four candidate standoffs use source holes; availability remains unresolved.
+# Rear wheel-group holes are unavailable and are no longer shown as layer supports.
 # They are references for the layer structure, not approved installation choices.
 posts=group('LayerPosts','层间 50 mm 铜柱候选 · 孔位占用待确认')
 cyls=[f.Surface for f in steel.Faces if isinstance(f.Surface,Part.Cylinder)
       and abs(f.Surface.Axis.z)>.999 and abs(f.Surface.Radius-1.6)<.001]
 post_objs=[];post_points=[]
-for i,(x,y) in enumerate([(-50,81.61),(50,81.61),(-60,27.61),(60,27.61),(-50,-118.39),(50,-118.39)],1):
+for i,(x,y) in enumerate([(-50,81.61),(50,81.61),(-60,27.61),(60,27.61)],1):
     c=min(cyls,key=lambda c:math.hypot(c.Center.x-x,c.Center.y-y))
     assert math.hypot(c.Center.x-x,c.Center.y-y)<.02
     p=cylinder(posts,'LayerPost'+str(i),c.Center.x,c.Center.y,1.5,3,50)
     p.Label=f'层间铜柱候选 {i}（未确认可用孔）';p.setExpression('Height','Params.layer_gap')
     post_objs.append(p);post_points.append([c.Center.x,c.Center.y])
 
-battery_group=group('BatteryGroup','电池托架 A2 · 锚孔已确认',l1)
-battery_group.Placement.Rotation=App.Rotation(V(0,0,1),90)
+battery_group=group('BatteryGroup','当前铜柱版电池托架 · 后 TOF 干涉待解决',l1)
+battery_group.Placement.Rotation=App.Rotation(V(0,0,1),-90)
 battery_group.setExpression('Placement.Base.y','Params.battery_y')
-battery_group.setExpression('Placement.Base.z','Params.base_z')
-# A2 (user-approved): keep the reference interior/clamping/tie-slot geometry,
-# fill the four legacy Ø3.4 holes (local ±13, ±52.5), and move mounting to
-# plate grid rows (±50, -88.39) and (±50, -54.12) with M3 compensated holes.
-# The front holes sit beyond the 2 mm base plate, so two small ears extend it.
-base=feature(battery_group,'BatteryCradleBase','用户参考托架实体 · 内腔/夹持/扎带槽保留',battery_cradle())
-fills=[];ear_objs=[]
-for i,(x,y) in enumerate([(-13,-52.5),(-13,52.5),(13,-52.5),(13,52.5)],1):
-    f=cylinder(battery_group,'BatLegacyFill'+str(i),x,y,0,1.7,2)
-    f.Label='封堵参考件原 Ø3.4 孔';fills.append(f)
-for i,s in enumerate([1,-1],1):
-    ear=box(battery_group,'BatEar'+str(i),13,0,0,1,12.4,2)
-    ear.Label='前锚孔小耳（托架投影内延伸到底板面）'
-    ear.setExpression('Length','Params.bat_anchor_y_front - Params.battery_y + 6.2 mm - 13 mm')
-    ear.setExpression('Placement.Base.y',f'{s} * Params.bat_anchor_x - 6.2 mm')
-    ear_objs.append(ear)
-fused=doc.addObject('Part::MultiFuse','BatCradleFused');battery_group.addObject(fused)
-fused.Label='托架实体 + 封堵 + 小耳';fused.Shapes=[base]+fills+ear_objs
-bat_holes=[]
-for i,(s,ynode) in enumerate([(1,'bat_anchor_y_rear'),(-1,'bat_anchor_y_rear'),(1,'bat_anchor_y_front'),(-1,'bat_anchor_y_front')],1):
-    h=cylinder(battery_group,'BatAnchorHole'+str(i),0,0,-0.5,1.5,3)
-    h.Label='M3 锚孔 Ø3.0（Ø3.2 铁板孔补偿）'
-    h.setExpression('Radius','Params.bat_hole_d / 2')
-    h.setExpression('Placement.Base.x',f'Params.{ynode} - Params.battery_y')
-    h.setExpression('Placement.Base.y',f'{s} * Params.bat_anchor_x')
-    bat_holes.append(h)
-holefuse=doc.addObject('Part::MultiFuse','BatAnchorHoles');battery_group.addObject(holefuse)
-holefuse.Shapes=bat_holes;doc.recompute()
-cradle=doc.addObject('Part::Cut','BatteryCradle');battery_group.addObject(cradle)
-cradle.Label='电池托架 A2 · 内腔/夹持/扎带槽保留 · 孔位已确认'
-cradle.Base=fused;cradle.Tool=holefuse
-budget=box(l1,'BatteryHeightEnvelope',-43.3,-112.5,3.5,86.6,57,46)
-budget.Label='电池高度预算框 · 非实物电池模型'
-budget.setExpression('Placement.Base.y','Params.battery_y - 28.5 mm')
-budget.setExpression('Placement.Base.z','Params.base_z + Params.battery_floor_h')
-budget.setExpression('Height','Params.layer_gap - Params.battery_floor_h - Params.battery_margin')
+battery_group.setExpression('Placement.Base.z','Params.base_z + Params.battery_lift')
+cradle_shape=Part.read(str(ROOT/'cad_solidcraft/exports/battery_cradle.step'))
+cradle=feature(battery_group,'BatteryCradle','铜柱版托架 · 均匀 4.4 mm 底板 / 1.2 mm 扎带槽',cradle_shape)
+mount=Part.read(str(ROOT/'cad_solidcraft/exports/battery_mount.step'))
+assert len(mount.Solids)==9
+hardware=[]
+for i,solid in enumerate(sorted([x for x in mount.Solids if x.Volume<10000],key=lambda x:(x.CenterOfMass.x,x.CenterOfMass.y,x.CenterOfMass.z)),1):
+    label='M3×10+4 铜柱（名义包络）' if solid.Volume>100 else 'M3 螺母（名义包络）'
+    hardware.append(feature(battery_group,'BatteryHardware'+str(i),label,solid))
+budget=box(l1,'BatteryHeightEnvelope',-43.3,-134.2,15.9,86.6,62.6,33.6)
+budget.Label='电池高度预算框 · 33.6 mm 上限 / 非实物'
+budget.setExpression('Placement.Base.y','Params.battery_y - 31.3 mm')
+budget.setExpression('Placement.Base.z','Params.base_z + Params.battery_lift + Params.battery_floor_h')
+budget.setExpression('Height','Params.layer_gap - Params.battery_lift - Params.battery_floor_h - Params.battery_margin')
 
 front_group=group('FrontTOFGroup','第一层前 TOF-M · 朝 +Y',l1)
 front_group.Placement.Rotation=App.Rotation(V(1,0,0),-90).multiply(App.Rotation(V(0,0,1),90))
@@ -276,10 +254,10 @@ for f in cat_mount.Shape.Faces:
         cat_holes.append((v.x,v.y))
 for ax,ay,_ in approved_cat:
     assert min(math.hypot(hx-ax,hy-ay) for hx,hy in cat_holes)<.02,(ax,ay,cat_holes)
-approved_bat=[(sx*50,y) for sx in (-1,1) for y in (-88.39,-54.12)]
+approved_bat=[(-43,-128.47),(43,-128.47),(-39.04,-77.33),(39.04,-77.33)]
 bat_holes_g=[]
 for f in cradle.Shape.Faces:
-    if isinstance(f.Surface,Part.Cylinder) and abs(f.Surface.Radius-1.5)<.01:
+    if isinstance(f.Surface,Part.Cylinder) and abs(f.Surface.Radius-1.65)<.01:
         c=f.Surface.Center
         v=battery_group.Placement.multVec(V(c.x,c.y,c.z))
         bat_holes_g.append((v.x,v.y))
@@ -289,7 +267,7 @@ driver_bb=driver.BoundBox
 budget_bb=global_shape(budget).BoundBox
 # Nut + protruding bolt below the upper plate occupy roughly z 45.5..51.5.
 nut_z_min=51.5-6.0
-for ax,ay in [(x[0],x[1]) for x in approved_cat+approved_bat]:
+for ax,ay in [(x[0],x[1]) for x in approved_cat]:
     fastener_r=2.75
     in_x=(ax+fastener_r>driver_bb.XMin and ax-fastener_r<driver_bb.XMax)
     in_y=(ay+fastener_r>driver_bb.YMin and ay-fastener_r<driver_bb.YMax)
@@ -312,6 +290,7 @@ assert all(abs(p.Height.Value-60)<1e-6 for p in post_objs)
 params.set(cell,'=50 mm');doc.recompute()
 
 visible=[doc.getObject('Chassis'),doc.getObject('C30D'),upper,front,rear,cradle,budget,cat_mount,lidar,lidar_mount,cam_pcb,lens,camera_mount]+cat_shell_objs+post_objs
+visible += hardware
 visible += [doc.getObject('MCUSpacer'+str(i)) for i in range(1,5)]
 for o in doc.Objects:
     if hasattr(o,'Visibility'):o.Visibility=False
@@ -320,7 +299,7 @@ for o in visible:o.Visibility=True
 doc.recompute()
 path=ROOT/'assemblies/two_layer.FCStd'
 doc.saveAs(str(path))
-report={'status':'geometry_layout_checked_not_manufacturing_ready',
+report={'status':'assembly_conflict_rear_tof_unresolved',
         'architecture':{'plates':'two identical existing steel chassis plates','plate_thickness_mm':1.5,
                         'layer_gap_mm':50,'lower_devices':['FrontTOF','RearTOF','C30D','BatteryCradle'],
                         'upper_devices':['CAT','Lidar','Camera']},
@@ -332,11 +311,12 @@ report={'status':'geometry_layout_checked_not_manufacturing_ready',
                   'cat_vent_count':8,'cat_vents_clear':True,'layer_gap_parameter_test':'pass',
                   'confirmed_anchor_holes_readback':'pass',
                   'nut_zone_clearance_c30d_and_battery':'pass'},
-        'confirmed_fixtures':{'battery_cradle_A2':{'anchors_xy':approved_bat,'hole_d_mm':3.0,
-                                                   'fastener':'M3 + 底面螺母','note':'内腔/夹持/扎带槽保留，原 Ø3.4/26×105 已封堵改位'},
+        'confirmed_fixtures':{'battery_cradle':{'anchors_xy':approved_bat,'hole_d_mm':3.3,
+                                                   'fastener':'M3×10+4 铜柱 + M3 螺母；底部紧固件长度待选',
+                                                   'note':'铜柱对边 5.5、螺母对边 5.5/高 2.4 为名义值；后 TOF 干涉未解决'},
                               'cat_mount':{'anchors_xy':[(p[0],p[1]) for p in approved_cat],'foot_d_mm':13,'hole_d_mm':3.0,
                                            'fastener':'M3 对锁 + 底面螺母'}},
-        'battery_height_budget_mm':{'support_z':3.5,'available_height':48,'clearance_budget':2,'max_battery_height':46},
+        'battery_height_budget_mm':{'support_z':15.9,'available_height':35.6,'clearance_budget':2,'max_battery_height':33.6},
         'candidate_layer_post_xy_unconfirmed':post_points,
         'objects':{k:bounds(v) for k,v in shapes.items()},
         'reference_limitations':{'CAT':'Only metal shells are positioned; external antennas and cables are not included in shell-clearance claims',
@@ -344,12 +324,14 @@ report={'status':'geometry_layout_checked_not_manufacturing_ready',
                                  'camera':'Board outline 29×31.25 and hole pitch 23×24 from V1R1 drawing; thickness/lens are placeholders',
                                  'lidar':'Original fixed curved cable solids hidden; final cable route still required',
                                  'battery':'No actual battery solid or confirmed height; reference cradle preserved'},
+        'known_conflicts':['RearTOF intersects the current battery floor at the existing placement; do not treat this assembly as installation-ready'],
         'not_tested':['Physical nut/bolt access under both plates (user to verify ground clearance)',
                       'Lidar and camera mounts (deferred by user until CAT/battery are fixed)',
                       'All remaining fastener retention details',
                       'Actual battery height and camera thickness/lens geometry','Cable routing and full FOV/access',
                       'Strength, vibration, steel-plate deflection, print fit and temperature'],
         'visible_object_names':[o.Name for o in visible],
+        'battery_source_sha256':hashlib.sha256((ROOT/'cad_solidcraft/exports/battery_cradle.step').read_bytes()).hexdigest(),
         'sources':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (ROOT/'models').glob('*') if p.suffix.lower() in ['.step','.stp']}}
 with open(OUT/'two_layer_checks.json','w',encoding='utf-8') as fh:
     fh.write(json.dumps(report,ensure_ascii=False,indent=2))
@@ -358,18 +340,17 @@ saved=App.openDocument(str(path));saved.recompute()
 assert abs(global_shape(saved.getObject('UpperSteelPlate')).BoundBox.ZMin-51.5)<1e-6
 assert abs(saved.getObject('Params').layer_gap.Value-50)<1e-6
 assert not [o.Name for o in saved.Objects if any('Error' in str(s) or 'Invalid' in str(s) for s in o.State)]
-# Export the two user-approved printable parts (STEP for CAM/slicing, STL for print).
+# CAT exports remain here; battery printable outputs are in cad_solidcraft/exports.
 import Mesh
 import MeshPart
 exports=ROOT/'output/two_layer'
 for sub in ['step','stl']:(exports/sub).mkdir(parents=True,exist_ok=True)
-for name,label,fn in [('BatteryCradle','电池托架A2','battery_cradle_a2'),
-                      ('CATMount','CAT托板连接件','cat_mount')]:
+for name,label,fn in [('CATMount','CAT托板连接件','cat_mount')]:
     obj=saved.getObject(name);shape=global_shape(obj)
     assert shape.isValid() and shape.isClosed() and len(shape.Solids)==1,name
     shape.exportStep(str(exports/'step'/f'{fn}.step'))
     mesh=MeshPart.meshFromShape(Shape=shape,LinearDeflection=0.15,AngularDeflection=0.3)
     mesh.write(str(exports/'stl'/f'{fn}.stl'))
 print(json.dumps({'output':str(path),'checks':report['checks'],'datums':report['datums_mm'],'saved_readback':'pass',
-                  'exports':{'battery':str(exports/'step'/'battery_cradle_a2.step'),
+                  'exports':{'battery':str(ROOT/'cad_solidcraft/exports/battery_cradle.step'),
                              'cat_mount':str(exports/'step'/'cat_mount.step')}},ensure_ascii=True,indent=2),flush=True)

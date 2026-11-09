@@ -8,7 +8,7 @@ from OCP.BRepAdaptor import BRepAdaptor_Surface
 from OCP.GeomAbs import GeomAbs_Cylinder
 
 BASE = os.path.dirname(__file__)
-SRC = os.path.join(BASE, "..", "..", "freecad", "models", "LubanCat 5-PCB 3D文件.STEP")
+SRC = os.path.join(BASE, "..", "..", "models", "LubanCat 5-PCB 3D文件.STEP")
 OUT_STEP = os.path.join(BASE, "..", "exports", "LubanCat5_PCB_simplified.step")
 OUT_HOLES = os.path.join(BASE, "..", "exports", "LubanCat5_PCB_holes.txt")
 

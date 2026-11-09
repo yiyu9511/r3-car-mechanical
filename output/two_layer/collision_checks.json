@@ -1,8 +1,8 @@
 {
-  "status": "pass",
+  "status": "fail",
   "evidence_level": "geometry",
   "scope": "Positioned visible parts; excludes unconfirmed battery/lens envelopes and unrouted cable reference",
-  "pair_count": 253,
+  "pair_count": 406,
   "boolean_pairs": [
     {
       "a": "C30D",
@@ -41,6 +41,87 @@
       ]
     },
     {
+      "a": "RearTOF",
+      "b": "BatteryCradle",
+      "overlap_mm3": 974.8466698201717,
+      "method": [
+        "conservative bbox envelope (source has no solids)",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "BatteryCradle",
+      "b": "BatteryHardware1",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "BatteryCradle",
+      "b": "BatteryHardware2",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "BatteryCradle",
+      "b": "BatteryHardware3",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "BatteryCradle",
+      "b": "BatteryHardware4",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "BatteryCradle",
+      "b": "BatteryHardware5",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "BatteryCradle",
+      "b": "BatteryHardware6",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "BatteryCradle",
+      "b": "BatteryHardware7",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "BatteryCradle",
+      "b": "BatteryHardware8",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
       "a": "Lidar",
       "b": "CameraMount",
       "overlap_mm3": 0.0,
@@ -66,9 +147,55 @@
         "solid BRep",
         "solid BRep"
       ]
+    },
+    {
+      "a": "BatteryHardware1",
+      "b": "BatteryHardware4",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "BatteryHardware2",
+      "b": "BatteryHardware3",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "BatteryHardware5",
+      "b": "BatteryHardware8",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
+    },
+    {
+      "a": "BatteryHardware6",
+      "b": "BatteryHardware7",
+      "overlap_mm3": 0.0,
+      "method": [
+        "solid BRep",
+        "solid BRep"
+      ]
     }
   ],
-  "violations": [],
+  "violations": [
+    {
+      "a": "RearTOF",
+      "b": "BatteryCradle",
+      "overlap_mm3": 974.8466698201717,
+      "method": [
+        "conservative bbox envelope (source has no solids)",
+        "solid BRep"
+      ]
+    }
+  ],
   "limitations": [
     "Touching surfaces do not prove fastener access or retention",
     "No actual battery body, lens, antennas or final cables included",

@@ -7,10 +7,12 @@ import traceback
 import time
 import FreeCAD as App
 import FreeCADGui as Gui
+from pivy import coin
 from PySide import QtCore, QtGui, QtWidgets
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'output/two_layer'
+ISO_ROT=App.Rotation(App.Vector(1,1,0),App.Vector(-1,1,2),App.Vector(1,-1,1),'ZXY')
 
 try:
     data=json.loads((OUT/'two_layer_checks.json').read_text(encoding='utf-8'))
@@ -39,7 +41,7 @@ try:
             s.Placement=o.getGlobalPlacement().multiply(o.Placement.inverse()).multiply(s.Placement)
             return s
         checks={}
-        for name,exp in {'UpperSteelPlate':51.5,'CATMount':53.0,'LidarMount':53.0,'BatteryCradle':1.5}.items():
+        for name,exp in {'UpperSteelPlate':51.5,'CATMount':53.0,'LidarMount':53.0,'BatteryCradle':11.5}.items():
             o=doc.getObject(name);s=gshape(o)
             b=s.BoundBox
             checks[name]={'valid':s.isValid(),'closed':s.isClosed(),'solids':len(s.Solids),
@@ -73,6 +75,8 @@ try:
         o.ViewObject.LineColor=(.12,.16,.19)
         o.ViewObject.DisplayMode='Flat Lines'
         if name.startswith('LayerPost'):o.ViewObject.Transparency=40
+        if name.startswith('BatteryHardware'):o.ViewObject.ShapeColor=(.72,.58,.30)
+        if name=='RearTOF':o.ViewObject.ShapeColor=(.85,.15,.16)
         if name=='BatteryHeightEnvelope':
             o.ViewObject.DisplayMode='Wireframe';o.ViewObject.LineColor=(.88,.48,.08);o.ViewObject.LineWidth=2
         if name=='CameraLensEnvelope':
@@ -93,6 +97,9 @@ try:
         settle_view()
         view.fitAll();Gui.updateGui()
         settle_view()
+        if kind=='iso':
+            view.getCameraNode().orientation.setValue(*ISO_ROT.Q)
+            Gui.updateGui()
         view.saveImage(str(OUT/(name+'.png')),width,height,'White')
     capture('assembled_iso')
     # Save the intended normal view, then use temporary inspection states only.
@@ -105,6 +112,16 @@ try:
     doc.Layer2.ViewObject.Visibility=False
     doc.LayerPosts.ViewObject.Visibility=False
     capture('layer1_top','top')
+    doc.BatteryHeightEnvelope.ViewObject.Visibility=False
+    view.getCameraNode().orientation.setValue(*ISO_ROT.Q)
+    camera=view.getCameraNode()
+    center=App.Vector(0,-102.9,17)
+    eye=center+ISO_ROT.multVec(App.Vector(0,0,300))
+    camera.position.setValue(eye.x,eye.y,eye.z)
+    camera.focalDistance.setValue(300)
+    camera.height.setValue(135)
+    settle_view()
+    view.saveImage(str(OUT/'battery_fit_closeup.png'),1600,1100,'White')
     normal_visibility()
     doc.Layer1.ViewObject.Visibility=False
     doc.LayerPosts.ViewObject.Visibility=False
@@ -128,9 +145,10 @@ try:
         painter.drawImage(QtCore.QRect(i*1400,80,1400,1225),QtGui.QImage(str(OUT/(name+'.png'))))
     font.setPixelSize(27);painter.setFont(font)
     painter.drawText(QtCore.QRect(20,1310,2760,65),QtCore.Qt.AlignCenter,'第一层：前后 TOF · C30D MCU · 电池托架    ｜    第二层：CAT · 雷达 · 相机')
-    painter.drawText(QtCore.QRect(20,1380,2760,65),QtCore.Qt.AlignCenter,'橙色线框为电池高度预算；层间柱位、打印件锚孔、紧固与走线仍待确认。')
+    painter.drawText(QtCore.QRect(20,1380,2760,65),QtCore.Qt.AlignCenter,'红色后 TOF 与电池盒存在干涉待解决；层间支撑、五金配合及打印工艺尚未验收。')
     painter.end();canvas.save(str(OUT/'overview.png'))
     App.closeDocument(doc.Name)
+    (OUT/'render_error.txt').unlink(missing_ok=True)
     for backup in (ROOT/'assemblies').glob('*.FCBak'):backup.unlink()
 except Exception:
     (OUT/'render_error.txt').write_text(traceback.format_exc())

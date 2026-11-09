@@ -1,0 +1,16 @@
+{
+  "status": "pass",
+  "scope": "saved native reopen, parameter change/restore, generator replay",
+  "parameter": "strap_width",
+  "values_mm": [
+    6,
+    6.2,
+    6
+  ],
+  "volumes_mm3": [
+    31556.430133403574,
+    31478.798133400833,
+    31556.430133403574
+  ],
+  "replayed_volume_mm3": 31556.430133403574
+}

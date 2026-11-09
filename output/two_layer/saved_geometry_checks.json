@@ -1,37 +1,584 @@
 {
-  "summary": {
-    "fail": 0,
-    "pass": 4
+  "schema_version": "0.1",
+  "report_type": "freecad-model-validation",
+  "subject": {
+    "document": "two_layer",
+    "label": "two_layer",
+    "path": "/home/gxt/self/r3-car-mechanical/assemblies/two_layer.FCStd"
   },
-  "fallback": "local geometry readback",
-  "checks": {
-    "UpperSteelPlate": {
-      "valid": true,
-      "closed": true,
-      "solids": 1,
-      "zmin": 51.5,
-      "expect_zmin": 51.5
+  "evidence_level": "geometry",
+  "status": "pass",
+  "summary": {
+    "pass": 25,
+    "fail": 0,
+    "warning": 0,
+    "not_tested": 0
+  },
+  "objects": [
+    {
+      "name": "UpperSteelPlate",
+      "label": "第二块相同铁底板 · 原轮廓 / 原孔型",
+      "type_id": "Part::Feature",
+      "observed": {
+        "shape_type": "Solid",
+        "is_null": false,
+        "valid": true,
+        "closed": true,
+        "solid_count": 1,
+        "volume_mm3": 43729.19373140234,
+        "bbox_mm": {
+          "x": 150.9996,
+          "y": 244.96787143768643,
+          "z": 1.500000000000006,
+          "xmin": -75.498656700406,
+          "ymin": -136.3517778167264,
+          "zmin": 0.0,
+          "xmax": 75.500943299594,
+          "ymax": 108.61609362096,
+          "zmax": 1.500000000000006
+        }
+      },
+      "checks": [
+        {
+          "id": "UpperSteelPlate.non_null",
+          "status": "pass",
+          "expected": false,
+          "actual": false,
+          "method": "Shape.isNull()",
+          "message": "matches expectation"
+        },
+        {
+          "id": "UpperSteelPlate.valid",
+          "status": "pass",
+          "expected": true,
+          "actual": true,
+          "method": "Shape.isValid()",
+          "message": "matches expectation"
+        },
+        {
+          "id": "UpperSteelPlate.closed",
+          "status": "pass",
+          "expected": true,
+          "actual": true,
+          "method": "Shape.isClosed()",
+          "message": "matches expectation"
+        },
+        {
+          "id": "UpperSteelPlate.solid_count",
+          "status": "pass",
+          "expected": 1,
+          "actual": 1,
+          "method": "len(Shape.Solids)",
+          "message": "matches expectation"
+        },
+        {
+          "id": "UpperSteelPlate.volume",
+          "status": "pass",
+          "expected": {
+            "minimum_exclusive": 0
+          },
+          "actual": 43729.19373140234,
+          "method": "Shape.Volume",
+          "message": "positive volume"
+        },
+        {
+          "id": "UpperSteelPlate.bbox.z",
+          "status": "pass",
+          "expected": {
+            "value": 1.5,
+            "tolerance": 0.001,
+            "unit": "mm"
+          },
+          "actual": {
+            "value": 1.500000000000006,
+            "delta": 5.995204332975845e-15,
+            "unit": "mm"
+          },
+          "method": "Shape.BoundBox.ZLength",
+          "message": "within tolerance"
+        }
+      ]
     },
-    "CATMount": {
-      "valid": true,
-      "closed": true,
-      "solids": 1,
-      "zmin": 53.0,
-      "expect_zmin": 53.0
+    {
+      "name": "CATMount",
+      "label": "CAT 贴壳托板连接件 · 脚位已确认 · 保留 8 通风槽 + 6 固定孔",
+      "type_id": "Part::Cut",
+      "observed": {
+        "shape_type": "Compound",
+        "is_null": false,
+        "valid": true,
+        "closed": true,
+        "solid_count": 1,
+        "volume_mm3": 33412.12761720176,
+        "bbox_mm": {
+          "x": 135.32557355773025,
+          "y": 89.8304544160461,
+          "z": 13.000000000000018,
+          "xmin": -67.66300877886484,
+          "ymin": -44.84600281607061,
+          "zmin": -13.0,
+          "xmax": 67.66256477886543,
+          "ymax": 44.984451599975486,
+          "zmax": 1.8e-14
+        }
+      },
+      "checks": [
+        {
+          "id": "CATMount.non_null",
+          "status": "pass",
+          "expected": false,
+          "actual": false,
+          "method": "Shape.isNull()",
+          "message": "matches expectation"
+        },
+        {
+          "id": "CATMount.valid",
+          "status": "pass",
+          "expected": true,
+          "actual": true,
+          "method": "Shape.isValid()",
+          "message": "matches expectation"
+        },
+        {
+          "id": "CATMount.closed",
+          "status": "pass",
+          "expected": true,
+          "actual": true,
+          "method": "Shape.isClosed()",
+          "message": "matches expectation"
+        },
+        {
+          "id": "CATMount.solid_count",
+          "status": "pass",
+          "expected": 1,
+          "actual": 1,
+          "method": "len(Shape.Solids)",
+          "message": "matches expectation"
+        },
+        {
+          "id": "CATMount.volume",
+          "status": "pass",
+          "expected": {
+            "minimum_exclusive": 0
+          },
+          "actual": 33412.12761720176,
+          "method": "Shape.Volume",
+          "message": "positive volume"
+        },
+        {
+          "id": "CATMount.bbox.z",
+          "status": "pass",
+          "expected": {
+            "value": 13.0,
+            "tolerance": 0.001,
+            "unit": "mm"
+          },
+          "actual": {
+            "value": 13.000000000000018,
+            "delta": 1.7763568394002505e-14,
+            "unit": "mm"
+          },
+          "method": "Shape.BoundBox.ZLength",
+          "message": "within tolerance"
+        }
+      ]
     },
-    "LidarMount": {
-      "valid": true,
-      "closed": true,
-      "solids": 1,
-      "zmin": 53.0,
-      "expect_zmin": 53.0
+    {
+      "name": "LidarMount",
+      "label": "雷达转接架占位 · 保持原机身 · 紧固与锚孔未定",
+      "type_id": "Part::MultiFuse",
+      "observed": {
+        "shape_type": "Compound",
+        "is_null": false,
+        "valid": true,
+        "closed": true,
+        "solid_count": 1,
+        "volume_mm3": 26704.77796076939,
+        "bbox_mm": {
+          "x": 72.0,
+          "y": 80.0,
+          "z": 33.0,
+          "xmin": -36.0,
+          "ymin": -40.0,
+          "zmin": -33.0,
+          "xmax": 36.0,
+          "ymax": 40.0,
+          "zmax": 0.0
+        }
+      },
+      "checks": [
+        {
+          "id": "LidarMount.non_null",
+          "status": "pass",
+          "expected": false,
+          "actual": false,
+          "method": "Shape.isNull()",
+          "message": "matches expectation"
+        },
+        {
+          "id": "LidarMount.valid",
+          "status": "pass",
+          "expected": true,
+          "actual": true,
+          "method": "Shape.isValid()",
+          "message": "matches expectation"
+        },
+        {
+          "id": "LidarMount.closed",
+          "status": "pass",
+          "expected": true,
+          "actual": true,
+          "method": "Shape.isClosed()",
+          "message": "matches expectation"
+        },
+        {
+          "id": "LidarMount.solid_count",
+          "status": "pass",
+          "expected": 1,
+          "actual": 1,
+          "method": "len(Shape.Solids)",
+          "message": "matches expectation"
+        },
+        {
+          "id": "LidarMount.volume",
+          "status": "pass",
+          "expected": {
+            "minimum_exclusive": 0
+          },
+          "actual": 26704.77796076939,
+          "method": "Shape.Volume",
+          "message": "positive volume"
+        },
+        {
+          "id": "LidarMount.bbox.z",
+          "status": "pass",
+          "expected": {
+            "value": 33.0,
+            "tolerance": 0.001,
+            "unit": "mm"
+          },
+          "actual": {
+            "value": 33.0,
+            "delta": 0.0,
+            "unit": "mm"
+          },
+          "method": "Shape.BoundBox.ZLength",
+          "message": "within tolerance"
+        }
+      ]
     },
-    "BatteryCradle": {
-      "valid": true,
-      "closed": true,
-      "solids": 1,
-      "zmin": 1.5,
-      "expect_zmin": 1.5
+    {
+      "name": "CameraMount",
+      "label": "相机支架概念 · 无铁板锚孔",
+      "type_id": "Part::Feature",
+      "observed": {
+        "shape_type": "Compound",
+        "is_null": false,
+        "valid": true,
+        "closed": true,
+        "solid_count": 1,
+        "volume_mm3": 5089.109740787568,
+        "bbox_mm": {
+          "x": 44.0,
+          "y": 14.0,
+          "z": 35.5,
+          "xmin": -22.0,
+          "ymin": -14.0,
+          "zmin": -3.0,
+          "xmax": 22.0,
+          "ymax": 0.0,
+          "zmax": 32.5
+        }
+      },
+      "checks": [
+        {
+          "id": "CameraMount.non_null",
+          "status": "pass",
+          "expected": false,
+          "actual": false,
+          "method": "Shape.isNull()",
+          "message": "matches expectation"
+        },
+        {
+          "id": "CameraMount.valid",
+          "status": "pass",
+          "expected": true,
+          "actual": true,
+          "method": "Shape.isValid()",
+          "message": "matches expectation"
+        },
+        {
+          "id": "CameraMount.closed",
+          "status": "pass",
+          "expected": true,
+          "actual": true,
+          "method": "Shape.isClosed()",
+          "message": "matches expectation"
+        },
+        {
+          "id": "CameraMount.solid_count",
+          "status": "pass",
+          "expected": 1,
+          "actual": 1,
+          "method": "len(Shape.Solids)",
+          "message": "matches expectation"
+        },
+        {
+          "id": "CameraMount.volume",
+          "status": "pass",
+          "expected": {
+            "minimum_exclusive": 0
+          },
+          "actual": 5089.109740787568,
+          "method": "Shape.Volume",
+          "message": "positive volume"
+        }
+      ]
     }
-  }
+  ],
+  "checks": [
+    {
+      "id": "document.recompute",
+      "status": "pass",
+      "expected": "no exception",
+      "actual": "completed",
+      "method": "Document.recompute()",
+      "message": ""
+    },
+    {
+      "id": "document.object_states",
+      "status": "pass",
+      "expected": [],
+      "actual": [],
+      "method": "DocumentObject.State scan",
+      "message": ""
+    },
+    {
+      "id": "UpperSteelPlate.non_null",
+      "status": "pass",
+      "expected": false,
+      "actual": false,
+      "method": "Shape.isNull()",
+      "message": "matches expectation"
+    },
+    {
+      "id": "UpperSteelPlate.valid",
+      "status": "pass",
+      "expected": true,
+      "actual": true,
+      "method": "Shape.isValid()",
+      "message": "matches expectation"
+    },
+    {
+      "id": "UpperSteelPlate.closed",
+      "status": "pass",
+      "expected": true,
+      "actual": true,
+      "method": "Shape.isClosed()",
+      "message": "matches expectation"
+    },
+    {
+      "id": "UpperSteelPlate.solid_count",
+      "status": "pass",
+      "expected": 1,
+      "actual": 1,
+      "method": "len(Shape.Solids)",
+      "message": "matches expectation"
+    },
+    {
+      "id": "UpperSteelPlate.volume",
+      "status": "pass",
+      "expected": {
+        "minimum_exclusive": 0
+      },
+      "actual": 43729.19373140234,
+      "method": "Shape.Volume",
+      "message": "positive volume"
+    },
+    {
+      "id": "UpperSteelPlate.bbox.z",
+      "status": "pass",
+      "expected": {
+        "value": 1.5,
+        "tolerance": 0.001,
+        "unit": "mm"
+      },
+      "actual": {
+        "value": 1.500000000000006,
+        "delta": 5.995204332975845e-15,
+        "unit": "mm"
+      },
+      "method": "Shape.BoundBox.ZLength",
+      "message": "within tolerance"
+    },
+    {
+      "id": "CATMount.non_null",
+      "status": "pass",
+      "expected": false,
+      "actual": false,
+      "method": "Shape.isNull()",
+      "message": "matches expectation"
+    },
+    {
+      "id": "CATMount.valid",
+      "status": "pass",
+      "expected": true,
+      "actual": true,
+      "method": "Shape.isValid()",
+      "message": "matches expectation"
+    },
+    {
+      "id": "CATMount.closed",
+      "status": "pass",
+      "expected": true,
+      "actual": true,
+      "method": "Shape.isClosed()",
+      "message": "matches expectation"
+    },
+    {
+      "id": "CATMount.solid_count",
+      "status": "pass",
+      "expected": 1,
+      "actual": 1,
+      "method": "len(Shape.Solids)",
+      "message": "matches expectation"
+    },
+    {
+      "id": "CATMount.volume",
+      "status": "pass",
+      "expected": {
+        "minimum_exclusive": 0
+      },
+      "actual": 33412.12761720176,
+      "method": "Shape.Volume",
+      "message": "positive volume"
+    },
+    {
+      "id": "CATMount.bbox.z",
+      "status": "pass",
+      "expected": {
+        "value": 13.0,
+        "tolerance": 0.001,
+        "unit": "mm"
+      },
+      "actual": {
+        "value": 13.000000000000018,
+        "delta": 1.7763568394002505e-14,
+        "unit": "mm"
+      },
+      "method": "Shape.BoundBox.ZLength",
+      "message": "within tolerance"
+    },
+    {
+      "id": "LidarMount.non_null",
+      "status": "pass",
+      "expected": false,
+      "actual": false,
+      "method": "Shape.isNull()",
+      "message": "matches expectation"
+    },
+    {
+      "id": "LidarMount.valid",
+      "status": "pass",
+      "expected": true,
+      "actual": true,
+      "method": "Shape.isValid()",
+      "message": "matches expectation"
+    },
+    {
+      "id": "LidarMount.closed",
+      "status": "pass",
+      "expected": true,
+      "actual": true,
+      "method": "Shape.isClosed()",
+      "message": "matches expectation"
+    },
+    {
+      "id": "LidarMount.solid_count",
+      "status": "pass",
+      "expected": 1,
+      "actual": 1,
+      "method": "len(Shape.Solids)",
+      "message": "matches expectation"
+    },
+    {
+      "id": "LidarMount.volume",
+      "status": "pass",
+      "expected": {
+        "minimum_exclusive": 0
+      },
+      "actual": 26704.77796076939,
+      "method": "Shape.Volume",
+      "message": "positive volume"
+    },
+    {
+      "id": "LidarMount.bbox.z",
+      "status": "pass",
+      "expected": {
+        "value": 33.0,
+        "tolerance": 0.001,
+        "unit": "mm"
+      },
+      "actual": {
+        "value": 33.0,
+        "delta": 0.0,
+        "unit": "mm"
+      },
+      "method": "Shape.BoundBox.ZLength",
+      "message": "within tolerance"
+    },
+    {
+      "id": "CameraMount.non_null",
+      "status": "pass",
+      "expected": false,
+      "actual": false,
+      "method": "Shape.isNull()",
+      "message": "matches expectation"
+    },
+    {
+      "id": "CameraMount.valid",
+      "status": "pass",
+      "expected": true,
+      "actual": true,
+      "method": "Shape.isValid()",
+      "message": "matches expectation"
+    },
+    {
+      "id": "CameraMount.closed",
+      "status": "pass",
+      "expected": true,
+      "actual": true,
+      "method": "Shape.isClosed()",
+      "message": "matches expectation"
+    },
+    {
+      "id": "CameraMount.solid_count",
+      "status": "pass",
+      "expected": 1,
+      "actual": 1,
+      "method": "len(Shape.Solids)",
+      "message": "matches expectation"
+    },
+    {
+      "id": "CameraMount.volume",
+      "status": "pass",
+      "expected": {
+        "minimum_exclusive": 0
+      },
+      "actual": 5089.109740787568,
+      "method": "Shape.Volume",
+      "message": "positive volume"
+    }
+  ],
+  "scope": "Two-layer layout and draft adapter geometry, not manufacturing acceptance",
+  "assumptions": [],
+  "untested_risks": [
+    "Physical nut/bolt access under both plates (user to verify ground clearance)",
+    "Lidar and camera mounts (deferred by user until CAT/battery are fixed)",
+    "All remaining fastener retention details",
+    "Actual battery height and camera thickness/lens geometry",
+    "Cable routing and full FOV/access",
+    "Strength, vibration, steel-plate deflection, print fit and temperature"
+  ],
+  "artifacts": []
 }
