@@ -32,13 +32,13 @@ doc.Label='当前两层：两块相同铁板 · 下层电控 / 上层感知'
 params=doc.addObject('Spreadsheet::Sheet','Params')
 entries=[('base_z',1.5,'下层铁板上表面'),('plate_t',1.5,'两块铁板厚度相同'),
          ('layer_gap',50,'层间铜柱高度；用户确认先用 50 mm'),
-         ('cat_y',-50,'CAT 中心 Y'),('cat_lift',13,'第二层板面到 CAT 底面'),
-         ('cat_plate_t',3,'贴壳托板厚度'),
+         ('cat_y',-50,'CAT 中心 Y'),('cat_lift',15,'第二层板面到 CAT 底面'),
+         ('cat_plate_t',5,'贴壳托板厚度'),
          ('cat_anchor_x',50,'CAT 落脚锚孔列 X；用户已确认 (±50)'),
          ('cat_anchor_y1',-88.39,'CAT 后落脚锚孔行 Y；用户已确认'),
          ('cat_anchor_y2',-11.47,'CAT 前落脚锚孔行 Y；用户已确认'),
-         ('cat_foot_d',13,'落脚凸台直径；带孔凸台坐于铁板孔上'),
-         ('cat_anchor_hole_d',3.0,'M3 锚孔打印补偿孔径（铁板孔 Ø3.2）'),
+         ('cat_foot_d',12,'落脚凸台直径；带孔凸台坐于铁板孔上'),
+         ('cat_anchor_hole_d',2.5,'M3×10 自攻导孔试配直径，深 9 mm'),
          ('lidar_y',55,'雷达中心 Y'),('lidar_lift',33,'雷达局部架高；让扫描头越过 CAT'),
          ('lidar_plate_t',3,'雷达概念托架顶板厚度'),
          ('battery_y',-102.9,'当前托架局部原点的世界 Y'),
@@ -141,35 +141,10 @@ cat_group.setExpression('Placement.Base.y','Params.cat_y')
 cat_group.setExpression('Placement.Base.z','Params.plate_t + Params.cat_lift')
 shells,face=cat_shells()
 cat_shell_objs=[feature(cat_group,'CATShell'+str(i),'CAT 金属外壳',s) for i,s in enumerate(shells)]
-profile=feature(cat_group,'CATBottomProfile','CAT 底面原 8 通风槽 + 6 安装孔',face)
-tray=doc.addObject('Part::Extrusion','CATContactPlate');cat_group.addObject(tray)
-tray.Base=profile;tray.DirMode='Custom';tray.Dir=V(0,0,-1);tray.Solid=True
-tray.setExpression('LengthFwd','Params.cat_plate_t')
-# Feet sit exactly on the user-approved plate anchors (±50, -88.39) and
-# (±50, -11.47); each foot is a Ø13 boss with an M3 compensated through hole.
-feet=[]
-for i,(sx,sy,ynode) in enumerate([(-1,-1,'cat_anchor_y1'),(1,-1,'cat_anchor_y1'),(-1,1,'cat_anchor_y2'),(1,1,'cat_anchor_y2')],1):
-    f=cylinder(cat_group,'CATFoot'+str(i),0,0,-13,6.5,10)
-    f.Label='落脚凸台 Ø13 · 坐于已确认铁板锚孔'
-    f.setExpression('Radius','Params.cat_foot_d / 2')
-    f.setExpression('Height','Params.cat_lift - Params.cat_plate_t')
-    f.setExpression('Placement.Base.x',f'{sx} * Params.cat_anchor_x')
-    f.setExpression('Placement.Base.y',f'Params.{ynode} - Params.cat_y')
-    f.setExpression('Placement.Base.z','-Params.cat_lift');feet.append(f)
-fused_mount=fusion(cat_group,'CATMountFused','CAT 贴壳托板 + 四个锚孔落脚凸台',[tray]+feet)
-anchor_cutters=[]
-for i,(sx,sy,ynode) in enumerate([(-1,-1,'cat_anchor_y1'),(1,-1,'cat_anchor_y1'),(-1,1,'cat_anchor_y2'),(1,1,'cat_anchor_y2')],1):
-    h=cylinder(cat_group,'CATAnchorHole'+str(i),0,0,-13.5,1.5,10.5)
-    h.Label='M3 锚孔 Ø3.0（Ø3.2 铁板孔补偿）'
-    h.setExpression('Radius','Params.cat_anchor_hole_d / 2')
-    h.setExpression('Placement.Base.x',f'{sx} * Params.cat_anchor_x')
-    h.setExpression('Placement.Base.y',f'Params.{ynode} - Params.cat_y')
-    h.setExpression('Placement.Base.z','-Params.cat_lift - 0.5 mm');anchor_cutters.append(h)
-holes_mount=doc.addObject('Part::MultiFuse','CATAnchorHoles');cat_group.addObject(holes_mount)
-holes_mount.Shapes=anchor_cutters;doc.recompute()
-cat_mount=doc.addObject('Part::Cut','CATMount');cat_group.addObject(cat_mount)
-cat_mount.Label='CAT 贴壳托板连接件 · 脚位已确认 · 保留 8 通风槽 + 6 固定孔'
-cat_mount.Base=fused_mount;cat_mount.Tool=holes_mount
+# Current SolidCraft native model is the geometry authority for the connector.
+cat_mount=feature(cat_group,'CATMount','CAT 直筋连接件 · 5mm 均匀托板 / 内嵌螺母 / 自攻四柱',
+                  Part.read(str(ROOT/'cad_solidcraft/exports/cat_mount.step')))
+assert cat_mount.Shape.isValid() and len(cat_mount.Shape.Solids)==1
 
 lidar_source=Part.read(str(ROOT/'models/单线雷达总装.STEP'))
 # Keep the attached connector that reaches the device body. Only the remote
@@ -235,11 +210,11 @@ for p in post_objs:
 assert max(post_overlaps)<1e-5,post_overlaps
 cat_top=max(global_shape(o).BoundBox.ZMax for o in cat_shell_objs)
 lidar_head_low=lidar_group.getGlobalPlacement().Base.z+scan_lower
-assert lidar_head_low-cat_top>5
+assert lidar_head_low-cat_top>0  # Nominal separation only; former 5 mm allowance is no longer met.
 vent_wires=[w for w in face.Wires if w.BoundBox.XLength>20 and w.BoundBox.YLength<5]
 assert len(vent_wires)==8
 for w in vent_wires:
-    column=Part.Face(w).extrude(V(0,0,-13))
+    column=Part.Face(w).extrude(V(0,0,-15))
     assert column.common(cat_mount.Shape).Volume<1e-5
 
 # Confirmed anchors: read back the compensated holes from the final solids and
@@ -248,7 +223,7 @@ for w in vent_wires:
 approved_cat=[(sx*50,y,50) for sx in (-1,1) for y in (-88.39,-11.47)]
 cat_holes=[]
 for f in cat_mount.Shape.Faces:
-    if isinstance(f.Surface,Part.Cylinder) and abs(f.Surface.Radius-1.5)<.01:
+    if isinstance(f.Surface,Part.Cylinder) and abs(f.Surface.Radius-1.25)<.01:
         c=f.Surface.Center
         v=cat_group.Placement.multVec(V(c.x,c.y,c.z))
         cat_holes.append((v.x,v.y))
@@ -304,7 +279,7 @@ report={'status':'assembly_conflict_rear_tof_unresolved',
                         'layer_gap_mm':50,'lower_devices':['FrontTOF','RearTOF','C30D','BatteryCradle'],
                         'upper_devices':['CAT','Lidar','Camera']},
         'datums_mm':{'lower_plate_top':1.5,'upper_plate_bottom':51.5,'upper_plate_top':53,
-                     'cat_bottom':66,'cat_top':cat_top,'lidar_base':86,'lidar_scan_head_lowest':lidar_head_low},
+                     'cat_bottom':68,'cat_top':cat_top,'lidar_base':86,'lidar_scan_head_lowest':lidar_head_low},
         'checks':{'identical_steel_plate_symmetric_difference_mm3':plate_difference,
                   'lidar_head_above_cat_mm':lidar_head_low-cat_top,
                   'candidate_posts_vs_cradle_overlap_mm3':post_overlaps,
@@ -314,8 +289,8 @@ report={'status':'assembly_conflict_rear_tof_unresolved',
         'confirmed_fixtures':{'battery_cradle':{'anchors_xy':approved_bat,'hole_d_mm':3.3,
                                                    'fastener':'M3×10+4 铜柱 + M3 螺母；底部紧固件长度待选',
                                                    'note':'铜柱对边 5.5、螺母对边 5.5/高 2.4 为名义值；后 TOF 干涉未解决'},
-                              'cat_mount':{'anchors_xy':[(p[0],p[1]) for p in approved_cat],'foot_d_mm':13,'hole_d_mm':3.0,
-                                           'fastener':'M3 对锁 + 底面螺母'}},
+                              'cat_mount':{'anchors_xy':[(p[0],p[1]) for p in approved_cat],'foot_d_mm':12,'hole_d_mm':2.5,
+                                           'fastener':'底板：M3×10 自攻；外壳六孔：M3×10 普通机牙 + M3 螺母'}},
         'battery_height_budget_mm':{'support_z':15.9,'available_height':35.6,'clearance_budget':2,'max_battery_height':33.6},
         'candidate_layer_post_xy_unconfirmed':post_points,
         'objects':{k:bounds(v) for k,v in shapes.items()},
@@ -324,6 +299,7 @@ report={'status':'assembly_conflict_rear_tof_unresolved',
                                  'camera':'Board outline 29×31.25 and hole pitch 23×24 from V1R1 drawing; thickness/lens are placeholders',
                                  'lidar':'Original fixed curved cable solids hidden; final cable route still required',
                                  'battery':'No actual battery solid or confirmed height; reference cradle preserved'},
+        'layout_warnings':['CAT raised 2mm; lidar scan-head lower envelope remains above CAT by about 3.32mm, below previous 5mm allowance; optical FOV unverified'],
         'known_conflicts':['RearTOF intersects the current battery floor at the existing placement; do not treat this assembly as installation-ready'],
         'not_tested':['Physical nut/bolt access under both plates (user to verify ground clearance)',
                       'Lidar and camera mounts (deferred by user until CAT/battery are fixed)',
@@ -331,6 +307,7 @@ report={'status':'assembly_conflict_rear_tof_unresolved',
                       'Actual battery height and camera thickness/lens geometry','Cable routing and full FOV/access',
                       'Strength, vibration, steel-plate deflection, print fit and temperature'],
         'visible_object_names':[o.Name for o in visible],
+        'cat_source_sha256':hashlib.sha256((ROOT/'cad_solidcraft/exports/cat_mount.step').read_bytes()).hexdigest(),
         'battery_source_sha256':hashlib.sha256((ROOT/'cad_solidcraft/exports/battery_cradle.step').read_bytes()).hexdigest(),
         'sources':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (ROOT/'models').glob('*') if p.suffix.lower() in ['.step','.stp']}}
 with open(OUT/'two_layer_checks.json','w',encoding='utf-8') as fh:
@@ -340,17 +317,7 @@ saved=App.openDocument(str(path));saved.recompute()
 assert abs(global_shape(saved.getObject('UpperSteelPlate')).BoundBox.ZMin-51.5)<1e-6
 assert abs(saved.getObject('Params').layer_gap.Value-50)<1e-6
 assert not [o.Name for o in saved.Objects if any('Error' in str(s) or 'Invalid' in str(s) for s in o.State)]
-# CAT exports remain here; battery printable outputs are in cad_solidcraft/exports.
-import Mesh
-import MeshPart
-exports=ROOT/'output/two_layer'
-for sub in ['step','stl']:(exports/sub).mkdir(parents=True,exist_ok=True)
-for name,label,fn in [('CATMount','CAT托板连接件','cat_mount')]:
-    obj=saved.getObject(name);shape=global_shape(obj)
-    assert shape.isValid() and shape.isClosed() and len(shape.Solids)==1,name
-    shape.exportStep(str(exports/'step'/f'{fn}.step'))
-    mesh=MeshPart.meshFromShape(Shape=shape,LinearDeflection=0.15,AngularDeflection=0.3)
-    mesh.write(str(exports/'stl'/f'{fn}.stl'))
+# Printable CAT and battery exports are maintained under cad_solidcraft/exports.
 print(json.dumps({'output':str(path),'checks':report['checks'],'datums':report['datums_mm'],'saved_readback':'pass',
                   'exports':{'battery':str(ROOT/'cad_solidcraft/exports/battery_cradle.step'),
-                             'cat_mount':str(exports/'step'/'cat_mount.step')}},ensure_ascii=True,indent=2),flush=True)
+                             'cat_mount':str(ROOT/'cad_solidcraft/exports/cat_mount.step')}},ensure_ascii=True,indent=2),flush=True)

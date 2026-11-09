@@ -28,6 +28,20 @@ C30D 实物为 V2.3，机械参考使用厂家 V2.2 STEP。
 当前电池承托面 Z=15.9 mm；50 mm 层间高度下，预留 2 mm 后电池高度预算为 **33.6 mm**。
 该预算尚不包含实际电池接头、线缆及完整装拆路径。
 
+## CAT 新连接件：四向直筋试配版
+
+四个底板锚孔已由用户确认。当前采用 **135.33×98×5 mm 均匀托板**，保留原壳 8 槽与 6 孔，六个 M3 螺母窝嵌入底面。
+四根 Ø8×10 mm 支撑柱，每柱四条 90°全高直筋（厚 2 mm），直筋收在 Ø12 柱脚轮廓内。
+外壳固定用普通 M3×10＋M3 螺母；底板固定用 M3×10 自攻螺丝，Ø2.5×9 导孔为试配值。
+
+[原生打印件](cad_solidcraft/cat_mount.sc) · [SolidCraft 安装场景](cad_solidcraft/cat_on_plate.sc) ·
+[底面效果](cad_solidcraft/renders/cat_mount_underside.png) · [柱筋近景](cad_solidcraft/renders/cat_rib_closeup.png) ·
+[STEP](cad_solidcraft/exports/cat_mount.step) / [STL](cad_solidcraft/exports/cat_mount.stl) ·
+[检查报告](cad_solidcraft/checks/cat_mount_checks.json)
+
+CAT 底面因托板加厚升到 Z=68 mm；雷达扫描头最低包络高于 CAT 约 3.32 mm，已低于此前 5 mm 预留，视场仍需检查。
+新件几何检查通过，尚未完成打印、五金配合、PCB 下方螺丝头净空和实物装车验证。
+
 ## 文档和后续任务
 
 - [当前设计](docs/当前设计.md)：装配约束、定位与已知问题。
@@ -36,8 +50,7 @@ C30D 实物为 V2.3，机械参考使用厂家 V2.2 STEP。
 - [C30D 安装说明](docs/C30D集成板安装说明.md)：板卡方向、铜柱与接线空间。
 - [建模技能](.agents/skills/solidcraft-reference-modeling/SKILL.md)：参考取证、MCP 可见迭代、五金尺寸链、独立验收。
 
-下一阶段先做 **打印件优化**，再做 **CAT 与底板的连接件**；具体清单见当前设计文档。
-现有 CAT 连接件保留为装配基线，下一阶段重新审查，不作为已完成实物验证的成品。
+电池盒与 CAT 连接件都已有当前模型，后续做打印与五金试配优化，并解决已记录的装配问题；具体清单见当前设计文档。
 
 ## 目录与重建
 

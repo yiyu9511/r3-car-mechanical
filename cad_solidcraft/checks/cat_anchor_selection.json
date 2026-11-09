@@ -1,0 +1,115 @@
+{
+  "plate_source_bbox": "BoundBox (-75.4987, -136.353, -1.94143e-14, 75.5009, 108.616, 1.5)",
+  "plate_translation": [
+    0,
+    0,
+    51.5
+  ],
+  "shell_translation": [
+    0,
+    -50,
+    66
+  ],
+  "holes": [
+    {
+      "id": "P1",
+      "world_xy": [
+        -50.00005,
+        -88.3863022393
+      ],
+      "plate_top_z": 53,
+      "hole_diameter": 3.2,
+      "probe_intersection_mm3": 0.0,
+      "top_post_contact_mm2": 39.48378861530745,
+      "state": "user_confirmed"
+    },
+    {
+      "id": "P2",
+      "world_xy": [
+        50.00005,
+        -88.3863022393
+      ],
+      "plate_top_z": 53,
+      "hole_diameter": 3.2,
+      "probe_intersection_mm3": 0.0,
+      "top_post_contact_mm2": 39.483788615307446,
+      "state": "user_confirmed"
+    },
+    {
+      "id": "P3",
+      "world_xy": [
+        -49.99850669586,
+        -11.46532290758
+      ],
+      "plate_top_z": 53,
+      "hole_diameter": 3.2,
+      "probe_intersection_mm3": 0.0,
+      "top_post_contact_mm2": 38.42229708497762,
+      "state": "user_confirmed"
+    },
+    {
+      "id": "P4",
+      "world_xy": [
+        50.001393304137,
+        -11.46532291284
+      ],
+      "plate_top_z": 53,
+      "hole_diameter": 3.2,
+      "probe_intersection_mm3": 0.0,
+      "top_post_contact_mm2": 38.42229712299205,
+      "state": "user_confirmed"
+    }
+  ],
+  "scope": "Source hole existence verified; user confirmed all four anchors in current conversation",
+  "scene": {
+    "path": "cad_solidcraft/cat_on_plate.sc",
+    "shell_bodies": [
+      "Open CASCADE STEP translator 7.8 1"
+    ],
+    "plate_bodies": [
+      "SteelPlate"
+    ],
+    "annotation_body_count": 74,
+    "status": "user_confirmed",
+    "fastener": "M3x10 self tapping; no washer assumed; 8.5mm nominal penetration through 1.5mm steel",
+    "world_bodies": [
+      {
+        "name": "Open CASCADE STEP translator 7.8 1",
+        "world_bounds": {
+          "max": [
+            67.66256477886502,
+            -9.749999999998963,
+            99.55
+          ],
+          "min": [
+            -67.66300877886,
+            -90.24999999999002,
+            66.0
+          ]
+        }
+      },
+      {
+        "name": "SteelPlate",
+        "world_bounds": {
+          "max": [
+            75.50094329959401,
+            108.61609362096101,
+            53.000000000000014
+          ],
+          "min": [
+            -75.4986567004,
+            -136.34252118868204,
+            51.49999999999998
+          ]
+        }
+      }
+    ],
+    "world_datum_check": "pass via render.scene world bounds; inspect_design component definition bounds are local",
+    "note": "Original selection world check used shell Z66; current uniform5mm tray raises shell to Z68. XY anchors unchanged and confirmed."
+  },
+  "current_mount_shell_translation": [
+    0,
+    -50,
+    68
+  ]
+}

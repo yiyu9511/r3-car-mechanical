@@ -70,3 +70,33 @@ FREECAD_RUN="${FREECAD_RUN:-$HOME/.local/opt/freecad-1.1.4/squashfs-root/AppRun}
 
 本机 Codex 与 DSH 已配置 SolidCraft MCP；DSH 为 `~/.dsh/profiles/web/cordis.patch.yml`。
 跨机器不要照搬用户目录或 Windows 绝对路径。
+
+## CAT 连接件：均匀厚板、内嵌螺母、四向直筋
+
+用户已认可当前造型与软件装配效果；保留为后续打印试配基线，实物配合尚未验证。
+
+- `cat_mount.sc`：当前打印件原生特征；`exports/cat_mount.step` / `.stl`：只含打印件。
+- `cat_on_plate.sc`：CAT 原壳、连接件与上层铁板的 SolidCraft 场景；源壳几何未修改。
+- `renders/cat_mount_underside.png` / `cat_rib_closeup.png` / `cat_assembled.png` / `cat_mount_on_plate.png`：当前视图。
+- `checks/cat_mount_checks.json`：94 项几何检查通过；实物未验证项独立列出。
+- `checks/cat_anchor_selection.json`：四个已确认孔的来源与测量；原选孔阶段壳底 Z66，当前加厚后为 Z68。
+
+当前尺寸：托板 135.3256×98×5 mm，六个六角窝对边 5.8、从底面向上深 2.6，夹持层 2.4 mm。
+四柱 Ø8×10，脚盘 Ø12×1.2，每柱四条 90°直筋，厚 2 mm，全高贯通，径向最远 5.8 mm。
+底板使用 M3×10 自攻，导孔 Ø2.5×9 为试配值；外壳使用普通 M3×10＋普通 M3 螺母。
+原外壳底板厚 2 mm；外壳＋整块托板叠厚 7 mm，但螺母嵌入后有效夹持厚度为 **4.4 mm**。
+螺母按高 2.4 mm，螺纹穿出约 3.2 mm；须核对实际螺丝头和 PCB 内部净空。
+
+坐标：打印件局部顶面 Z=0、底脚 Z=-15；总装平移 `[0,-50,68]`。
+上层钢板 Z=51.5..53，CAT 底面 Z=68。导出仅反映几何，不代表完成打印或装车验收。
+四孔已确认，不再把当前布局称为待选孔；旧选孔场景和中间斜筋样件已由当前装配替代。
+
+```bash
+"$FREECAD_RUN" python cad_solidcraft/scripts/prepare_cat_selection.py
+SOLIDCRAFT_CONNECT=127.0.0.1:27878 python3 cad_solidcraft/scripts/build_cat_mount.py
+"$FREECAD_RUN" python cad_solidcraft/scripts/verify_cat_mount.py
+```
+
+生成与检查默认写到 `cad_solidcraft/build/cat/`，是暂存目录。经检查后更新当前导出、文档与总装。
+第一次准备脚本仍保留选孔命名，用途是提取原壳接口、完整外壳并复核已确认的四孔。
+参数改变后需要重新验收；筋草图/固定结构不应只凭属性存在就宣称所有尺寸自动联动。

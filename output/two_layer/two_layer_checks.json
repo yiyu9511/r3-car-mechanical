@@ -20,14 +20,14 @@
     "lower_plate_top": 1.5,
     "upper_plate_bottom": 51.5,
     "upper_plate_top": 53,
-    "cat_bottom": 66,
-    "cat_top": 112.60000000000008,
+    "cat_bottom": 68,
+    "cat_top": 114.60000000000008,
     "lidar_base": 86,
     "lidar_scan_head_lowest": 117.92192707366382
   },
   "checks": {
     "identical_steel_plate_symmetric_difference_mm3": 0.0,
-    "lidar_head_above_cat_mm": 5.321927073663744,
+    "lidar_head_above_cat_mm": 3.321927073663744,
     "candidate_posts_vs_cradle_overlap_mm3": [
       0.0,
       0.0,
@@ -83,9 +83,9 @@
           -11.47
         ]
       ],
-      "foot_d_mm": 13,
-      "hole_d_mm": 3.0,
-      "fastener": "M3 对锁 + 底面螺母"
+      "foot_d_mm": 12,
+      "hole_d_mm": 2.5,
+      "fastener": "底板：M3×10 自攻；外壳六孔：M3×10 普通机牙 + M3 螺母"
     }
   },
   "battery_height_budget_mm": {
@@ -155,11 +155,11 @@
     ],
     "CATMount": [
       -67.66300877886484,
-      67.66256477886543,
-      -94.89,
-      -4.969999999999999,
-      53.0,
-      66.00000000000001
+      67.66256477886671,
+      -99.0,
+      -0.9999999999987352,
+      52.9999999999861,
+      67.99999999999983
     ],
     "Lidar": [
       -35.348720185097605,
@@ -206,16 +206,16 @@
       67.66300877886599,
       -90.24999999999935,
       -9.749999999999316,
-      72.99999999999997,
-      112.60000000000008
+      74.99999999999997,
+      114.60000000000008
     ],
     "CATShell1": [
       -67.66300877886484,
       67.66256477886543,
       -90.24999999999935,
       -9.749999999999318,
-      65.99999999999999,
-      99.55000000000008
+      67.99999999999999,
+      101.55000000000008
     ]
   },
   "reference_limitations": {
@@ -225,6 +225,9 @@
     "lidar": "Original fixed curved cable solids hidden; final cable route still required",
     "battery": "No actual battery solid or confirmed height; reference cradle preserved"
   },
+  "layout_warnings": [
+    "CAT raised 2mm; lidar scan-head lower envelope remains above CAT by about 3.32mm, below previous 5mm allowance; optical FOV unverified"
+  ],
   "known_conflicts": [
     "RearTOF intersects the current battery floor at the existing placement; do not treat this assembly as installation-ready"
   ],
@@ -269,6 +272,7 @@
     "MCUSpacer3",
     "MCUSpacer4"
   ],
+  "cat_source_sha256": "25739cb9886a165ec57e6babb3de79b7fa580420cd17b65ae1342a7552636f2c",
   "battery_source_sha256": "a29cb5f6fcdfef7124d351dc4ea6ca45382e221e339dbe01a487a8d0c7e0a1dc",
   "sources": {
     "models/R3mini四驱小车底盘（无悬挂）_utf8.stp": "8c98c1b466ce4d315347af833bc5634447644e64e2b906d53b4a4cde80644fbc",

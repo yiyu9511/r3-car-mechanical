@@ -1,0 +1,762 @@
+{
+  "schema_version": "0.1",
+  "report_type": "freecad-model-validation",
+  "subject": {
+    "document": "CATMount",
+    "path": "cad_solidcraft/exports/cat_mount.step"
+  },
+  "evidence_level": "geometry",
+  "status": "warning",
+  "summary": {
+    "pass": 94,
+    "fail": 0,
+    "warning": 0,
+    "not_tested": 4
+  },
+  "checks": [
+    {
+      "id": "valid_single_solid",
+      "status": "pass",
+      "actual": {
+        "valid": true,
+        "closed": true,
+        "solids": 1
+      },
+      "expected": "one valid closed solid",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "dimensions",
+      "status": "pass",
+      "actual": [
+        135.32557375773155,
+        98.00000020000127,
+        15.000000200013638
+      ],
+      "expected": [
+        135.32557355773028,
+        98,
+        15
+      ],
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "source_bottom_interface_matches",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "symmetric difference <0.01 mm3",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "M3_clearance_1",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "nut_pocket_1",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "clamp_web_2p4mm_1",
+      "status": "pass",
+      "actual": 49.278060367384526,
+      "expected": 49.278060367384526,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "M3_clearance_2",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "nut_pocket_2",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "clamp_web_2p4mm_2",
+      "status": "pass",
+      "actual": 49.278060367384505,
+      "expected": 49.278060367384505,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "M3_clearance_3",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "nut_pocket_3",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "clamp_web_2p4mm_3",
+      "status": "pass",
+      "actual": 49.278060367384526,
+      "expected": 49.278060367384526,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "M3_clearance_4",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "nut_pocket_4",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "clamp_web_2p4mm_4",
+      "status": "pass",
+      "actual": 49.278060367384526,
+      "expected": 49.278060367384526,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "M3_clearance_5",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "nut_pocket_5",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "clamp_web_2p4mm_5",
+      "status": "pass",
+      "actual": 49.27806036738453,
+      "expected": 49.27806036738453,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "M3_clearance_6",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "nut_pocket_6",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "clamp_web_2p4mm_6",
+      "status": "pass",
+      "actual": 49.278060367384526,
+      "expected": 49.278060367384526,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_vent_path_1",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_vent_path_2",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_vent_path_3",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_vent_path_4",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_vent_path_5",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_vent_path_6",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_vent_path_7",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_vent_path_8",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "source_opening_counts",
+      "status": "pass",
+      "actual": {
+        "vents": 8,
+        "holes": 6
+      },
+      "expected": {
+        "vents": 8,
+        "holes": 6
+      },
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "pilot_bore_9mm_1",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "pilot_roof_1",
+      "status": "pass",
+      "actual": 4.891085905830348,
+      "expected": 4.891085905830348,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "post_wall_1",
+      "status": "pass",
+      "actual": 453.1469246189728,
+      "expected": 453.1469246189728,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "source_plate_anchor_1",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "expanded_foot_contact_1",
+      "status": "pass",
+      "actual": 108.18859703599168,
+      "expected": ">1.5x plain post annulus area mm2",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "foot_on_steel_1",
+      "status": "pass",
+      "actual": {
+        "solid_foot_area": 108.18859703599168,
+        "steel_support_area": 105.05485836350744
+      },
+      "expected": ">94% foot contact supported; actual steel hole is larger than pilot",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "post_center_edge_margin_1",
+      "status": "pass",
+      "actual": 10.613697760700006,
+      "expected": ">10 mm to tray end",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "pilot_bore_9mm_2",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "pilot_roof_2",
+      "status": "pass",
+      "actual": 4.891085905830348,
+      "expected": 4.891085905830348,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "post_wall_2",
+      "status": "pass",
+      "actual": 453.1469246189728,
+      "expected": 453.1469246189728,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "source_plate_anchor_2",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "expanded_foot_contact_2",
+      "status": "pass",
+      "actual": 108.18859698157048,
+      "expected": ">1.5x plain post annulus area mm2",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "foot_on_steel_2",
+      "status": "pass",
+      "actual": {
+        "solid_foot_area": 108.18859698157048,
+        "steel_support_area": 105.05485831052745
+      },
+      "expected": ">94% foot contact supported; actual steel hole is larger than pilot",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "post_center_edge_margin_2",
+      "status": "pass",
+      "actual": 10.613697760700006,
+      "expected": ">10 mm to tray end",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "pilot_bore_9mm_3",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "pilot_roof_3",
+      "status": "pass",
+      "actual": 4.891085905830348,
+      "expected": 4.891085905830348,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "post_wall_3",
+      "status": "pass",
+      "actual": 453.1469246189729,
+      "expected": 453.1469246189729,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "source_plate_anchor_3",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "expanded_foot_contact_3",
+      "status": "pass",
+      "actual": 108.18859699419563,
+      "expected": ">1.5x plain post annulus area mm2",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "foot_on_steel_3",
+      "status": "pass",
+      "actual": {
+        "solid_foot_area": 108.18859699419563,
+        "steel_support_area": 105.05485832279606
+      },
+      "expected": ">94% foot contact supported; actual steel hole is larger than pilot",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "post_center_edge_margin_3",
+      "status": "pass",
+      "actual": 10.465322907580003,
+      "expected": ">10 mm to tray end",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "pilot_bore_9mm_4",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "pilot_roof_4",
+      "status": "pass",
+      "actual": 4.891085905830348,
+      "expected": 4.891085905830348,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "post_wall_4",
+      "status": "pass",
+      "actual": 453.1469246189728,
+      "expected": 453.1469246189728,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "source_plate_anchor_4",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "expanded_foot_contact_4",
+      "status": "pass",
+      "actual": 108.18859693902732,
+      "expected": ">1.5x plain post annulus area mm2",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "foot_on_steel_4",
+      "status": "pass",
+      "actual": {
+        "solid_foot_area": 108.18859693902732,
+        "steel_support_area": 105.05485826925361
+      },
+      "expected": ">94% foot contact supported; actual steel hole is larger than pilot",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "post_center_edge_margin_4",
+      "status": "pass",
+      "actual": 10.465322912840001,
+      "expected": ">10 mm to tray end",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_height_web_1_1_0",
+      "status": "pass",
+      "actual": 24.76799999999998,
+      "expected": 24.76799999999998,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_height_web_1_-1_0",
+      "status": "pass",
+      "actual": 24.76799999999998,
+      "expected": 24.76799999999998,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_height_web_1_0_1",
+      "status": "pass",
+      "actual": 24.76799999999998,
+      "expected": 24.76799999999998,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_height_web_1_0_-1",
+      "status": "pass",
+      "actual": 24.76799999999998,
+      "expected": 24.76799999999998,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "ribs_inside_12mm_foot_1",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_height_web_2_1_0",
+      "status": "pass",
+      "actual": 24.76799999999998,
+      "expected": 24.76799999999998,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_height_web_2_-1_0",
+      "status": "pass",
+      "actual": 24.76799999999998,
+      "expected": 24.76799999999998,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_height_web_2_0_1",
+      "status": "pass",
+      "actual": 24.76799999999998,
+      "expected": 24.76799999999998,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_height_web_2_0_-1",
+      "status": "pass",
+      "actual": 24.76799999999998,
+      "expected": 24.76799999999998,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "ribs_inside_12mm_foot_2",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_height_web_3_1_0",
+      "status": "pass",
+      "actual": 24.767999999999983,
+      "expected": 24.767999999999983,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_height_web_3_-1_0",
+      "status": "pass",
+      "actual": 24.76799999999998,
+      "expected": 24.76799999999998,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_height_web_3_0_1",
+      "status": "pass",
+      "actual": 24.76799999999998,
+      "expected": 24.76799999999998,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_height_web_3_0_-1",
+      "status": "pass",
+      "actual": 24.76799999999998,
+      "expected": 24.76799999999998,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "ribs_inside_12mm_foot_3",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_height_web_4_1_0",
+      "status": "pass",
+      "actual": 24.76799999999998,
+      "expected": 24.76799999999998,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_height_web_4_-1_0",
+      "status": "pass",
+      "actual": 24.767999999999983,
+      "expected": 24.767999999999983,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_height_web_4_0_1",
+      "status": "pass",
+      "actual": 24.76799999999998,
+      "expected": 24.76799999999998,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "full_height_web_4_0_-1",
+      "status": "pass",
+      "actual": 24.76799999999998,
+      "expected": 24.76799999999998,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "ribs_inside_12mm_foot_4",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "steel_intersection",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "shell_intersection",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "self_tap_tip_clearance",
+      "status": "pass",
+      "actual": 1.5,
+      "expected": "1.5 mm from tray underside, no washer",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "self_tap_drill_end_clearance",
+      "status": "pass",
+      "actual": 0.5,
+      "expected": "0.5 mm nominal",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "machine_screw_nut_stack",
+      "status": "pass",
+      "actual": {
+        "shell": 2,
+        "clamp": 2.4,
+        "nut": 2.4,
+        "protrusion": 3.1999999999999997,
+        "steel_clearance": 7
+      },
+      "expected": "full nominal nut engagement and no steel collision",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "nut_spacing",
+      "status": "pass",
+      "actual": 1.7000000000000002,
+      "expected": ">1.5 mm between adjacent parallel flats",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "stl_closed",
+      "status": "pass",
+      "actual": true,
+      "expected": true,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "step_roundtrip_topology",
+      "status": "pass",
+      "actual": {
+        "valid": true,
+        "solids": 1
+      },
+      "expected": "one valid solid",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "step_roundtrip_geometry",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": "symmetric difference <0.01 mm3",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "step_roundtrip_volume_integration",
+      "status": "pass",
+      "actual": -9.546056389808655e-09,
+      "expected": "absolute integrated volume delta <0.01 mm3",
+      "method": "OCCT Volume before and after serialization; cross-check with geometric difference",
+      "message": "A warning is retained for numerical integration drift; not silently relaxed."
+    },
+    {
+      "id": "uniform_5mm_plate_with_only_declared_voids",
+      "status": "pass",
+      "actual": 58829.236944405595,
+      "expected": 58829.23694482253,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "no_projecting_nut_rails",
+      "status": "pass",
+      "actual": 0.0,
+      "expected": 0,
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "neighbor_holes_not_covered_1",
+      "status": "pass",
+      "actual": 7.964632177459536,
+      "expected": "minimum >0.5 mm to all other hole boundaries; tool access still needs intended fastener",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "neighbor_holes_not_covered_2",
+      "status": "pass",
+      "actual": 1.479020772915921,
+      "expected": "minimum >0.5 mm to all other hole boundaries; tool access still needs intended fastener",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "neighbor_holes_not_covered_3",
+      "status": "pass",
+      "actual": 3.3564220760708863,
+      "expected": "minimum >0.5 mm to all other hole boundaries; tool access still needs intended fastener",
+      "method": "OCCT BRep probe"
+    },
+    {
+      "id": "neighbor_holes_not_covered_4",
+      "status": "pass",
+      "actual": 3.359308680549405,
+      "expected": "minimum >0.5 mm to all other hole boundaries; tool access still needs intended fastener",
+      "method": "OCCT BRep probe"
+    }
+  ],
+  "volume_mm3": 61483.46041669898,
+  "foot_contact_areas_mm2": [
+    108.18859703599168,
+    108.18859698157048,
+    108.18859699419563,
+    108.18859693902732
+  ],
+  "anchors_world_xy": [
+    [
+      -50.00005,
+      -88.3863022393
+    ],
+    [
+      50.00005,
+      -88.3863022393
+    ],
+    [
+      -49.99850669586,
+      -11.46532290758
+    ],
+    [
+      50.001393304137,
+      -11.46532291284
+    ]
+  ],
+  "world_translation": [
+    0,
+    -50,
+    68
+  ],
+  "source_sha256": "daa71902be729961a4fcff03520aa2ec9fd464a0b1a668bc37fbb40407b83185",
+  "fasteners": {
+    "chassis": "M3x10 plastic self tapping, nominal no washer, pilot diameter2.5 depth9 is trial value",
+    "shell": "M3x10 machine screw from shell interior downward, standard nut AF5.5 height2.4; pocket AF5.8 depth2.6 embedded into uniform5mm plate, 2.4mm clamp web"
+  },
+  "untested_risks": [
+    "PCB underside clearance for screw heads and opening the shell for installation",
+    "Actual self-tapping screw thread form, pilot fit, torque and plastic retention",
+    "Printing material/orientation/support, warp, heat and vibration",
+    "Final access to nearby reused chassis holes and complete device hardware layout"
+  ],
+  "user_acceptance": "User accepted the four-straight-rib visual assembly and authorized commit/push; physical fit and print acceptance pending",
+  "artifact_sha256": {
+    "cat_mount.step": "25739cb9886a165ec57e6babb3de79b7fa580420cd17b65ae1342a7552636f2c",
+    "cat_mount.stl": "6b50ddd18fedd1c5a9f799cf286a4eae5ac6eee7193e4241c778a05dab6ba822"
+  }
+}

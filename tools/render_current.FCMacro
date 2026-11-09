@@ -27,7 +27,7 @@ try:
         report=validate_document(doc,expectations={
         'objects':{
             'UpperSteelPlate':{'valid':True,'closed':True,'solid_count':1,'bbox':{'z':1.5,'tolerance':.001}},
-            'CATMount':{'valid':True,'closed':True,'solid_count':1,'bbox':{'z':13,'tolerance':.001}},
+            'CATMount':{'valid':True,'closed':True,'solid_count':1,'bbox':{'z':15,'tolerance':.001}},
             'LidarMount':{'valid':True,'closed':True,'solid_count':1,'bbox':{'z':33,'tolerance':.001}},
             'CameraMount':{'valid':True,'closed':True,'solid_count':1}},
         'scope':'Two-layer layout and draft adapter geometry, not manufacturing acceptance',
@@ -98,7 +98,16 @@ try:
         view.fitAll();Gui.updateGui()
         settle_view()
         if kind=='iso':
-            view.getCameraNode().orientation.setValue(*ISO_ROT.Q)
+            # Direct camera assignment avoids an unfinished animation / stale clipping range.
+            camera=view.getCameraNode()
+            camera.orientation.setValue(*ISO_ROT.Q)
+            center=App.Vector(0,-15,105 if name=='exploded_iso' else 62)
+            eye=center+ISO_ROT.multVec(App.Vector(0,0,800))
+            camera.position.setValue(eye.x,eye.y,eye.z)
+            camera.focalDistance.setValue(800)
+            camera.height.setValue(410 if name=='exploded_iso' else 360)
+            camera.nearDistance.setValue(1)
+            camera.farDistance.setValue(2000)
             Gui.updateGui()
         view.saveImage(str(OUT/(name+'.png')),width,height,'White')
     capture('assembled_iso')

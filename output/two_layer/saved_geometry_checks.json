@@ -101,25 +101,25 @@
     },
     {
       "name": "CATMount",
-      "label": "CAT 贴壳托板连接件 · 脚位已确认 · 保留 8 通风槽 + 6 固定孔",
-      "type_id": "Part::Cut",
+      "label": "CAT 直筋连接件 · 5mm 均匀托板 / 内嵌螺母 / 自攻四柱",
+      "type_id": "Part::Feature",
       "observed": {
-        "shape_type": "Compound",
+        "shape_type": "Solid",
         "is_null": false,
         "valid": true,
         "closed": true,
         "solid_count": 1,
-        "volume_mm3": 33412.12761720176,
+        "volume_mm3": 61483.46041669898,
         "bbox_mm": {
-          "x": 135.32557355773025,
-          "y": 89.8304544160461,
-          "z": 13.000000000000018,
+          "x": 135.32557355773156,
+          "y": 98.00000000000126,
+          "z": 15.000000000013639,
           "xmin": -67.66300877886484,
-          "ymin": -44.84600281607061,
-          "zmin": -13.0,
-          "xmax": 67.66256477886543,
-          "ymax": 44.984451599975486,
-          "zmax": 1.8e-14
+          "ymin": -49.0,
+          "zmin": -15.000000000013804,
+          "xmax": 67.66256477886671,
+          "ymax": 49.000000000001265,
+          "zmax": -1.65e-13
         }
       },
       "checks": [
@@ -161,7 +161,7 @@
           "expected": {
             "minimum_exclusive": 0
           },
-          "actual": 33412.12761720176,
+          "actual": 61483.46041669898,
           "method": "Shape.Volume",
           "message": "positive volume"
         },
@@ -169,13 +169,13 @@
           "id": "CATMount.bbox.z",
           "status": "pass",
           "expected": {
-            "value": 13.0,
+            "value": 15.0,
             "tolerance": 0.001,
             "unit": "mm"
           },
           "actual": {
-            "value": 13.000000000000018,
-            "delta": 1.7763568394002505e-14,
+            "value": 15.000000000013639,
+            "delta": 1.3638867812915123e-11,
             "unit": "mm"
           },
           "method": "Shape.BoundBox.ZLength",
@@ -449,7 +449,7 @@
       "expected": {
         "minimum_exclusive": 0
       },
-      "actual": 33412.12761720176,
+      "actual": 61483.46041669898,
       "method": "Shape.Volume",
       "message": "positive volume"
     },
@@ -457,13 +457,13 @@
       "id": "CATMount.bbox.z",
       "status": "pass",
       "expected": {
-        "value": 13.0,
+        "value": 15.0,
         "tolerance": 0.001,
         "unit": "mm"
       },
       "actual": {
-        "value": 13.000000000000018,
-        "delta": 1.7763568394002505e-14,
+        "value": 15.000000000013639,
+        "delta": 1.3638867812915123e-11,
         "unit": "mm"
       },
       "method": "Shape.BoundBox.ZLength",
