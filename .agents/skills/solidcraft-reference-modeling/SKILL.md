@@ -91,6 +91,17 @@ SOLIDCRAFT_CONNECT=127.0.0.1:27878 python3 cad_solidcraft/scripts/build_battery_
 
 过渡造型服务于功能。圆锥、圆角失败时可选简单筋或整体加强边，但应重新检查打印、接触和通路，而非只追求布尔成功。
 
+## 在 SolidCraft 内展示装配与渲染
+
+用户要求“装配看看”时，在 SolidCraft 桌面把零件和底盘放入同一场景，保存原生装配并展示；其他软件截图不能代替这个动作。
+先刚体定位零件，再插入原底盘，保持五金独立。需要保留整车时另用整车装配，不将局部安装场景称为整车。
+
+渲染走 `render.preflight` → `render.start` → `render.status` → `render.export`，保留完整 job 标识。
+在 settings 中明确 camera；只修改设计视角未必改变默认渲染相机。默认快速渲染有三角面上限，
+本次完整底盘约 46 万三角面可用 `integrator: raytrace`、`raytrace: {budget: studio}`。不要把 GPU 视口可用等同于渐进光追已启用。
+用软件控制协议 `ui.workspace` 切换 `render`，用 `render.result.view` 显示 image/fit；
+`ui.workspace` 是控制协议方法，不是引擎 execute 命令。读取 UI 的 showing_result 核实状态。
+
 ## 独立验收，不把一次成功当作交付
 
 SolidCraft 用于设计，FreeCAD/OCCT 可用于独立读回检查。运行方式见仓库 README。

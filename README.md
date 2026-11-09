@@ -19,6 +19,7 @@ C30D 实物为 V2.3，机械参考使用厂家 V2.2 STEP。
 | [STEP](cad_solidcraft/exports/battery_cradle.step) / [STL](cad_solidcraft/exports/battery_cradle.stl) | 当前几何导出，尚未完成打印与装车验收 |
 | [托架预览](cad_solidcraft/renders/cradle_iso.png) / [底面](cad_solidcraft/renders/cradle_bottom.png) | 当前造型 |
 | [安装近景](output/two_layer/battery_fit_closeup.png) | 电池盒、铜柱与底盘的实际几何位置，红色为后 TOF |
+| [SolidCraft 底盘安装](cad_solidcraft/battery_on_chassis.sc) / [原生渲染](cad_solidcraft/renders/battery_on_chassis_render.png) | 在 SolidCraft 内直接查看电池盒、铜柱、螺母与原底盘 |
 | [两层装配](assemblies/two_layer.FCStd) / [装配预览](output/two_layer/overview.png) | 已更新当前电池盒及铜柱 |
 | [零件检查](cad_solidcraft/checks/battery_cradle_checks.json) / [装配碰撞检查](output/two_layer/collision_checks.json) | 几何证据与未解决事项 |
 

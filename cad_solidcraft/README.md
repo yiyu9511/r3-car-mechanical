@@ -28,6 +28,9 @@
 
 - `battery_cradle.sc`：打印件原生设计。
 - `battery_mount.sc`：托架 + 四铜柱 + 四螺母，共 9 个实体。
+- `battery_on_chassis.sc`：上述原生特征经刚体定位，插入原 R3 底盘；可在 SolidCraft 设计窗口旋转查看，不含其他设备。
+- `renders/battery_on_chassis_render.png`：SolidCraft 自带 CPU 光线追踪，1400×1000；约 46 万三角面的原底盘使用 studio 资源配置。
+- `checks/solidcraft_assembly_render.json`：软件实际完成的渲染任务及图片哈希。
 - `exports/battery_cradle.step` / `.stl`：只导出打印件。
 - `exports/battery_mount.step`：名义五金安装示意。
 - `checks/battery_cradle_checks.json`：独立 OCCT 检查。

@@ -23,3 +23,6 @@ __pycache__/
 # SolidCraft regeneration staging and automatic backups
 /cad_solidcraft/build/
 *.sc.bak
+
+# Live SolidCraft document locks
+.~*.sc.lock
