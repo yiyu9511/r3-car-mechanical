@@ -2,41 +2,43 @@
   "active_sketch": null,
   "bodies": [
     {
-      "area_mm2": 32431.429223466643,
+      "area_mm2": 32119.209551674343,
       "bbox": {
         "max": [
-          67.66256477886672,
-          49.000000000001265,
-          -1.652011860642233e-13
+          67.66256477886544,
+          49.00000000000001,
+          -1.594280263361724e-13
         ],
         "min": [
-          -67.66300877886485,
-          -49.0,
-          -15.000000000013806
+          -67.66300877886484,
+          -49.00000000000001,
+          -15.0
         ]
       },
       "center_of_mass": [
-        -0.19936642320534853,
-        0.003202478619464179,
-        -2.832570106023187
+        -0.19908145299993923,
+        0.0034160762574024796,
+        -2.860838899989011
       ],
       "closed": true,
-      "edges": 448,
+      "edges": 689,
       "face_types": {
-        "cylinder": 50,
-        "plane": 124
+        "cone": 12,
+        "cylinder": 105,
+        "other": 16,
+        "plane": 160
       },
-      "faces": 174,
+      "faces": 293,
       "kernel": {
-        "edges": 564,
-        "faces": 208,
+        "edges": 852,
+        "faces": 348,
         "shells": 1,
-        "vertices": 376
+        "vertices": 520
       },
       "name": "CATMount",
-      "vertices": 308,
+      "vertices": 434,
       "visible": true,
-      "volume_mm3": 61483.46663446419
+      "volume_mm3": 61602.59057159731
     }
   ],
   "dirty": true,
@@ -49,9 +51,9 @@
     "XZ",
     "YZ"
   ],
-  "marker": 63,
+  "marker": 83,
   "metadata": {},
-  "name": "CAT mount — four straight ribs / recessed nuts",
+  "name": "cat_mount",
   "params": [
     {
       "comment": "",
@@ -135,9 +137,9 @@
       "value": 2.0
     }
   ],
-  "path": "/home/gxt/self/r3-car-mechanical/cad_solidcraft/build/cat/cat_mount.sc",
+  "path": "/tmp/r3-cat-finish-chamfer/cat_mount.sc",
   "redo": 0,
-  "revision": 157,
+  "revision": 7,
   "selection": [],
   "sketches": [
     {
@@ -2329,6 +2331,1102 @@
       "status": "solved",
       "visible": false,
       "wires": []
+    },
+    {
+      "constraints": [],
+      "curves": [
+        {
+          "construction": false,
+          "end": "l1.end",
+          "end_at": [
+            6.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1",
+          "start": "l1.start",
+          "start_at": [
+            0.0,
+            -15.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l2.end",
+          "end_at": [
+            6.0,
+            -13.8
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l2",
+          "start": "l1.end",
+          "start_at": [
+            6.0,
+            -15.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l3.end",
+          "end_at": [
+            4.0,
+            -11.8
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l3",
+          "start": "l2.end",
+          "start_at": [
+            6.0,
+            -13.8
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l4.end",
+          "end_at": [
+            4.0,
+            -4.85
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l4",
+          "start": "l3.end",
+          "start_at": [
+            4.0,
+            -11.8
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l5.end",
+          "end_at": [
+            0.0,
+            -4.85
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l5",
+          "start": "l4.end",
+          "start_at": [
+            4.0,
+            -4.85
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l6.end",
+          "end_at": [
+            0.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l6",
+          "start": "l5.end",
+          "start_at": [
+            0.0,
+            -4.85
+          ],
+          "type": "line"
+        }
+      ],
+      "dof": 14,
+      "failing": [],
+      "fully_constrained": false,
+      "id": 44,
+      "links": [],
+      "name": "Revolved support profile 1",
+      "plane": {
+        "origin": [
+          -50.00005,
+          -38.386302239299994,
+          0.0
+        ],
+        "x_dir": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "y_dir": [
+          -0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "points": [
+        {
+          "at": [
+            0.0,
+            0.0
+          ],
+          "fixed": true,
+          "fully_constrained": true,
+          "id": "origin",
+          "link": null,
+          "world": [
+            -50.00005,
+            -38.386302239299994,
+            0.0
+          ]
+        },
+        {
+          "at": [
+            0.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1.start",
+          "link": null,
+          "world": [
+            -50.00005,
+            -38.386302239299994,
+            -15.0
+          ]
+        },
+        {
+          "at": [
+            6.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1.end",
+          "link": null,
+          "world": [
+            -44.00005,
+            -38.386302239299994,
+            -15.0
+          ]
+        },
+        {
+          "at": [
+            6.0,
+            -13.8
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l2.end",
+          "link": null,
+          "world": [
+            -44.00005,
+            -38.386302239299994,
+            -13.8
+          ]
+        },
+        {
+          "at": [
+            4.0,
+            -11.8
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l3.end",
+          "link": null,
+          "world": [
+            -46.00005,
+            -38.386302239299994,
+            -11.8
+          ]
+        },
+        {
+          "at": [
+            4.0,
+            -4.85
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l4.end",
+          "link": null,
+          "world": [
+            -46.00005,
+            -38.386302239299994,
+            -4.85
+          ]
+        },
+        {
+          "at": [
+            0.0,
+            -4.85
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l5.end",
+          "link": null,
+          "world": [
+            -50.00005,
+            -38.386302239299994,
+            -4.85
+          ]
+        },
+        {
+          "at": [
+            0.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l6.end",
+          "link": null,
+          "world": [
+            -50.00005,
+            -38.386302239299994,
+            -15.0
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "area_mm2": 44.999999999999986,
+          "centroid_sketch": [
+            2.2785185185185184,
+            -10.306259259259262
+          ],
+          "curves": [
+            "l1",
+            "l2",
+            "l3",
+            "l4",
+            "l5",
+            "l6"
+          ],
+          "holes": [],
+          "index": 0
+        }
+      ],
+      "status": "solved",
+      "visible": false,
+      "wires": []
+    },
+    {
+      "constraints": [],
+      "curves": [
+        {
+          "construction": false,
+          "end": "l1.end",
+          "end_at": [
+            6.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1",
+          "start": "l1.start",
+          "start_at": [
+            0.0,
+            -15.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l2.end",
+          "end_at": [
+            6.0,
+            -13.8
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l2",
+          "start": "l1.end",
+          "start_at": [
+            6.0,
+            -15.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l3.end",
+          "end_at": [
+            4.0,
+            -11.8
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l3",
+          "start": "l2.end",
+          "start_at": [
+            6.0,
+            -13.8
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l4.end",
+          "end_at": [
+            4.0,
+            -4.85
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l4",
+          "start": "l3.end",
+          "start_at": [
+            4.0,
+            -11.8
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l5.end",
+          "end_at": [
+            0.0,
+            -4.85
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l5",
+          "start": "l4.end",
+          "start_at": [
+            4.0,
+            -4.85
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l6.end",
+          "end_at": [
+            0.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l6",
+          "start": "l5.end",
+          "start_at": [
+            0.0,
+            -4.85
+          ],
+          "type": "line"
+        }
+      ],
+      "dof": 14,
+      "failing": [],
+      "fully_constrained": false,
+      "id": 49,
+      "links": [],
+      "name": "Revolved support profile 2",
+      "plane": {
+        "origin": [
+          50.00005,
+          -38.386302239299994,
+          0.0
+        ],
+        "x_dir": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "y_dir": [
+          -0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "points": [
+        {
+          "at": [
+            0.0,
+            0.0
+          ],
+          "fixed": true,
+          "fully_constrained": true,
+          "id": "origin",
+          "link": null,
+          "world": [
+            50.00005,
+            -38.386302239299994,
+            0.0
+          ]
+        },
+        {
+          "at": [
+            0.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1.start",
+          "link": null,
+          "world": [
+            50.00005,
+            -38.386302239299994,
+            -15.0
+          ]
+        },
+        {
+          "at": [
+            6.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1.end",
+          "link": null,
+          "world": [
+            56.00005,
+            -38.386302239299994,
+            -15.0
+          ]
+        },
+        {
+          "at": [
+            6.0,
+            -13.8
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l2.end",
+          "link": null,
+          "world": [
+            56.00005,
+            -38.386302239299994,
+            -13.8
+          ]
+        },
+        {
+          "at": [
+            4.0,
+            -11.8
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l3.end",
+          "link": null,
+          "world": [
+            54.00005,
+            -38.386302239299994,
+            -11.8
+          ]
+        },
+        {
+          "at": [
+            4.0,
+            -4.85
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l4.end",
+          "link": null,
+          "world": [
+            54.00005,
+            -38.386302239299994,
+            -4.85
+          ]
+        },
+        {
+          "at": [
+            0.0,
+            -4.85
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l5.end",
+          "link": null,
+          "world": [
+            50.00005,
+            -38.386302239299994,
+            -4.85
+          ]
+        },
+        {
+          "at": [
+            0.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l6.end",
+          "link": null,
+          "world": [
+            50.00005,
+            -38.386302239299994,
+            -15.0
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "area_mm2": 44.999999999999986,
+          "centroid_sketch": [
+            2.2785185185185184,
+            -10.306259259259262
+          ],
+          "curves": [
+            "l1",
+            "l2",
+            "l3",
+            "l4",
+            "l5",
+            "l6"
+          ],
+          "holes": [],
+          "index": 0
+        }
+      ],
+      "status": "solved",
+      "visible": false,
+      "wires": []
+    },
+    {
+      "constraints": [],
+      "curves": [
+        {
+          "construction": false,
+          "end": "l1.end",
+          "end_at": [
+            6.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1",
+          "start": "l1.start",
+          "start_at": [
+            0.0,
+            -15.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l2.end",
+          "end_at": [
+            6.0,
+            -13.8
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l2",
+          "start": "l1.end",
+          "start_at": [
+            6.0,
+            -15.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l3.end",
+          "end_at": [
+            4.0,
+            -11.8
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l3",
+          "start": "l2.end",
+          "start_at": [
+            6.0,
+            -13.8
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l4.end",
+          "end_at": [
+            4.0,
+            -4.85
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l4",
+          "start": "l3.end",
+          "start_at": [
+            4.0,
+            -11.8
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l5.end",
+          "end_at": [
+            0.0,
+            -4.85
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l5",
+          "start": "l4.end",
+          "start_at": [
+            4.0,
+            -4.85
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l6.end",
+          "end_at": [
+            0.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l6",
+          "start": "l5.end",
+          "start_at": [
+            0.0,
+            -4.85
+          ],
+          "type": "line"
+        }
+      ],
+      "dof": 14,
+      "failing": [],
+      "fully_constrained": false,
+      "id": 54,
+      "links": [],
+      "name": "Revolved support profile 3",
+      "plane": {
+        "origin": [
+          -49.99850669586,
+          38.53467709242,
+          0.0
+        ],
+        "x_dir": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "y_dir": [
+          -0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "points": [
+        {
+          "at": [
+            0.0,
+            0.0
+          ],
+          "fixed": true,
+          "fully_constrained": true,
+          "id": "origin",
+          "link": null,
+          "world": [
+            -49.99850669586,
+            38.53467709242,
+            0.0
+          ]
+        },
+        {
+          "at": [
+            0.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1.start",
+          "link": null,
+          "world": [
+            -49.99850669586,
+            38.53467709242,
+            -15.0
+          ]
+        },
+        {
+          "at": [
+            6.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1.end",
+          "link": null,
+          "world": [
+            -43.99850669586,
+            38.53467709242,
+            -15.0
+          ]
+        },
+        {
+          "at": [
+            6.0,
+            -13.8
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l2.end",
+          "link": null,
+          "world": [
+            -43.99850669586,
+            38.53467709242,
+            -13.8
+          ]
+        },
+        {
+          "at": [
+            4.0,
+            -11.8
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l3.end",
+          "link": null,
+          "world": [
+            -45.99850669586,
+            38.53467709242,
+            -11.8
+          ]
+        },
+        {
+          "at": [
+            4.0,
+            -4.85
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l4.end",
+          "link": null,
+          "world": [
+            -45.99850669586,
+            38.53467709242,
+            -4.85
+          ]
+        },
+        {
+          "at": [
+            0.0,
+            -4.85
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l5.end",
+          "link": null,
+          "world": [
+            -49.99850669586,
+            38.53467709242,
+            -4.85
+          ]
+        },
+        {
+          "at": [
+            0.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l6.end",
+          "link": null,
+          "world": [
+            -49.99850669586,
+            38.53467709242,
+            -15.0
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "area_mm2": 44.999999999999986,
+          "centroid_sketch": [
+            2.2785185185185184,
+            -10.306259259259262
+          ],
+          "curves": [
+            "l1",
+            "l2",
+            "l3",
+            "l4",
+            "l5",
+            "l6"
+          ],
+          "holes": [],
+          "index": 0
+        }
+      ],
+      "status": "solved",
+      "visible": false,
+      "wires": []
+    },
+    {
+      "constraints": [],
+      "curves": [
+        {
+          "construction": false,
+          "end": "l1.end",
+          "end_at": [
+            6.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1",
+          "start": "l1.start",
+          "start_at": [
+            0.0,
+            -15.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l2.end",
+          "end_at": [
+            6.0,
+            -13.8
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l2",
+          "start": "l1.end",
+          "start_at": [
+            6.0,
+            -15.0
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l3.end",
+          "end_at": [
+            4.0,
+            -11.8
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l3",
+          "start": "l2.end",
+          "start_at": [
+            6.0,
+            -13.8
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l4.end",
+          "end_at": [
+            4.0,
+            -4.85
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l4",
+          "start": "l3.end",
+          "start_at": [
+            4.0,
+            -11.8
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l5.end",
+          "end_at": [
+            0.0,
+            -4.85
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l5",
+          "start": "l4.end",
+          "start_at": [
+            4.0,
+            -4.85
+          ],
+          "type": "line"
+        },
+        {
+          "construction": false,
+          "end": "l6.end",
+          "end_at": [
+            0.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l6",
+          "start": "l5.end",
+          "start_at": [
+            0.0,
+            -4.85
+          ],
+          "type": "line"
+        }
+      ],
+      "dof": 14,
+      "failing": [],
+      "fully_constrained": false,
+      "id": 59,
+      "links": [],
+      "name": "Revolved support profile 4",
+      "plane": {
+        "origin": [
+          50.001393304137,
+          38.53467708716,
+          0.0
+        ],
+        "x_dir": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "y_dir": [
+          -0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "points": [
+        {
+          "at": [
+            0.0,
+            0.0
+          ],
+          "fixed": true,
+          "fully_constrained": true,
+          "id": "origin",
+          "link": null,
+          "world": [
+            50.001393304137,
+            38.53467708716,
+            0.0
+          ]
+        },
+        {
+          "at": [
+            0.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1.start",
+          "link": null,
+          "world": [
+            50.001393304137,
+            38.53467708716,
+            -15.0
+          ]
+        },
+        {
+          "at": [
+            6.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l1.end",
+          "link": null,
+          "world": [
+            56.001393304137,
+            38.53467708716,
+            -15.0
+          ]
+        },
+        {
+          "at": [
+            6.0,
+            -13.8
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l2.end",
+          "link": null,
+          "world": [
+            56.001393304137,
+            38.53467708716,
+            -13.8
+          ]
+        },
+        {
+          "at": [
+            4.0,
+            -11.8
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l3.end",
+          "link": null,
+          "world": [
+            54.001393304137,
+            38.53467708716,
+            -11.8
+          ]
+        },
+        {
+          "at": [
+            4.0,
+            -4.85
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l4.end",
+          "link": null,
+          "world": [
+            54.001393304137,
+            38.53467708716,
+            -4.85
+          ]
+        },
+        {
+          "at": [
+            0.0,
+            -4.85
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l5.end",
+          "link": null,
+          "world": [
+            50.001393304137,
+            38.53467708716,
+            -4.85
+          ]
+        },
+        {
+          "at": [
+            0.0,
+            -15.0
+          ],
+          "fixed": false,
+          "fully_constrained": false,
+          "id": "l6.end",
+          "link": null,
+          "world": [
+            50.001393304137,
+            38.53467708716,
+            -15.0
+          ]
+        }
+      ],
+      "profiles": [
+        {
+          "area_mm2": 44.999999999999986,
+          "centroid_sketch": [
+            2.2785185185185184,
+            -10.306259259259262
+          ],
+          "curves": [
+            "l1",
+            "l2",
+            "l3",
+            "l4",
+            "l5",
+            "l6"
+          ],
+          "holes": [],
+          "index": 0
+        }
+      ],
+      "status": "solved",
+      "visible": false,
+      "wires": []
     }
   ],
   "timeline": [
@@ -2339,7 +3437,7 @@
       },
       "error": null,
       "id": 1,
-      "ms": 0.6251199999999999,
+      "ms": 1.276699,
       "name": "CAT measured bottom outline",
       "rolled_back": false,
       "suppressed": false,
@@ -2353,7 +3451,7 @@
       },
       "error": null,
       "id": 2,
-      "ms": 37.839344,
+      "ms": 19.088587,
       "name": "Shell mounting hole 1",
       "rolled_back": false,
       "suppressed": false,
@@ -2367,7 +3465,7 @@
       },
       "error": null,
       "id": 3,
-      "ms": 53.448572999999996,
+      "ms": 24.157189,
       "name": "Shell mounting hole 2",
       "rolled_back": false,
       "suppressed": false,
@@ -2381,7 +3479,7 @@
       },
       "error": null,
       "id": 4,
-      "ms": 52.952101,
+      "ms": 25.812386,
       "name": "Shell mounting hole 3",
       "rolled_back": false,
       "suppressed": false,
@@ -2395,7 +3493,7 @@
       },
       "error": null,
       "id": 5,
-      "ms": 32.721928,
+      "ms": 25.181994999999997,
       "name": "Shell mounting hole 4",
       "rolled_back": false,
       "suppressed": false,
@@ -2409,7 +3507,7 @@
       },
       "error": null,
       "id": 6,
-      "ms": 39.904826,
+      "ms": 26.103181,
       "name": "Shell mounting hole 5",
       "rolled_back": false,
       "suppressed": false,
@@ -2423,7 +3521,7 @@
       },
       "error": null,
       "id": 7,
-      "ms": 44.457831000000006,
+      "ms": 27.943364,
       "name": "Shell mounting hole 6",
       "rolled_back": false,
       "suppressed": false,
@@ -2437,7 +3535,7 @@
       },
       "error": null,
       "id": 8,
-      "ms": 53.822773999999995,
+      "ms": 21.279361,
       "name": "Vent slot core 6",
       "rolled_back": false,
       "suppressed": false,
@@ -2451,7 +3549,7 @@
       },
       "error": null,
       "id": 9,
-      "ms": 72.76655099999999,
+      "ms": 30.960359999999998,
       "name": "Vent slot end 6",
       "rolled_back": false,
       "suppressed": false,
@@ -2465,7 +3563,7 @@
       },
       "error": null,
       "id": 10,
-      "ms": 63.75612699999999,
+      "ms": 33.095283,
       "name": "Vent slot end 6",
       "rolled_back": false,
       "suppressed": false,
@@ -2479,7 +3577,7 @@
       },
       "error": null,
       "id": 11,
-      "ms": 52.498925,
+      "ms": 27.325095,
       "name": "Vent slot core 7",
       "rolled_back": false,
       "suppressed": false,
@@ -2493,7 +3591,7 @@
       },
       "error": null,
       "id": 12,
-      "ms": 68.034536,
+      "ms": 31.323285,
       "name": "Vent slot end 7",
       "rolled_back": false,
       "suppressed": false,
@@ -2507,7 +3605,7 @@
       },
       "error": null,
       "id": 13,
-      "ms": 67.492615,
+      "ms": 31.189348,
       "name": "Vent slot end 7",
       "rolled_back": false,
       "suppressed": false,
@@ -2521,7 +3619,7 @@
       },
       "error": null,
       "id": 14,
-      "ms": 43.950156,
+      "ms": 22.653475999999998,
       "name": "Vent slot core 8",
       "rolled_back": false,
       "suppressed": false,
@@ -2535,7 +3633,7 @@
       },
       "error": null,
       "id": 15,
-      "ms": 62.56452999999999,
+      "ms": 35.897490999999995,
       "name": "Vent slot end 8",
       "rolled_back": false,
       "suppressed": false,
@@ -2549,7 +3647,7 @@
       },
       "error": null,
       "id": 16,
-      "ms": 69.58104800000001,
+      "ms": 35.753952,
       "name": "Vent slot end 8",
       "rolled_back": false,
       "suppressed": false,
@@ -2563,7 +3661,7 @@
       },
       "error": null,
       "id": 17,
-      "ms": 45.849816000000004,
+      "ms": 31.32811,
       "name": "Vent slot core 9",
       "rolled_back": false,
       "suppressed": false,
@@ -2577,7 +3675,7 @@
       },
       "error": null,
       "id": 18,
-      "ms": 39.404634,
+      "ms": 38.399744,
       "name": "Vent slot end 9",
       "rolled_back": false,
       "suppressed": false,
@@ -2591,7 +3689,7 @@
       },
       "error": null,
       "id": 19,
-      "ms": 41.393561000000005,
+      "ms": 39.766817,
       "name": "Vent slot end 9",
       "rolled_back": false,
       "suppressed": false,
@@ -2605,7 +3703,7 @@
       },
       "error": null,
       "id": 20,
-      "ms": 31.275591,
+      "ms": 31.706139,
       "name": "Vent slot core 10",
       "rolled_back": false,
       "suppressed": false,
@@ -2619,7 +3717,7 @@
       },
       "error": null,
       "id": 21,
-      "ms": 60.611225999999995,
+      "ms": 44.188750999999996,
       "name": "Vent slot end 10",
       "rolled_back": false,
       "suppressed": false,
@@ -2633,7 +3731,7 @@
       },
       "error": null,
       "id": 22,
-      "ms": 43.865763,
+      "ms": 50.885935,
       "name": "Vent slot end 10",
       "rolled_back": false,
       "suppressed": false,
@@ -2647,7 +3745,7 @@
       },
       "error": null,
       "id": 23,
-      "ms": 34.808248,
+      "ms": 37.056084000000006,
       "name": "Vent slot core 11",
       "rolled_back": false,
       "suppressed": false,
@@ -2661,7 +3759,7 @@
       },
       "error": null,
       "id": 24,
-      "ms": 45.054951,
+      "ms": 43.81360900000001,
       "name": "Vent slot end 11",
       "rolled_back": false,
       "suppressed": false,
@@ -2675,7 +3773,7 @@
       },
       "error": null,
       "id": 25,
-      "ms": 44.015696,
+      "ms": 47.390104,
       "name": "Vent slot end 11",
       "rolled_back": false,
       "suppressed": false,
@@ -2689,7 +3787,7 @@
       },
       "error": null,
       "id": 26,
-      "ms": 36.364670000000004,
+      "ms": 35.515322000000005,
       "name": "Vent slot core 12",
       "rolled_back": false,
       "suppressed": false,
@@ -2703,7 +3801,7 @@
       },
       "error": null,
       "id": 27,
-      "ms": 46.853243000000006,
+      "ms": 44.547816,
       "name": "Vent slot end 12",
       "rolled_back": false,
       "suppressed": false,
@@ -2717,7 +3815,7 @@
       },
       "error": null,
       "id": 28,
-      "ms": 51.475173,
+      "ms": 45.622734,
       "name": "Vent slot end 12",
       "rolled_back": false,
       "suppressed": false,
@@ -2731,7 +3829,7 @@
       },
       "error": null,
       "id": 29,
-      "ms": 40.996254,
+      "ms": 42.781594999999996,
       "name": "Vent slot core 13",
       "rolled_back": false,
       "suppressed": false,
@@ -2745,7 +3843,7 @@
       },
       "error": null,
       "id": 30,
-      "ms": 49.542752,
+      "ms": 49.537774999999996,
       "name": "Vent slot end 13",
       "rolled_back": false,
       "suppressed": false,
@@ -2759,7 +3857,7 @@
       },
       "error": null,
       "id": 31,
-      "ms": 51.060207000000005,
+      "ms": 57.173832,
       "name": "Vent slot end 13",
       "rolled_back": false,
       "suppressed": false,
@@ -2773,7 +3871,7 @@
       },
       "error": null,
       "id": 32,
-      "ms": 0.073114,
+      "ms": 0.180249,
       "name": "M3 nut pocket 1.1",
       "rolled_back": false,
       "suppressed": false,
@@ -2787,7 +3885,7 @@
       },
       "error": null,
       "id": 33,
-      "ms": 96.483324,
+      "ms": 74.90065999999999,
       "name": "Internal M3 nut seat 1.1",
       "rolled_back": false,
       "suppressed": false,
@@ -2801,7 +3899,7 @@
       },
       "error": null,
       "id": 34,
-      "ms": 0.11533500000000001,
+      "ms": 0.17629,
       "name": "M3 nut pocket 1.2",
       "rolled_back": false,
       "suppressed": false,
@@ -2815,7 +3913,7 @@
       },
       "error": null,
       "id": 35,
-      "ms": 75.64998800000001,
+      "ms": 101.744994,
       "name": "Internal M3 nut seat 1.2",
       "rolled_back": false,
       "suppressed": false,
@@ -2829,7 +3927,7 @@
       },
       "error": null,
       "id": 36,
-      "ms": 0.341607,
+      "ms": 0.16465,
       "name": "M3 nut pocket 1.3",
       "rolled_back": false,
       "suppressed": false,
@@ -2843,7 +3941,7 @@
       },
       "error": null,
       "id": 37,
-      "ms": 87.52865999999999,
+      "ms": 129.681499,
       "name": "Internal M3 nut seat 1.3",
       "rolled_back": false,
       "suppressed": false,
@@ -2857,7 +3955,7 @@
       },
       "error": null,
       "id": 38,
-      "ms": 0.073744,
+      "ms": 0.11609699999999999,
       "name": "M3 nut pocket 2.1",
       "rolled_back": false,
       "suppressed": false,
@@ -2871,7 +3969,7 @@
       },
       "error": null,
       "id": 39,
-      "ms": 80.80888399999999,
+      "ms": 104.133305,
       "name": "Internal M3 nut seat 2.1",
       "rolled_back": false,
       "suppressed": false,
@@ -2885,7 +3983,7 @@
       },
       "error": null,
       "id": 40,
-      "ms": 0.311841,
+      "ms": 0.254043,
       "name": "M3 nut pocket 2.2",
       "rolled_back": false,
       "suppressed": false,
@@ -2899,7 +3997,7 @@
       },
       "error": null,
       "id": 41,
-      "ms": 97.146497,
+      "ms": 114.41767399999999,
       "name": "Internal M3 nut seat 2.2",
       "rolled_back": false,
       "suppressed": false,
@@ -2913,7 +4011,7 @@
       },
       "error": null,
       "id": 42,
-      "ms": 0.077123,
+      "ms": 0.20355199999999998,
       "name": "M3 nut pocket 2.3",
       "rolled_back": false,
       "suppressed": false,
@@ -2927,7 +4025,7 @@
       },
       "error": null,
       "id": 43,
-      "ms": 95.773933,
+      "ms": 105.03475700000001,
       "name": "Internal M3 nut seat 2.3",
       "rolled_back": false,
       "suppressed": false,
@@ -2941,11 +4039,11 @@
       },
       "error": null,
       "id": 44,
-      "ms": 394.025703,
-      "name": "Compact support post 1",
+      "ms": 0.121285,
+      "name": "Revolved support profile 1",
       "rolled_back": false,
       "suppressed": false,
-      "type": "CylinderFeature",
+      "type": "Sketch",
       "warning": null
     },
     {
@@ -2955,22 +4053,30 @@
       },
       "error": null,
       "id": 45,
-      "ms": 328.08538,
-      "name": "Contact foot 1",
+      "ms": 10.070896,
+      "name": "One-piece tapered foot support 1",
       "rolled_back": false,
       "suppressed": false,
-      "type": "CylinderFeature",
+      "type": "RevolveFeature",
       "warning": null
     },
     {
       "boolean_diagnostics": {
-        "events": [],
+        "events": [
+          {
+            "face_shift_mm": 0.39133044760790087,
+            "rotation_rad": 0.0,
+            "strategy": "coplanar_separation",
+            "tolerance_mm": 0.0,
+            "translation_mm": 0.0
+          }
+        ],
         "truncated": false
       },
       "error": null,
       "id": 46,
-      "ms": 351.93992499999996,
-      "name": "Full-height straight webs 1 X",
+      "ms": 1893.440436,
+      "name": "Four-way full-height ribs 1 X",
       "rolled_back": false,
       "suppressed": false,
       "type": "BoxFeature",
@@ -2978,13 +4084,28 @@
     },
     {
       "boolean_diagnostics": {
-        "events": [],
+        "events": [
+          {
+            "face_shift_mm": 0.0,
+            "rotation_rad": 0.0,
+            "strategy": "refined_tolerance",
+            "tolerance_mm": 0.009499148487137751,
+            "translation_mm": 0.0
+          },
+          {
+            "face_shift_mm": 0.4285803980877117,
+            "rotation_rad": 0.0,
+            "strategy": "coplanar_separation",
+            "tolerance_mm": 0.0,
+            "translation_mm": 0.0
+          }
+        ],
         "truncated": false
       },
       "error": null,
       "id": 47,
-      "ms": 350.178624,
-      "name": "Full-height straight webs 1 Y",
+      "ms": 2441.131276,
+      "name": "Four-way full-height ribs 1 Y",
       "rolled_back": false,
       "suppressed": false,
       "type": "BoxFeature",
@@ -2997,11 +4118,11 @@
       },
       "error": null,
       "id": 48,
-      "ms": 332.637851,
-      "name": "Compact support post 2",
+      "ms": 436.675328,
+      "name": "Combine1",
       "rolled_back": false,
       "suppressed": false,
-      "type": "CylinderFeature",
+      "type": "CombineFeature",
       "warning": null
     },
     {
@@ -3011,11 +4132,11 @@
       },
       "error": null,
       "id": 49,
-      "ms": 397.21901399999996,
-      "name": "Contact foot 2",
+      "ms": 0.039620999999999996,
+      "name": "Revolved support profile 2",
       "rolled_back": false,
       "suppressed": false,
-      "type": "CylinderFeature",
+      "type": "Sketch",
       "warning": null
     },
     {
@@ -3025,22 +4146,30 @@
       },
       "error": null,
       "id": 50,
-      "ms": 388.259741,
-      "name": "Full-height straight webs 2 X",
+      "ms": 9.889090999999999,
+      "name": "One-piece tapered foot support 2",
       "rolled_back": false,
       "suppressed": false,
-      "type": "BoxFeature",
+      "type": "RevolveFeature",
       "warning": null
     },
     {
       "boolean_diagnostics": {
-        "events": [],
+        "events": [
+          {
+            "face_shift_mm": 0.39133044760790087,
+            "rotation_rad": 0.0,
+            "strategy": "coplanar_separation",
+            "tolerance_mm": 0.0,
+            "translation_mm": 0.0
+          }
+        ],
         "truncated": false
       },
       "error": null,
       "id": 51,
-      "ms": 413.3479,
-      "name": "Full-height straight webs 2 Y",
+      "ms": 1817.0511629999999,
+      "name": "Four-way full-height ribs 2 X",
       "rolled_back": false,
       "suppressed": false,
       "type": "BoxFeature",
@@ -3048,16 +4177,31 @@
     },
     {
       "boolean_diagnostics": {
-        "events": [],
+        "events": [
+          {
+            "face_shift_mm": 0.0,
+            "rotation_rad": 0.0,
+            "strategy": "refined_tolerance",
+            "tolerance_mm": 0.00949914848713732,
+            "translation_mm": 0.0
+          },
+          {
+            "face_shift_mm": 0.42858039808769205,
+            "rotation_rad": 0.0,
+            "strategy": "coplanar_separation",
+            "tolerance_mm": 0.0,
+            "translation_mm": 0.0
+          }
+        ],
         "truncated": false
       },
       "error": null,
       "id": 52,
-      "ms": 326.34855699999997,
-      "name": "Compact support post 3",
+      "ms": 2417.475126,
+      "name": "Four-way full-height ribs 2 Y",
       "rolled_back": false,
       "suppressed": false,
-      "type": "CylinderFeature",
+      "type": "BoxFeature",
       "warning": null
     },
     {
@@ -3067,11 +4211,11 @@
       },
       "error": null,
       "id": 53,
-      "ms": 454.19683,
-      "name": "Contact foot 3",
+      "ms": 356.501756,
+      "name": "Combine2",
       "rolled_back": false,
       "suppressed": false,
-      "type": "CylinderFeature",
+      "type": "CombineFeature",
       "warning": null
     },
     {
@@ -3081,11 +4225,11 @@
       },
       "error": null,
       "id": 54,
-      "ms": 411.223716,
-      "name": "Full-height straight webs 3 X",
+      "ms": 0.062445,
+      "name": "Revolved support profile 3",
       "rolled_back": false,
       "suppressed": false,
-      "type": "BoxFeature",
+      "type": "Sketch",
       "warning": null
     },
     {
@@ -3095,8 +4239,30 @@
       },
       "error": null,
       "id": 55,
-      "ms": 486.928283,
-      "name": "Full-height straight webs 3 Y",
+      "ms": 9.588759000000001,
+      "name": "One-piece tapered foot support 3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "RevolveFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [
+          {
+            "face_shift_mm": 0.39133044760790087,
+            "rotation_rad": 0.0,
+            "strategy": "coplanar_separation",
+            "tolerance_mm": 0.0,
+            "translation_mm": 0.0
+          }
+        ],
+        "truncated": false
+      },
+      "error": null,
+      "id": 56,
+      "ms": 1831.937975,
+      "name": "Four-way full-height ribs 3 X",
       "rolled_back": false,
       "suppressed": false,
       "type": "BoxFeature",
@@ -3104,30 +4270,31 @@
     },
     {
       "boolean_diagnostics": {
-        "events": [],
-        "truncated": false
-      },
-      "error": null,
-      "id": 56,
-      "ms": 403.794197,
-      "name": "Compact support post 4",
-      "rolled_back": false,
-      "suppressed": false,
-      "type": "CylinderFeature",
-      "warning": null
-    },
-    {
-      "boolean_diagnostics": {
-        "events": [],
+        "events": [
+          {
+            "face_shift_mm": 0.0,
+            "rotation_rad": 0.0,
+            "strategy": "refined_tolerance",
+            "tolerance_mm": 0.009499148487137317,
+            "translation_mm": 0.0
+          },
+          {
+            "face_shift_mm": 0.42858039808769194,
+            "rotation_rad": 0.0,
+            "strategy": "coplanar_separation",
+            "tolerance_mm": 0.0,
+            "translation_mm": 0.0
+          }
+        ],
         "truncated": false
       },
       "error": null,
       "id": 57,
-      "ms": 453.736949,
-      "name": "Contact foot 4",
+      "ms": 2420.524795,
+      "name": "Four-way full-height ribs 3 Y",
       "rolled_back": false,
       "suppressed": false,
-      "type": "CylinderFeature",
+      "type": "BoxFeature",
       "warning": null
     },
     {
@@ -3137,11 +4304,11 @@
       },
       "error": null,
       "id": 58,
-      "ms": 433.831479,
-      "name": "Full-height straight webs 4 X",
+      "ms": 422.09956900000003,
+      "name": "Combine3",
       "rolled_back": false,
       "suppressed": false,
-      "type": "BoxFeature",
+      "type": "CombineFeature",
       "warning": null
     },
     {
@@ -3151,8 +4318,73 @@
       },
       "error": null,
       "id": 59,
-      "ms": 413.886682,
-      "name": "Full-height straight webs 4 Y",
+      "ms": 0.040455,
+      "name": "Revolved support profile 4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "Sketch",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 60,
+      "ms": 9.917795,
+      "name": "One-piece tapered foot support 4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "RevolveFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [
+          {
+            "face_shift_mm": 0.39133044760790087,
+            "rotation_rad": 0.0,
+            "strategy": "coplanar_separation",
+            "tolerance_mm": 0.0,
+            "translation_mm": 0.0
+          }
+        ],
+        "truncated": false
+      },
+      "error": null,
+      "id": 61,
+      "ms": 1870.202056,
+      "name": "Four-way full-height ribs 4 X",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "BoxFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [
+          {
+            "face_shift_mm": 0.0,
+            "rotation_rad": 0.0,
+            "strategy": "refined_tolerance",
+            "tolerance_mm": 0.00949914848713732,
+            "translation_mm": 0.0
+          },
+          {
+            "face_shift_mm": 0.42858039808769205,
+            "rotation_rad": 0.0,
+            "strategy": "coplanar_separation",
+            "tolerance_mm": 0.0,
+            "translation_mm": 0.0
+          }
+        ],
+        "truncated": false
+      },
+      "error": null,
+      "id": 62,
+      "ms": 2763.788761,
+      "name": "Four-way full-height ribs 4 Y",
       "rolled_back": false,
       "suppressed": false,
       "type": "BoxFeature",
@@ -3164,8 +4396,22 @@
         "truncated": false
       },
       "error": null,
-      "id": 60,
-      "ms": 139.805902,
+      "id": 63,
+      "ms": 565.719664,
+      "name": "Combine4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "CombineFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 64,
+      "ms": 556.3129270000001,
       "name": "Self tapping pilot 1",
       "rolled_back": false,
       "suppressed": false,
@@ -3178,8 +4424,8 @@
         "truncated": false
       },
       "error": null,
-      "id": 61,
-      "ms": 144.04018599999998,
+      "id": 65,
+      "ms": 497.374594,
       "name": "Self tapping pilot 2",
       "rolled_back": false,
       "suppressed": false,
@@ -3192,8 +4438,8 @@
         "truncated": false
       },
       "error": null,
-      "id": 62,
-      "ms": 141.65904300000003,
+      "id": 66,
+      "ms": 530.401857,
       "name": "Self tapping pilot 3",
       "rolled_back": false,
       "suppressed": false,
@@ -3206,15 +4452,239 @@
         "truncated": false
       },
       "error": null,
-      "id": 63,
-      "ms": 205.19743100000002,
+      "id": 67,
+      "ms": 506.37665499999997,
       "name": "Self tapping pilot 4",
       "rolled_back": false,
       "suppressed": false,
       "type": "CylinderFeature",
       "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 68,
+      "ms": 1060.377336,
+      "name": "Fillet1",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 69,
+      "ms": 1213.9058929999999,
+      "name": "Fillet2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 70,
+      "ms": 1328.0511390000001,
+      "name": "Fillet3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 71,
+      "ms": 1470.978889,
+      "name": "Fillet4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 72,
+      "ms": 2983.18136,
+      "name": "Fillet5",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "FilletFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 74,
+      "ms": 3785.6735019999996,
+      "name": "Chamfer2",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ChamferFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 75,
+      "ms": 4683.755182,
+      "name": "Chamfer3",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ChamferFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 76,
+      "ms": 4304.061746,
+      "name": "Chamfer4",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ChamferFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 77,
+      "ms": 4358.928509,
+      "name": "Chamfer5",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ChamferFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 78,
+      "ms": 4416.414069,
+      "name": "Chamfer6",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ChamferFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 79,
+      "ms": 4378.838334,
+      "name": "Chamfer7",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ChamferFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 80,
+      "ms": 4390.955378000001,
+      "name": "Chamfer8",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ChamferFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 81,
+      "ms": 2569.728876,
+      "name": "Chamfer9",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ChamferFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 82,
+      "ms": 2617.9761580000004,
+      "name": "Chamfer10",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ChamferFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 83,
+      "ms": 2611.0292,
+      "name": "Chamfer11",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ChamferFeature",
+      "warning": null
+    },
+    {
+      "boolean_diagnostics": {
+        "events": [],
+        "truncated": false
+      },
+      "error": null,
+      "id": 84,
+      "ms": 2678.819881,
+      "name": "Chamfer12",
+      "rolled_back": false,
+      "suppressed": false,
+      "type": "ChamferFeature",
+      "warning": null
     }
   ],
-  "undo": 81,
+  "undo": 1,
   "units": "mm"
 }

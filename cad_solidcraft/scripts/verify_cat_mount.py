@@ -3,7 +3,7 @@ from pathlib import Path
 sys.path.insert(0,os.environ['PATH_TO_FREECAD_LIBDIR']);sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'tools'))
 from cad_common import App,Part,ROOT,V,cat_shells
 import MeshPart
-O=ROOT/'cad_solidcraft/build/cat';S=Part.read(str(O/'cat_mount.step'));checks=[]
+O=Path(os.environ.get('R3_CAT_OUT',str(ROOT/'cad_solidcraft/build/cat')));S=Part.read(str(O/'cat_mount.step'));checks=[]
 def check(id,ok,actual,expected,method='OCCT BRep probe'):
  checks.append(dict(id=id,status='pass' if ok else 'fail',actual=actual,expected=expected,method=method))
  if not ok:print('FAIL',checks[-1],flush=True)
@@ -37,7 +37,7 @@ for i,(x,wy) in enumerate(anchors,1):
  y=wy+50
  empty('pilot_bore_9mm_'+str(i),Part.makeCylinder(1.249,8.999,V(x,y,-15)))
  full('pilot_roof_'+str(i),Part.makeCylinder(1.249,.998,V(x,y,-5.999)))
- post=Part.makeCylinder(3.999,9.998,V(x,y,-14.999)).cut(Part.makeCylinder(1.251,10,V(x,y,-15)))
+ post=Part.makeCylinder(3.999,9.998,V(x,y,-14.999)).cut(Part.makeCylinder(1.251,10,V(x,y,-15))).cut(Part.makeCone(1.501,1.251,.251,V(x,y,-15)))
  full('post_wall_'+str(i),post)
  v=steel.common(Part.makeCylinder(1.49,1.5,V(x,wy,51.5))).Volume;check('source_plate_anchor_'+str(i),v<.001,v,0)
  foot=S.common(bx(x-8,y-8,-15,16,16,.05));area=foot.Volume/.05;contacts.append(area)
@@ -67,7 +67,13 @@ mesh=MeshPart.meshFromShape(Shape=S,LinearDeflection=.08,AngularDeflection=.15);
 S.exportStep(str(O/'cat_roundtrip.step'));re=Part.read(str(O/'cat_roundtrip.step'))
 vol_delta=re.Volume-S.Volume;geom_delta=S.cut(re).Volume+re.cut(S).Volume
 check('step_roundtrip_topology',re.isValid() and len(re.Solids)==1,{'valid':re.isValid(),'solids':len(re.Solids)},'one valid solid')
-check('step_roundtrip_geometry',abs(geom_delta)<.01,geom_delta,'symmetric difference <0.01 mm3')
+va=[v.Point for v in S.Vertexes];vb=[v.Point for v in re.Vertexes]
+vertex_delta=max(max(min((p-q).Length for q in vb) for p in va),max(min((p-q).Length for q in va) for p in vb))
+fa=[(f.CenterOfMass,f.Area) for f in S.Faces];fb=[(f.CenterOfMass,f.Area) for f in re.Faces]
+face_delta=max(min((pa-pb).Length+abs(aa-ab) for pb,ab in fb) for pa,aa in fa)
+roundtrip_equal=(len(S.Faces)==len(re.Faces) and len(va)==len(vb) and vertex_delta<1e-6 and face_delta<1e-5 and abs(vol_delta)<.01)
+check('step_roundtrip_boundary_readback',roundtrip_equal,{'vertex_max_distance':vertex_delta,'face_center_area_max_error':face_delta,'volume_delta':vol_delta},'same topology counts, vertex delta<1e-6mm, face fingerprint delta<1e-5, volume delta<0.01mm3')
+checks.append({'id':'step_roundtrip_coincident_boolean','status':'pass' if abs(geom_delta)<.01 else ('warning' if roundtrip_equal else 'fail'),'actual':geom_delta,'expected':'symmetric difference <0.01mm3','method':'OCCT coincident-solid Boolean; checked independently against boundary geometry','message':'Retain inconsistent coincident-Boolean result as diagnostic warning when all boundary/volume readback checks agree.'})
 checks.append({'id':'step_roundtrip_volume_integration','status':'pass' if abs(vol_delta)<.01 else 'warning','actual':vol_delta,'expected':'absolute integrated volume delta <0.01 mm3','method':'OCCT Volume before and after serialization; cross-check with geometric difference','message':'A warning is retained for numerical integration drift; not silently relaxed.'})
 # Entire non-slot, non-hole tray is 5mm; no nut-seat protrusions below it.
 base=bx(-67.66300877886484,-49,-5,135.32557355773027,98,5)
@@ -75,7 +81,14 @@ for w in face.Wires:
  if w.BoundBox.XLength<100:base=base.cut(Part.Face(w).extrude(V(0,0,-6)))
 for x in [-25.8630087788648,29.1369912211352]:
  for y in [-7.5,0,7.5]:base=base.cut(hx(x,y,-5,5.8,2.6))
-full('uniform_5mm_plate_with_only_declared_voids',base)
+for x in [-25.8630087788648,29.1369912211352]:
+ for y in [-7.5,0,7.5]:base=base.cut(hx(x,y,-5.001,6.302,.252))
+for sx in [-1,1]:
+ for sy in [-1,1]:base=base.cut(bx(64.6615 if sx>0 else -67.664,45.999 if sy>0 else -49.001,-5.01,3.003,3.003,5.02))
+for x in [-67.664,67.3615]:base=base.cut(bx(x,-49.01,-5.001,.303,98.02,.302))
+for y in [-49.001,48.699]:base=base.cut(bx(-67.67,y,-5.001,135.34,.303,.302))
+for y in [-49.001,48.699]:base=base.cut(bx(-67.67,y,-.301,135.34,.303,.302))
+full('uniform_5mm_plate_outside_declared_edge_finishes',base)
 empty('no_projecting_nut_rails',bx(-32,-12,-6,68,24,.999))
 # Contact pads must not cover any other inner wire of the actual steel top face.
 face_steel=max((f for f in steel.Faces if f.BoundBox.ZLength<1e-5 and abs(f.CenterOfMass.z-53)<.001),key=lambda f:f.Area)
@@ -88,6 +101,29 @@ for i,(x,wy) in enumerate(anchors,1):
   gap=foot.distToShape(hole)[0];near.append(gap)
  check('neighbor_holes_not_covered_'+str(i),min(near)>.5,min(near),'minimum >0.5 mm to all other hole boundaries; tool access still needs intended fastener')
 
-r={'schema_version':'0.1','report_type':'freecad-model-validation','subject':{'document':'CATMount','path':'cad_solidcraft/exports/cat_mount.step'},'evidence_level':'geometry','status':'fail' if any(x['status']=='fail' for x in checks) else 'warning','summary':{'pass':sum(x['status']=='pass' for x in checks),'fail':sum(x['status']=='fail' for x in checks),'warning':sum(x['status']=='warning' for x in checks),'not_tested':4},'checks':checks,'volume_mm3':S.Volume,'foot_contact_areas_mm2':contacts,'anchors_world_xy':anchors,'world_translation':[0,-50,68],'source_sha256':hashlib.sha256((ROOT/'models/LubanCat 5-外壳3D文件-20240911.STEP').read_bytes()).hexdigest(),'fasteners':{'chassis':'M3x10 plastic self tapping, nominal no washer, pilot diameter2.5 depth9 is trial value','shell':'M3x10 machine screw from shell interior downward, standard nut AF5.5 height2.4; pocket AF5.8 depth2.6 embedded into uniform5mm plate, 2.4mm clamp web'},'untested_risks':['PCB underside clearance for screw heads and opening the shell for installation','Actual self-tapping screw thread form, pilot fit, torque and plastic retention','Printing material/orientation/support, warp, heat and vibration','Final access to nearby reused chassis holes and complete device hardware layout']}
+# Check the exact foot-growth section in the open diagonal quadrants between the four ribs.
+profile=[]
+for i,(x,wy) in enumerate(anchors,1):
+ y=wy+50
+ for z,rad in [(-11.8,4),(-12,4.2),(-12.5,4.7),(-13,5.2),(-13.5,5.7),(-13.8,6)]:
+  for sign in [-1,1]:
+   inner=(rad-.04)/math.sqrt(2);outer=(rad+.04)/math.sqrt(2)
+   pt=V(x+sign*inner,y+inner,z)
+   check(f'taper_section_material_{i}_{z}_{sign}',S.isInside(pt,1e-6,True),list(pt),'inside material','OCCT point classification, 0.04mm inside expected 45-degree profile')
+   pt=V(x+sign*outer,y+outer,z)
+   check(f'taper_section_outside_{i}_{z}_{sign}',not S.isInside(pt,1e-6,True),list(pt),'outside material','OCCT point classification, 0.04mm outside expected 45-degree profile')
+  profile.append({'post':i,'z_mm':z,'radius_mm':rad})
+ # Root blend material beyond the end of each straight rib, close to the tray underside.
+ for dx,dy in [(1,0),(-1,0),(0,1),(0,-1)]:
+  pt=V(x+6.0*dx,y+6.0*dy,-5.07)
+  check(f'root_round_{i}_{dx}_{dy}',S.isInside(pt,1e-6,True),list(pt),'inside root blend material','OCCT point classification')
+ # Verify entrance lead-in near the hole mouth without changing the bore further inside.
+ pt=V(x+1.43,y,-14.98)
+ check('pilot_entry_chamfer_'+str(i),not S.isInside(pt,1e-6,True),list(pt),'empty entry lead-in','OCCT point classification')
+section_ok=all(c['status']=='pass' for c in checks if c['id'].startswith('taper_section_'))
+profile_steps=[(-11.8,4),(-12,4.2),(-12.5,4.7),(-13,5.2),(-13.5,5.7),(-13.8,6)]
+max_step=.2*max(abs((b[1]-a[1])/(b[0]-a[0])) for a,b in zip(profile_steps,profile_steps[1:]))
+check('print_growth_0p2_layer',section_ok and max_step<=.200001,{'layer_height_mm':.2,'max_radial_growth_mm_per_layer':max_step,'transition_angle_degrees':45,'section_probe_pass':section_ok},'profile verified by material classification; max0.2mm growth per0.2mm layer','Analytic slope of BRep-probed profile; not a slicer or physical print test')
+r={'schema_version':'0.1','report_type':'freecad-model-validation','subject':{'document':'CATMount','path':'cad_solidcraft/exports/cat_mount.step'},'evidence_level':'geometry','status':'fail' if any(x['status']=='fail' for x in checks) else 'warning','summary':{'pass':sum(x['status']=='pass' for x in checks),'fail':sum(x['status']=='fail' for x in checks),'warning':sum(x['status']=='warning' for x in checks),'not_tested':4},'checks':checks,'volume_mm3':S.Volume,'print_orientation':'CAT mating face on bed; posts upward','foot_transition_profile':profile,'edge_finish':{'plate_corner_radius':3,'root_radius':.6,'outside_edge_break':.3,'nut_entry_chamfer':.25,'pilot_entry_chamfer':.25},'foot_contact_areas_mm2':contacts,'anchors_world_xy':anchors,'world_translation':[0,-50,68],'source_sha256':hashlib.sha256((ROOT/'models/LubanCat 5-外壳3D文件-20240911.STEP').read_bytes()).hexdigest(),'fasteners':{'chassis':'M3x10 plastic self tapping, nominal no washer, pilot diameter2.5 depth9 is trial value','shell':'M3x10 machine screw from shell interior downward, standard nut AF5.5 height2.4; pocket AF5.8 depth2.6 embedded into uniform5mm plate, 2.4mm clamp web'},'untested_risks':['PCB underside clearance for screw heads and opening the shell for installation','Actual self-tapping screw thread form, pilot fit, torque and plastic retention','Physical support-free printing on P2S with0.4 nozzle/0.2layer, especially foot transition and root blends; warp/heat/vibration untested','Final access to nearby reused chassis holes and complete device hardware layout']}
 (O/'cat_mount_checks.json').write_text(json.dumps(r,ensure_ascii=False,indent=2));print('SUMMARY',r['summary'],'FOOT AREAS',contacts,flush=True)
 if r['summary']['fail']:sys.exit(1)

@@ -8,9 +8,9 @@
   "evidence_level": "geometry",
   "status": "warning",
   "summary": {
-    "pass": 94,
+    "pass": 211,
     "fail": 0,
-    "warning": 0,
+    "warning": 1,
     "not_tested": 4
   },
   "checks": [
@@ -29,9 +29,9 @@
       "id": "dimensions",
       "status": "pass",
       "actual": [
-        135.32557375773155,
-        98.00000020000127,
-        15.000000200013638
+        135.3255737577303,
+        98.00000020000002,
+        15.000000199999834
       ],
       "expected": [
         135.32557355773028,
@@ -259,8 +259,8 @@
     {
       "id": "post_wall_1",
       "status": "pass",
-      "actual": 453.1469246189728,
-      "expected": 453.1469246189728,
+      "actual": 452.88603761872446,
+      "expected": 452.88603761872446,
       "method": "OCCT BRep probe"
     },
     {
@@ -273,7 +273,7 @@
     {
       "id": "expanded_foot_contact_1",
       "status": "pass",
-      "actual": 108.18859703599168,
+      "actual": 106.26175351384406,
       "expected": ">1.5x plain post annulus area mm2",
       "method": "OCCT BRep probe"
     },
@@ -281,8 +281,8 @@
       "id": "foot_on_steel_1",
       "status": "pass",
       "actual": {
-        "solid_foot_area": 108.18859703599168,
-        "steel_support_area": 105.05485836350744
+        "solid_foot_area": 106.26175351384406,
+        "steel_support_area": 105.05485833609337
       },
       "expected": ">94% foot contact supported; actual steel hole is larger than pilot",
       "method": "OCCT BRep probe"
@@ -311,8 +311,8 @@
     {
       "id": "post_wall_2",
       "status": "pass",
-      "actual": 453.1469246189728,
-      "expected": 453.1469246189728,
+      "actual": 452.8860376187246,
+      "expected": 452.8860376187246,
       "method": "OCCT BRep probe"
     },
     {
@@ -325,7 +325,7 @@
     {
       "id": "expanded_foot_contact_2",
       "status": "pass",
-      "actual": 108.18859698157048,
+      "actual": 106.26175351370601,
       "expected": ">1.5x plain post annulus area mm2",
       "method": "OCCT BRep probe"
     },
@@ -333,8 +333,8 @@
       "id": "foot_on_steel_2",
       "status": "pass",
       "actual": {
-        "solid_foot_area": 108.18859698157048,
-        "steel_support_area": 105.05485831052745
+        "solid_foot_area": 106.26175351370601,
+        "steel_support_area": 105.05485833594672
       },
       "expected": ">94% foot contact supported; actual steel hole is larger than pilot",
       "method": "OCCT BRep probe"
@@ -363,8 +363,8 @@
     {
       "id": "post_wall_3",
       "status": "pass",
-      "actual": 453.1469246189729,
-      "expected": 453.1469246189729,
+      "actual": 452.8860376187246,
+      "expected": 452.8860376187246,
       "method": "OCCT BRep probe"
     },
     {
@@ -377,7 +377,7 @@
     {
       "id": "expanded_foot_contact_3",
       "status": "pass",
-      "actual": 108.18859699419563,
+      "actual": 106.2617535119633,
       "expected": ">1.5x plain post annulus area mm2",
       "method": "OCCT BRep probe"
     },
@@ -385,8 +385,8 @@
       "id": "foot_on_steel_3",
       "status": "pass",
       "actual": {
-        "solid_foot_area": 108.18859699419563,
-        "steel_support_area": 105.05485832279606
+        "solid_foot_area": 106.2617535119633,
+        "steel_support_area": 105.05485833602687
       },
       "expected": ">94% foot contact supported; actual steel hole is larger than pilot",
       "method": "OCCT BRep probe"
@@ -415,8 +415,8 @@
     {
       "id": "post_wall_4",
       "status": "pass",
-      "actual": 453.1469246189728,
-      "expected": 453.1469246189728,
+      "actual": 452.88603761872446,
+      "expected": 452.88603761872446,
       "method": "OCCT BRep probe"
     },
     {
@@ -429,7 +429,7 @@
     {
       "id": "expanded_foot_contact_4",
       "status": "pass",
-      "actual": 108.18859693902732,
+      "actual": 106.26175351198151,
       "expected": ">1.5x plain post annulus area mm2",
       "method": "OCCT BRep probe"
     },
@@ -437,8 +437,8 @@
       "id": "foot_on_steel_4",
       "status": "pass",
       "actual": {
-        "solid_foot_area": 108.18859693902732,
-        "steel_support_area": 105.05485826925361
+        "solid_foot_area": 106.26175351198151,
+        "steel_support_area": 105.05485833604122
       },
       "expected": ">94% foot contact supported; actual steel hole is larger than pilot",
       "method": "OCCT BRep probe"
@@ -656,25 +656,37 @@
       "method": "OCCT BRep probe"
     },
     {
-      "id": "step_roundtrip_geometry",
+      "id": "step_roundtrip_boundary_readback",
       "status": "pass",
-      "actual": 0.0,
-      "expected": "symmetric difference <0.01 mm3",
+      "actual": {
+        "vertex_max_distance": 1.2033125143915808e-11,
+        "face_center_area_max_error": 1.3554252477611863e-09,
+        "volume_delta": -6.410118658095598e-09
+      },
+      "expected": "same topology counts, vertex delta<1e-6mm, face fingerprint delta<1e-5, volume delta<0.01mm3",
       "method": "OCCT BRep probe"
+    },
+    {
+      "id": "step_roundtrip_coincident_boolean",
+      "status": "warning",
+      "actual": 61602.53474097059,
+      "expected": "symmetric difference <0.01mm3",
+      "method": "OCCT coincident-solid Boolean; checked independently against boundary geometry",
+      "message": "Retain inconsistent coincident-Boolean result as diagnostic warning when all boundary/volume readback checks agree."
     },
     {
       "id": "step_roundtrip_volume_integration",
       "status": "pass",
-      "actual": -9.546056389808655e-09,
+      "actual": -6.410118658095598e-09,
       "expected": "absolute integrated volume delta <0.01 mm3",
       "method": "OCCT Volume before and after serialization; cross-check with geometric difference",
       "message": "A warning is retained for numerical integration drift; not silently relaxed."
     },
     {
-      "id": "uniform_5mm_plate_with_only_declared_voids",
+      "id": "uniform_5mm_plate_outside_declared_edge_finishes",
       "status": "pass",
-      "actual": 58829.236944405595,
-      "expected": 58829.23694482253,
+      "actual": 58577.48659098496,
+      "expected": 58577.48659098523,
       "method": "OCCT BRep probe"
     },
     {
@@ -687,38 +699,1456 @@
     {
       "id": "neighbor_holes_not_covered_1",
       "status": "pass",
-      "actual": 7.964632177459536,
+      "actual": 7.964632177459837,
       "expected": "minimum >0.5 mm to all other hole boundaries; tool access still needs intended fastener",
       "method": "OCCT BRep probe"
     },
     {
       "id": "neighbor_holes_not_covered_2",
       "status": "pass",
-      "actual": 1.479020772915921,
+      "actual": 1.4790207729155942,
       "expected": "minimum >0.5 mm to all other hole boundaries; tool access still needs intended fastener",
       "method": "OCCT BRep probe"
     },
     {
       "id": "neighbor_holes_not_covered_3",
       "status": "pass",
-      "actual": 3.3564220760708863,
+      "actual": 3.3564220760711705,
       "expected": "minimum >0.5 mm to all other hole boundaries; tool access still needs intended fastener",
       "method": "OCCT BRep probe"
     },
     {
       "id": "neighbor_holes_not_covered_4",
       "status": "pass",
-      "actual": 3.359308680549405,
+      "actual": 3.359308680549255,
       "expected": "minimum >0.5 mm to all other hole boundaries; tool access still needs intended fastener",
       "method": "OCCT BRep probe"
+    },
+    {
+      "id": "taper_section_material_1_-11.8_-1",
+      "status": "pass",
+      "actual": [
+        -52.80019285349873,
+        -35.58615938580127,
+        -11.8
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_1_-11.8_-1",
+      "status": "pass",
+      "actual": [
+        -52.85676139599365,
+        -35.529590843306345,
+        -11.8
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_1_-11.8_1",
+      "status": "pass",
+      "actual": [
+        -47.199907146501275,
+        -35.58615938580127,
+        -11.8
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_1_-11.8_1",
+      "status": "pass",
+      "actual": [
+        -47.14333860400635,
+        -35.529590843306345,
+        -11.8
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_1_-12_-1",
+      "status": "pass",
+      "actual": [
+        -52.94161420973604,
+        -35.44473802956396,
+        -12.0
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_1_-12_-1",
+      "status": "pass",
+      "actual": [
+        -52.99818275223096,
+        -35.388169487069035,
+        -12.0
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_1_-12_1",
+      "status": "pass",
+      "actual": [
+        -47.058485790263965,
+        -35.44473802956396,
+        -12.0
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_1_-12_1",
+      "status": "pass",
+      "actual": [
+        -47.00191724776904,
+        -35.388169487069035,
+        -12.0
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_1_-12.5_-1",
+      "status": "pass",
+      "actual": [
+        -53.295167600329314,
+        -35.09118463897068,
+        -12.5
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_1_-12.5_-1",
+      "status": "pass",
+      "actual": [
+        -53.35173614282424,
+        -35.03461609647576,
+        -12.5
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_1_-12.5_1",
+      "status": "pass",
+      "actual": [
+        -46.70493239967069,
+        -35.09118463897068,
+        -12.5
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_1_-12.5_1",
+      "status": "pass",
+      "actual": [
+        -46.64836385717577,
+        -35.03461609647576,
+        -12.5
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_1_-13_-1",
+      "status": "pass",
+      "actual": [
+        -53.648720990922584,
+        -34.73763124837741,
+        -13.0
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_1_-13_-1",
+      "status": "pass",
+      "actual": [
+        -53.70528953341751,
+        -34.68106270588248,
+        -13.0
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_1_-13_1",
+      "status": "pass",
+      "actual": [
+        -46.35137900907742,
+        -34.73763124837741,
+        -13.0
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_1_-13_1",
+      "status": "pass",
+      "actual": [
+        -46.29481046658249,
+        -34.68106270588248,
+        -13.0
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_1_-13.5_-1",
+      "status": "pass",
+      "actual": [
+        -54.00227438151586,
+        -34.384077857784135,
+        -13.5
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_1_-13.5_-1",
+      "status": "pass",
+      "actual": [
+        -54.05884292401078,
+        -34.32750931528921,
+        -13.5
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_1_-13.5_1",
+      "status": "pass",
+      "actual": [
+        -45.99782561848414,
+        -34.384077857784135,
+        -13.5
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_1_-13.5_1",
+      "status": "pass",
+      "actual": [
+        -45.94125707598922,
+        -34.32750931528921,
+        -13.5
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_1_-13.8_-1",
+      "status": "pass",
+      "actual": [
+        -54.21440641587182,
+        -34.171945823428175,
+        -13.8
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_1_-13.8_-1",
+      "status": "pass",
+      "actual": [
+        -54.27097495836675,
+        -34.115377280933245,
+        -13.8
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_1_-13.8_1",
+      "status": "pass",
+      "actual": [
+        -45.78569358412818,
+        -34.171945823428175,
+        -13.8
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_1_-13.8_1",
+      "status": "pass",
+      "actual": [
+        -45.72912504163325,
+        -34.115377280933245,
+        -13.8
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "root_round_1_1_0",
+      "status": "pass",
+      "actual": [
+        -44.00005,
+        -38.386302239299994,
+        -5.07
+      ],
+      "expected": "inside root blend material",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "root_round_1_-1_0",
+      "status": "pass",
+      "actual": [
+        -56.00005,
+        -38.386302239299994,
+        -5.07
+      ],
+      "expected": "inside root blend material",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "root_round_1_0_1",
+      "status": "pass",
+      "actual": [
+        -50.00005,
+        -32.386302239299994,
+        -5.07
+      ],
+      "expected": "inside root blend material",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "root_round_1_0_-1",
+      "status": "pass",
+      "actual": [
+        -50.00005,
+        -44.386302239299994,
+        -5.07
+      ],
+      "expected": "inside root blend material",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "pilot_entry_chamfer_1",
+      "status": "pass",
+      "actual": [
+        -48.57005,
+        -38.386302239299994,
+        -14.98
+      ],
+      "expected": "empty entry lead-in",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "taper_section_material_2_-11.8_-1",
+      "status": "pass",
+      "actual": [
+        47.199907146501275,
+        -35.58615938580127,
+        -11.8
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_2_-11.8_-1",
+      "status": "pass",
+      "actual": [
+        47.14333860400635,
+        -35.529590843306345,
+        -11.8
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_2_-11.8_1",
+      "status": "pass",
+      "actual": [
+        52.80019285349873,
+        -35.58615938580127,
+        -11.8
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_2_-11.8_1",
+      "status": "pass",
+      "actual": [
+        52.85676139599365,
+        -35.529590843306345,
+        -11.8
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_2_-12_-1",
+      "status": "pass",
+      "actual": [
+        47.058485790263965,
+        -35.44473802956396,
+        -12.0
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_2_-12_-1",
+      "status": "pass",
+      "actual": [
+        47.00191724776904,
+        -35.388169487069035,
+        -12.0
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_2_-12_1",
+      "status": "pass",
+      "actual": [
+        52.94161420973604,
+        -35.44473802956396,
+        -12.0
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_2_-12_1",
+      "status": "pass",
+      "actual": [
+        52.99818275223096,
+        -35.388169487069035,
+        -12.0
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_2_-12.5_-1",
+      "status": "pass",
+      "actual": [
+        46.70493239967069,
+        -35.09118463897068,
+        -12.5
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_2_-12.5_-1",
+      "status": "pass",
+      "actual": [
+        46.64836385717577,
+        -35.03461609647576,
+        -12.5
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_2_-12.5_1",
+      "status": "pass",
+      "actual": [
+        53.295167600329314,
+        -35.09118463897068,
+        -12.5
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_2_-12.5_1",
+      "status": "pass",
+      "actual": [
+        53.35173614282424,
+        -35.03461609647576,
+        -12.5
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_2_-13_-1",
+      "status": "pass",
+      "actual": [
+        46.35137900907742,
+        -34.73763124837741,
+        -13.0
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_2_-13_-1",
+      "status": "pass",
+      "actual": [
+        46.29481046658249,
+        -34.68106270588248,
+        -13.0
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_2_-13_1",
+      "status": "pass",
+      "actual": [
+        53.648720990922584,
+        -34.73763124837741,
+        -13.0
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_2_-13_1",
+      "status": "pass",
+      "actual": [
+        53.70528953341751,
+        -34.68106270588248,
+        -13.0
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_2_-13.5_-1",
+      "status": "pass",
+      "actual": [
+        45.99782561848414,
+        -34.384077857784135,
+        -13.5
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_2_-13.5_-1",
+      "status": "pass",
+      "actual": [
+        45.94125707598922,
+        -34.32750931528921,
+        -13.5
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_2_-13.5_1",
+      "status": "pass",
+      "actual": [
+        54.00227438151586,
+        -34.384077857784135,
+        -13.5
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_2_-13.5_1",
+      "status": "pass",
+      "actual": [
+        54.05884292401078,
+        -34.32750931528921,
+        -13.5
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_2_-13.8_-1",
+      "status": "pass",
+      "actual": [
+        45.78569358412818,
+        -34.171945823428175,
+        -13.8
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_2_-13.8_-1",
+      "status": "pass",
+      "actual": [
+        45.72912504163325,
+        -34.115377280933245,
+        -13.8
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_2_-13.8_1",
+      "status": "pass",
+      "actual": [
+        54.21440641587182,
+        -34.171945823428175,
+        -13.8
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_2_-13.8_1",
+      "status": "pass",
+      "actual": [
+        54.27097495836675,
+        -34.115377280933245,
+        -13.8
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "root_round_2_1_0",
+      "status": "pass",
+      "actual": [
+        56.00005,
+        -38.386302239299994,
+        -5.07
+      ],
+      "expected": "inside root blend material",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "root_round_2_-1_0",
+      "status": "pass",
+      "actual": [
+        44.00005,
+        -38.386302239299994,
+        -5.07
+      ],
+      "expected": "inside root blend material",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "root_round_2_0_1",
+      "status": "pass",
+      "actual": [
+        50.00005,
+        -32.386302239299994,
+        -5.07
+      ],
+      "expected": "inside root blend material",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "root_round_2_0_-1",
+      "status": "pass",
+      "actual": [
+        50.00005,
+        -44.386302239299994,
+        -5.07
+      ],
+      "expected": "inside root blend material",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "pilot_entry_chamfer_2",
+      "status": "pass",
+      "actual": [
+        51.43005,
+        -38.386302239299994,
+        -14.98
+      ],
+      "expected": "empty entry lead-in",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "taper_section_material_3_-11.8_-1",
+      "status": "pass",
+      "actual": [
+        -52.79864954935873,
+        41.334819945918724,
+        -11.8
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_3_-11.8_-1",
+      "status": "pass",
+      "actual": [
+        -52.85521809185365,
+        41.39138848841365,
+        -11.8
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_3_-11.8_1",
+      "status": "pass",
+      "actual": [
+        -47.198363842361275,
+        41.334819945918724,
+        -11.8
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_3_-11.8_1",
+      "status": "pass",
+      "actual": [
+        -47.14179529986635,
+        41.39138848841365,
+        -11.8
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_3_-12_-1",
+      "status": "pass",
+      "actual": [
+        -52.94007090559604,
+        41.47624130215603,
+        -12.0
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_3_-12_-1",
+      "status": "pass",
+      "actual": [
+        -52.99663944809096,
+        41.532809844650956,
+        -12.0
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_3_-12_1",
+      "status": "pass",
+      "actual": [
+        -47.056942486123965,
+        41.47624130215603,
+        -12.0
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_3_-12_1",
+      "status": "pass",
+      "actual": [
+        -47.00037394362904,
+        41.532809844650956,
+        -12.0
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_3_-12.5_-1",
+      "status": "pass",
+      "actual": [
+        -53.293624296189314,
+        41.82979469274931,
+        -12.5
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_3_-12.5_-1",
+      "status": "pass",
+      "actual": [
+        -53.35019283868424,
+        41.88636323524423,
+        -12.5
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_3_-12.5_1",
+      "status": "pass",
+      "actual": [
+        -46.70338909553069,
+        41.82979469274931,
+        -12.5
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_3_-12.5_1",
+      "status": "pass",
+      "actual": [
+        -46.64682055303577,
+        41.88636323524423,
+        -12.5
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_3_-13_-1",
+      "status": "pass",
+      "actual": [
+        -53.647177686782584,
+        42.18334808334258,
+        -13.0
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_3_-13_-1",
+      "status": "pass",
+      "actual": [
+        -53.70374622927751,
+        42.23991662583751,
+        -13.0
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_3_-13_1",
+      "status": "pass",
+      "actual": [
+        -46.34983570493742,
+        42.18334808334258,
+        -13.0
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_3_-13_1",
+      "status": "pass",
+      "actual": [
+        -46.29326716244249,
+        42.23991662583751,
+        -13.0
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_3_-13.5_-1",
+      "status": "pass",
+      "actual": [
+        -54.00073107737586,
+        42.536901473935856,
+        -13.5
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_3_-13.5_-1",
+      "status": "pass",
+      "actual": [
+        -54.05729961987078,
+        42.59347001643078,
+        -13.5
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_3_-13.5_1",
+      "status": "pass",
+      "actual": [
+        -45.99628231434414,
+        42.536901473935856,
+        -13.5
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_3_-13.5_1",
+      "status": "pass",
+      "actual": [
+        -45.93971377184922,
+        42.59347001643078,
+        -13.5
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_3_-13.8_-1",
+      "status": "pass",
+      "actual": [
+        -54.21286311173182,
+        42.74903350829182,
+        -13.8
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_3_-13.8_-1",
+      "status": "pass",
+      "actual": [
+        -54.26943165422675,
+        42.805602050786746,
+        -13.8
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_3_-13.8_1",
+      "status": "pass",
+      "actual": [
+        -45.78415027998818,
+        42.74903350829182,
+        -13.8
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_3_-13.8_1",
+      "status": "pass",
+      "actual": [
+        -45.72758173749325,
+        42.805602050786746,
+        -13.8
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "root_round_3_1_0",
+      "status": "pass",
+      "actual": [
+        -43.99850669586,
+        38.53467709242,
+        -5.07
+      ],
+      "expected": "inside root blend material",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "root_round_3_-1_0",
+      "status": "pass",
+      "actual": [
+        -55.99850669586,
+        38.53467709242,
+        -5.07
+      ],
+      "expected": "inside root blend material",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "root_round_3_0_1",
+      "status": "pass",
+      "actual": [
+        -49.99850669586,
+        44.53467709242,
+        -5.07
+      ],
+      "expected": "inside root blend material",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "root_round_3_0_-1",
+      "status": "pass",
+      "actual": [
+        -49.99850669586,
+        32.53467709242,
+        -5.07
+      ],
+      "expected": "inside root blend material",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "pilot_entry_chamfer_3",
+      "status": "pass",
+      "actual": [
+        -48.56850669586,
+        38.53467709242,
+        -14.98
+      ],
+      "expected": "empty entry lead-in",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "taper_section_material_4_-11.8_-1",
+      "status": "pass",
+      "actual": [
+        47.20125045063827,
+        41.334819940658726,
+        -11.8
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_4_-11.8_-1",
+      "status": "pass",
+      "actual": [
+        47.14468190814335,
+        41.39138848315365,
+        -11.8
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_4_-11.8_1",
+      "status": "pass",
+      "actual": [
+        52.801536157635724,
+        41.334819940658726,
+        -11.8
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_4_-11.8_1",
+      "status": "pass",
+      "actual": [
+        52.858104700130646,
+        41.39138848315365,
+        -11.8
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_4_-12_-1",
+      "status": "pass",
+      "actual": [
+        47.05982909440096,
+        41.476241296896035,
+        -12.0
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_4_-12_-1",
+      "status": "pass",
+      "actual": [
+        47.00326055190604,
+        41.53280983939096,
+        -12.0
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_4_-12_1",
+      "status": "pass",
+      "actual": [
+        52.94295751387303,
+        41.476241296896035,
+        -12.0
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_4_-12_1",
+      "status": "pass",
+      "actual": [
+        52.999526056367955,
+        41.53280983939096,
+        -12.0
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_4_-12.5_-1",
+      "status": "pass",
+      "actual": [
+        46.706275703807684,
+        41.82979468748931,
+        -12.5
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_4_-12.5_-1",
+      "status": "pass",
+      "actual": [
+        46.64970716131276,
+        41.886363229984234,
+        -12.5
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_4_-12.5_1",
+      "status": "pass",
+      "actual": [
+        53.29651090446631,
+        41.82979468748931,
+        -12.5
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_4_-12.5_1",
+      "status": "pass",
+      "actual": [
+        53.35307944696123,
+        41.886363229984234,
+        -12.5
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_4_-13_-1",
+      "status": "pass",
+      "actual": [
+        46.352722313214414,
+        42.18334807808258,
+        -13.0
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_4_-13_-1",
+      "status": "pass",
+      "actual": [
+        46.296153770719485,
+        42.23991662057751,
+        -13.0
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_4_-13_1",
+      "status": "pass",
+      "actual": [
+        53.65006429505958,
+        42.18334807808258,
+        -13.0
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_4_-13_1",
+      "status": "pass",
+      "actual": [
+        53.70663283755451,
+        42.23991662057751,
+        -13.0
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_4_-13.5_-1",
+      "status": "pass",
+      "actual": [
+        45.99916892262114,
+        42.53690146867586,
+        -13.5
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_4_-13.5_-1",
+      "status": "pass",
+      "actual": [
+        45.942600380126215,
+        42.59347001117078,
+        -13.5
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_4_-13.5_1",
+      "status": "pass",
+      "actual": [
+        54.003617685652856,
+        42.53690146867586,
+        -13.5
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_4_-13.5_1",
+      "status": "pass",
+      "actual": [
+        54.06018622814778,
+        42.59347001117078,
+        -13.5
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_4_-13.8_-1",
+      "status": "pass",
+      "actual": [
+        45.78703688826518,
+        42.749033503031825,
+        -13.8
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_4_-13.8_-1",
+      "status": "pass",
+      "actual": [
+        45.73046834577025,
+        42.80560204552675,
+        -13.8
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_material_4_-13.8_1",
+      "status": "pass",
+      "actual": [
+        54.215749720008816,
+        42.749033503031825,
+        -13.8
+      ],
+      "expected": "inside material",
+      "method": "OCCT point classification, 0.04mm inside expected 45-degree profile"
+    },
+    {
+      "id": "taper_section_outside_4_-13.8_1",
+      "status": "pass",
+      "actual": [
+        54.272318262503745,
+        42.80560204552675,
+        -13.8
+      ],
+      "expected": "outside material",
+      "method": "OCCT point classification, 0.04mm outside expected 45-degree profile"
+    },
+    {
+      "id": "root_round_4_1_0",
+      "status": "pass",
+      "actual": [
+        56.001393304137,
+        38.53467708716,
+        -5.07
+      ],
+      "expected": "inside root blend material",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "root_round_4_-1_0",
+      "status": "pass",
+      "actual": [
+        44.001393304137,
+        38.53467708716,
+        -5.07
+      ],
+      "expected": "inside root blend material",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "root_round_4_0_1",
+      "status": "pass",
+      "actual": [
+        50.001393304137,
+        44.53467708716,
+        -5.07
+      ],
+      "expected": "inside root blend material",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "root_round_4_0_-1",
+      "status": "pass",
+      "actual": [
+        50.001393304137,
+        32.53467708716,
+        -5.07
+      ],
+      "expected": "inside root blend material",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "pilot_entry_chamfer_4",
+      "status": "pass",
+      "actual": [
+        51.431393304136996,
+        38.53467708716,
+        -14.98
+      ],
+      "expected": "empty entry lead-in",
+      "method": "OCCT point classification"
+    },
+    {
+      "id": "print_growth_0p2_layer",
+      "status": "pass",
+      "actual": {
+        "layer_height_mm": 0.2,
+        "max_radial_growth_mm_per_layer": 0.2000000000000009,
+        "transition_angle_degrees": 45,
+        "section_probe_pass": true
+      },
+      "expected": "continuous radius4 to6 over2mm in print direction; no2mm instantaneous step",
+      "method": "Analytic profile, corroborated by diagonal section material probes; not a slicer or physical print test"
     }
   ],
-  "volume_mm3": 61483.46041669898,
+  "volume_mm3": 61602.53470296477,
+  "print_orientation": "CAT mating face on bed; posts upward",
+  "foot_transition_profile": [
+    {
+      "post": 1,
+      "z_mm": -11.8,
+      "radius_mm": 4
+    },
+    {
+      "post": 1,
+      "z_mm": -12,
+      "radius_mm": 4.2
+    },
+    {
+      "post": 1,
+      "z_mm": -12.5,
+      "radius_mm": 4.7
+    },
+    {
+      "post": 1,
+      "z_mm": -13,
+      "radius_mm": 5.2
+    },
+    {
+      "post": 1,
+      "z_mm": -13.5,
+      "radius_mm": 5.7
+    },
+    {
+      "post": 1,
+      "z_mm": -13.8,
+      "radius_mm": 6
+    },
+    {
+      "post": 2,
+      "z_mm": -11.8,
+      "radius_mm": 4
+    },
+    {
+      "post": 2,
+      "z_mm": -12,
+      "radius_mm": 4.2
+    },
+    {
+      "post": 2,
+      "z_mm": -12.5,
+      "radius_mm": 4.7
+    },
+    {
+      "post": 2,
+      "z_mm": -13,
+      "radius_mm": 5.2
+    },
+    {
+      "post": 2,
+      "z_mm": -13.5,
+      "radius_mm": 5.7
+    },
+    {
+      "post": 2,
+      "z_mm": -13.8,
+      "radius_mm": 6
+    },
+    {
+      "post": 3,
+      "z_mm": -11.8,
+      "radius_mm": 4
+    },
+    {
+      "post": 3,
+      "z_mm": -12,
+      "radius_mm": 4.2
+    },
+    {
+      "post": 3,
+      "z_mm": -12.5,
+      "radius_mm": 4.7
+    },
+    {
+      "post": 3,
+      "z_mm": -13,
+      "radius_mm": 5.2
+    },
+    {
+      "post": 3,
+      "z_mm": -13.5,
+      "radius_mm": 5.7
+    },
+    {
+      "post": 3,
+      "z_mm": -13.8,
+      "radius_mm": 6
+    },
+    {
+      "post": 4,
+      "z_mm": -11.8,
+      "radius_mm": 4
+    },
+    {
+      "post": 4,
+      "z_mm": -12,
+      "radius_mm": 4.2
+    },
+    {
+      "post": 4,
+      "z_mm": -12.5,
+      "radius_mm": 4.7
+    },
+    {
+      "post": 4,
+      "z_mm": -13,
+      "radius_mm": 5.2
+    },
+    {
+      "post": 4,
+      "z_mm": -13.5,
+      "radius_mm": 5.7
+    },
+    {
+      "post": 4,
+      "z_mm": -13.8,
+      "radius_mm": 6
+    }
+  ],
+  "edge_finish": {
+    "plate_corner_radius": 3,
+    "root_radius": 0.6,
+    "outside_edge_break": 0.3,
+    "nut_entry_chamfer": 0.25,
+    "pilot_entry_chamfer": 0.25
+  },
   "foot_contact_areas_mm2": [
-    108.18859703599168,
-    108.18859698157048,
-    108.18859699419563,
-    108.18859693902732
+    106.26175351384406,
+    106.26175351370601,
+    106.2617535119633,
+    106.26175351198151
   ],
   "anchors_world_xy": [
     [
@@ -751,12 +2181,12 @@
   "untested_risks": [
     "PCB underside clearance for screw heads and opening the shell for installation",
     "Actual self-tapping screw thread form, pilot fit, torque and plastic retention",
-    "Printing material/orientation/support, warp, heat and vibration",
+    "Physical support-free printing on P2S with0.4 nozzle/0.2layer, especially foot transition and root blends; warp/heat/vibration untested",
     "Final access to nearby reused chassis holes and complete device hardware layout"
   ],
-  "user_acceptance": "User accepted the four-straight-rib visual assembly and authorized commit/push; physical fit and print acceptance pending",
   "artifact_sha256": {
-    "cat_mount.step": "25739cb9886a165ec57e6babb3de79b7fa580420cd17b65ae1342a7552636f2c",
-    "cat_mount.stl": "6b50ddd18fedd1c5a9f799cf286a4eae5ac6eee7193e4241c778a05dab6ba822"
-  }
+    "cat_mount.step": "f254497f0fec7ca50b48cf0b7c83709ef0c7900260ee5dc1b9f0377a6a9fd584",
+    "cat_mount.stl": "591d063817757886995a666360fab261d111f7a9ccb760070ae29e964c4a4198"
+  },
+  "scope_limit": "Only printing edge finish and foot overhang addressed; no slicing infill changes or lightweight windows added."
 }

@@ -1,0 +1,7 @@
+{
+  "status": "pass",
+  "scope": "Interactive finish and complete native generator replay agree",
+  "interactive_volume_mm3": 61602.59057159731,
+  "replay_volume_mm3": 61602.59057159731,
+  "model_sha256": "3338213ea0f553566090fae711cc3fe3ebba07166526e3ab1a791326aa4895c8"
+}

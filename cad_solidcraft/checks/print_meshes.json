@@ -1,0 +1,25 @@
+{
+  "status": "pass",
+  "units": "mm",
+  "scope": "closed printable meshes only; no hardware or chassis",
+  "models": {
+    "battery_cradle": {
+      "closed": true,
+      "facets": 64784,
+      "dimensions_mm": [
+        66.5999984741211,
+        98.0,
+        14.43164587020874
+      ]
+    },
+    "cat_mount": {
+      "closed": true,
+      "facets": 39004,
+      "dimensions_mm": [
+        135.32557678222656,
+        98.0,
+        14.999999999999838
+      ]
+    }
+  }
+}

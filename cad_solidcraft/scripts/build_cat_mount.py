@@ -1,12 +1,14 @@
 from pathlib import Path
 import os,sys,json,math
 from sc_mcp import Client
-R=Path(__file__).resolve().parents[2];O=R/'cad_solidcraft/build/cat'
+from finish_cat_mount import apply_cat_finish
+R=Path(__file__).resolve().parents[2];REFERENCE=R/'cad_solidcraft/build/cat'
+O=Path(os.environ.get('R3_CAT_OUT',str(REFERENCE)));O.mkdir(parents=True,exist_ok=True)
 with Client(R,timeout=300) as c:
  print('BEFORE',c.call('inspect_design')['name'],flush=True)
- c.execute('file.new',name='CAT mount — four straight ribs / recessed nuts')
+ c.execute('file.new',name='CAT mount — print-friendly foot transition and edge finish')
  # Native plate and copied exact source slot/hole boundaries.
- audit=json.loads((O/'source_audit.json').read_text())
+ audit=json.loads((REFERENCE/'source_audit.json').read_text())
  for n,v in {'plate_thickness':5,'post_height':10,'post_radius':4,'foot_radius':6,'foot_height':1.2,'pilot_radius':1.25,'pilot_depth':9,'rib_reach':5.8,'rib_thickness':2}.items():c.call('set_parameter',{'name':n,'value':v,'unit':'mm'})
  target=['CATMount']
  c.execute('solid.box',name='CAT measured bottom outline',body_name='CATMount',corner=[-67.66300877886484,-49,'-plate_thickness'],length=135.32557355773027,width=98,height='plate_thickness')
@@ -31,26 +33,22 @@ with Client(R,timeout=300) as c:
    c.execute('sketch.finish')
    c.execute('solid.extrude',name=f'Internal M3 nut seat {col}.{row}',distance=2.7,operation='cut',targets=target)
  c.execute('view.apply',camera={'target':[0,0,-5],'yaw':-.7,'pitch':-.7,'distance':190,'fov':0})
- anchors=[h['world_xy'] for h in json.loads((O/'hole_selection_checks.json').read_text())['holes']]
+ anchors=[h['world_xy'] for h in json.loads((REFERENCE/'hole_selection_checks.json').read_text())['holes']]
  # These four source-steel anchors were confirmed by the user.
  for i,(x,wy) in enumerate(anchors,1):
-  y=wy+50
-  print('Post',i,flush=True)
-  cylinder(f'Compact support post {i}',[x,y,'-plate_thickness - post_height'],'post_radius','post_height + 0.15','join')
-  cylinder(f'Contact foot {i}',[x,y,'-plate_thickness - post_height'],'foot_radius','foot_height','join')
-  # Two perpendicular bars form four full-height radial webs at 90 degrees.
-  # 5.8 mm reach and 1mm half-width keep every corner inside the 6mm foot radius.
+  y=wy+50;post=f'SupportUnit{i}'
+  print('Support unit',i,flush=True)
+  c.execute('sketch.create',plane={'origin':[x,y,0],'x_dir':[1,0,0],'y_dir':[0,0,1]},name=f'Revolved support profile {i}')
+  c.execute('sketch.line',points=[[0,-15],[6,-15],[6,-13.8],[4,-11.8],[4,-4.85],[0,-4.85],[0,-15]])
+  c.execute('sketch.finish')
+  c.execute('solid.revolve',name=f'One-piece tapered foot support {i}',body_name=post,axis={'origin':[x,y,0],'dir':[0,0,1]},angle=360,operation='new')
   for axis in ['X','Y']:
-   print('Four-way straight web',i,axis,flush=True)
-   if axis=='X':
-    corner=[f'{x} - rib_reach',f'{y} - rib_thickness / 2','-plate_thickness - post_height']
-    length,width='2 * rib_reach','rib_thickness'
-   else:
-    corner=[f'{x} - rib_thickness / 2',f'{y} - rib_reach','-plate_thickness - post_height']
-    length,width='rib_thickness','2 * rib_reach'
-   c.execute('solid.box',name=f'Full-height straight webs {i} {axis}',corner=corner,length=length,width=width,height='post_height + 0.15',operation='join',targets=target)
-  c.call('save',{'path':str(O/'cat_mount.sc')})
+   corner=[x-5.8,y-1,-15] if axis=='X' else [x-1,y-5.8,-15]
+   c.execute('solid.box',name=f'Four-way full-height ribs {i} {axis}',corner=corner,length=11.6 if axis=='X' else 2,width=2 if axis=='X' else 11.6,height=10.15,operation='join',targets=[post])
+  c.execute('solid.combine',target='CATMount',tools=[post],operation='join',keep_tools=False)
+  c.call('save',{'path':str(O/'support_stage.sc')})
  for i,(x,wy) in enumerate(anchors,1):cylinder(f'Self tapping pilot {i}',[x,wy+50,-15.1],'pilot_radius','pilot_depth + 0.1','cut')
+ apply_cat_finish(c,anchors)
  c.execute('browser.visibility',folder='sketches',visible=False);c.execute('browser.visibility',folder='origin',visible=False)
  c.execute('appearance.assign',bodies=target,color='#3b93b0')
  d=c.call('inspect_design');assert len(d['bodies'])==1;assert not [f for f in d['timeline'] if f.get('error')]
@@ -61,7 +59,7 @@ with Client(R,timeout=300) as c:
  # Place onto actual second steel plate at world top Z53, raising the CAT shell by 2mm for the thicker tray.
  c.execute('solid.move',bodies=target,translate=[0,-50,68])
  a=c.execute('file.insert_step',path=str(R/'cad_solidcraft/exports/steel_plate.step'),name='Upper steel plate',matrix=[1,0,0,0,0,1,0,0,0,0,1,51.5]);print('PLATE',a,flush=True)
- b=c.execute('file.insert_step',path=str(O/'cat_shells.step'),name='CAT original shell',matrix=[1,0,0,0,0,1,0,-50,0,0,1,68]);print('SHELL',b,flush=True)
+ b=c.execute('file.insert_step',path=str(REFERENCE/'cat_shells.step'),name='CAT original shell',matrix=[1,0,0,0,0,1,0,-50,0,0,1,68]);print('SHELL',b,flush=True)
  c.execute('appearance.assign',bodies=a['bodies'],color='#a8b1b8')
  c.execute('appearance.assign',bodies=b['bodies'],color='#4c535d',opacity=.3)
  c.execute('view.apply',camera={'target':[0,-48,65],'yaw':-.65,'pitch':.3,'distance':245,'fov':0})

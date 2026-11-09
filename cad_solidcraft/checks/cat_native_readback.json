@@ -1,21 +1,19 @@
 {
   "status": "pass",
-  "scope": "published native model reopen and assembly world mount Z53..68",
+  "scope": "Finished CAT native files reopen; mounted connector Z53..68",
   "models": {
     "cat_mount.sc": {
       "body_count": 1,
-      "timeline_errors": [],
-      "mount_volume_mm3": 61483.46663446419,
-      "closed": true,
-      "sha256": "57991aa898fd94fded84b00d1b9e1e10d95126ed029600efb4c46ce78d4c16a5"
+      "timeline_errors": 0,
+      "volume_mm3": 61602.59057159731,
+      "sha256": "3338213ea0f553566090fae711cc3fe3ebba07166526e3ab1a791326aa4895c8"
     },
     "cat_on_plate.sc": {
       "body_count": 4,
-      "timeline_errors": [],
-      "mount_volume_mm3": 61483.46663446416,
-      "closed": true,
-      "sha256": "f4aab3b99dce2306ceaf312ec7e3a2302677cdaef07e097375794a2e603ad91f"
+      "timeline_errors": 0,
+      "volume_mm3": 61602.590571577275,
+      "sha256": "8e7dd37bc7b0f8bb420e00eb71a283892fbaa441aa1acc9d109e09c23ebd5177"
     }
   },
-  "step_sha256": "25739cb9886a165ec57e6babb3de79b7fa580420cd17b65ae1342a7552636f2c"
+  "step_sha256": "f254497f0fec7ca50b48cf0b7c83709ef0c7900260ee5dc1b9f0377a6a9fd584"
 }
